@@ -1,0 +1,20 @@
+{
+  "likeCounter": "Лайков",
+  "postCounter": "Постов",
+  "commentCounter": "Комментариев",
+  "withNook": "C Nook",
+  "posts": "Посты",
+  "comments": "Комментарии",
+  "reposts": "Репосты",
+  "likes": "Лайки",
+  "description": "Описание",
+  "theresNothingHere": "Тут ничего нет :(",
+  "edited": "изменено",
+  "years": "г.",
+  "months": "мес.",
+  "days": "д.",
+  "hours": "ч.",
+  "minutes": "м.",
+  "justNow": "только что",
+  "somethingWentWrong": "Что-то пошло не так :("
+}

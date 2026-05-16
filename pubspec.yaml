@@ -1,0 +1,62 @@
+name: nook
+description: "A new Flutter project."
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.2.4
+  blur: ^4.0.2
+  fullscreen_image_viewer: ^1.2.0
+  dio: ^5.9.2
+  retrofit: ^4.9.2
+  json_annotation: ^4.11.0
+  flutter_dotenv: ^6.0.1
+  get_it: ^9.2.1
+  flutter_secure_storage: ^10.0.0
+  flutter_bloc: ^9.1.1
+  lottie: ^3.3.3
+  intl: ^0.20.2
+  equatable: ^2.0.8
+  bounce: ^1.0.2
+  auto_route: ^11.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+  build_runner: ^2.15.0
+  retrofit_generator: ^10.2.5
+  json_serializable: ^6.13.2
+  auto_route_generator: ^10.5.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/images/
+    - assets/animations/
+    - .env
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
+flutter_intl:
+  enabled: true
