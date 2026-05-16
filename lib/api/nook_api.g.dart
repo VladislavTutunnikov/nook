@@ -566,7 +566,7 @@ class _NookApiClient implements NookApiClient {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = FormData();
-    _data.fields.add(MapEntry('nookId', nookId));
+    _data.fields.add(MapEntry('nook_id', nookId));
     _data.fields.add(MapEntry('title', title));
     if (content != null) {
       _data.fields.add(MapEntry('content', content));
@@ -584,6 +584,25 @@ class _NookApiClient implements NookApiClient {
           .compose(
             _dio.options,
             '/posts',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
+  Future<void> deletePost({required String postId}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<void>(
+      Options(method: 'DELETE', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/posts/${postId}',
             queryParameters: queryParameters,
             data: _data,
           )

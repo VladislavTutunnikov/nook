@@ -10,19 +10,46 @@ class PostRepository {
 
   final NookApiClient apiClient;
 
-  Future<UserModel> getUser({String? userId}) async {
+  Future<PostModel> getPost({required String postId}) async {
     try {
-      final UserModel response;
-      if (userId == null) {
-        response = await apiClient.getMe();
-      } else {
-        response = await apiClient.getUser(userId: userId);
-      }
+      final PostModel response = await apiClient.getPost(postId: postId);
+
       return response;
     } on DioException catch (e) {
-      throw Exception('User upload error: ${e.message}');
+      throw Exception('Post upload error: ${e.message}');
     }
   }
 
-  
+  Future<void> createPost({
+    required String nookId,
+    required String title,
+    String? content,
+    List<String>? imagePaths,
+  }) async {
+    try {
+      List<MultipartFile>? images;
+      if (imagePaths != null && imagePaths.isNotEmpty) {
+        images = await Future.wait(
+          imagePaths.map((path) => MultipartFile.fromFile(path)),
+        );
+      }
+
+      await apiClient.createPost(
+        nookId: nookId,
+        title: title,
+        content: content,
+        images: images,
+      );
+    } on DioException catch (e) {
+      throw Exception('Post create error: ${e.message}');
+    }
+  }
+
+  Future<void> deletePost({required String postId}) async {
+    try {
+      await apiClient.deletePost(postId: postId);
+    } on DioException catch (e) {
+      throw Exception('Post delete error: ${e.message}');
+    }
+  }
 }

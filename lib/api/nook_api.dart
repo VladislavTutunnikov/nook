@@ -115,5 +115,5 @@ abstract class NookApiClient {
   });
 
   @DELETE('/posts/{post_id}')
-  Future<PostModel> deletePost({@Path('post_id') required String postId});
+  Future<void> deletePost({@Path('post_id') required String postId});
 }
