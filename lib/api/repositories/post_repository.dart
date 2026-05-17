@@ -52,4 +52,53 @@ class PostRepository {
       throw Exception('Post delete error: ${e.message}');
     }
   }
+
+  Future<void> likePost({required String postId}) async {
+    try {
+      await apiClient.likePost(postId: postId);
+    } on DioException catch (e) {
+      throw Exception('Post like error: ${e.message}');
+    }
+  }
+
+  Future<void> unlikePost({required String postId}) async {
+    try {
+      await apiClient.unlikePost(postId: postId);
+    } on DioException catch (e) {
+      throw Exception('Post unlike error: ${e.message}');
+    }
+  }
+
+  Future<void> repostPost({required String postId}) async {
+    try {
+      await apiClient.repostPost(postId: postId);
+    } on DioException catch (e) {
+      throw Exception('Post repost error: ${e.message}');
+    }
+  }
+
+  Future<void> unrepostPost({required String postId}) async {
+    try {
+      await apiClient.unrepostPost(postId: postId);
+    } on DioException catch (e) {
+      throw Exception('Post unrepost error: ${e.message}');
+    }
+  }
+
+  Future<void> savePost({required String postId}) async {
+    try {
+      await apiClient.savePost(postId: postId);
+    } on DioException catch (e) {
+      throw Exception('Post save error: ${e.message}');
+    }
+  }
+
+  Future<void> unsavePost({required String postId}) async {
+    try {
+      await apiClient.unsavePost(postId: postId);
+    } on DioException catch (e) {
+      throw Exception('Post unsave error: ${e.message}');
+    }
+  }
+  
 }

@@ -116,4 +116,22 @@ abstract class NookApiClient {
 
   @DELETE('/posts/{post_id}')
   Future<void> deletePost({@Path('post_id') required String postId});
+
+  @POST('posts/{post_id}/like')
+  Future<void> likePost({@Path('post_id') required String postId});
+
+  @DELETE('posts/{post_id}/like')
+  Future<void> unlikePost({@Path('post_id') required String postId});
+
+  @POST('posts/{post_id}/repost')
+  Future<void> repostPost({@Path('post_id') required String postId});
+
+  @DELETE('posts/{post_id}/repost')
+  Future<void> unrepostPost({@Path('post_id') required String postId});
+
+  @POST('posts/{post_id}/save')
+  Future<void> savePost({@Path('post_id') required String postId});
+
+  @DELETE('posts/{post_id}/save')
+  Future<void> unsavePost({@Path('post_id') required String postId});
 }
