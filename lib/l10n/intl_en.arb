@@ -16,5 +16,14 @@
   "hours": "ч.",
   "minutes": "м.",
   "justNow": "только что",
-  "somethingWentWrong": "Что-то пошло не так :("
+  "somethingWentWrong": "Что-то пошло не так :(",
+  "save": "Сохранить",
+  "copyText": "Копировать текст",
+  "edit": "Редактировать",
+  "report": "Пожаловаться",
+  "delete": "Удалить",
+  "removeFromSaved": "Удалить из сохраненного",
+  "postSaved": "Пост сохранен",
+  "postDeletedFromSaved": "Пост удален из сохраненного",
+  "textCopied": "Текст скопирован"
 }

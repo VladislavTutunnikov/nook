@@ -158,6 +158,71 @@ class S {
       args: [],
     );
   }
+
+  /// `Сохранить`
+  String get save {
+    return Intl.message('Сохранить', name: 'save', desc: '', args: []);
+  }
+
+  /// `Копировать текст`
+  String get copyText {
+    return Intl.message(
+      'Копировать текст',
+      name: 'copyText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Редактировать`
+  String get edit {
+    return Intl.message('Редактировать', name: 'edit', desc: '', args: []);
+  }
+
+  /// `Пожаловаться`
+  String get report {
+    return Intl.message('Пожаловаться', name: 'report', desc: '', args: []);
+  }
+
+  /// `Удалить`
+  String get delete {
+    return Intl.message('Удалить', name: 'delete', desc: '', args: []);
+  }
+
+  /// `Удалить из сохраненного`
+  String get removeFromSaved {
+    return Intl.message(
+      'Удалить из сохраненного',
+      name: 'removeFromSaved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пост сохранен`
+  String get postSaved {
+    return Intl.message('Пост сохранен', name: 'postSaved', desc: '', args: []);
+  }
+
+  /// `Пост удален из сохраненного`
+  String get postDeletedFromSaved {
+    return Intl.message(
+      'Пост удален из сохраненного',
+      name: 'postDeletedFromSaved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Текст скопирован`
+  String get textCopied {
+    return Intl.message(
+      'Текст скопирован',
+      name: 'textCopied',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

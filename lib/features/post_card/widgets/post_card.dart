@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nook/api/di/injection.dart';
@@ -93,7 +95,49 @@ class _PostCardState extends State<PostCard> {
                             onTap: () {
                               showModalBottomSheet(
                                 context: context,
-                                builder: (context) => MenuBottomSheet(),
+                                builder: (context) => MenuBottomSheet(
+                                  isSaved: state.isSaved,
+                                  showDelete: false,
+                                  showEdit: false,
+                                  onSaveTap: () {
+                                    Navigator.pop(context);
+                                    _postBloc.add(SavePost());
+
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        duration: const Duration(seconds: 1),
+                                        content: Text(
+                                          state.isSaved
+                                              ? S.of(context).postDeletedFromSaved
+                                              : S.of(context).postSaved,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  onCopyTap: () {
+                                    Navigator.pop(context);
+                                    Clipboard.setData(
+                                      ClipboardData(
+                                        text:
+                                            '${widget.post.title}\n\n${widget.post.content ?? ''}',
+                                      ),
+                                    );
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        duration: const Duration(seconds: 1),
+                                        content: Text(
+                                          S.of(context).textCopied
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  
+                                  //TODO: add functionality
+                                  onEditTap: null,
+                                  onReportTap: null,
+                                  onDeleteTap: null,
+
+                                ),
                               );
                             },
                             child: SvgPicture.asset(AppIcons.dots, width: 22),

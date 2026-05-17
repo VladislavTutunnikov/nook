@@ -7,17 +7,16 @@ part 'post_state.dart';
 class PostBloc extends Bloc<PostEvent, PostState> {
   PostBloc({required this.postRepository, required this.post})
     : super(PostInitial()) {
-
     on<SetupData>((event, emit) async {
       emit(
-          PostUpdated(
-            isLiked: _isLiked,
-            isReposted: _isReposted,
-            isSaved: _isSaved,
-            likeCount: _likeCount,
-            repostCount: _repostCount,
-          ),
-        );
+        PostUpdated(
+          isLiked: _isLiked,
+          isReposted: _isReposted,
+          isSaved: _isSaved,
+          likeCount: _likeCount,
+          repostCount: _repostCount,
+        ),
+      );
     });
 
     on<LikePost>((event, emit) async {
@@ -107,6 +106,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     });
 
     on<SavePost>((event, emit) async {
+      print('НАЖАЛИ НА СОХРАНИТЬ');
       if (_isProcessingSave) return;
       _isProcessingSave = true;
 
@@ -117,6 +117,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
           await postRepository.unsavePost(postId: _postId);
         } else {
           await postRepository.savePost(postId: _postId);
+          print('ЗАПРОС НА СОХРАНЕНИЕ');
         }
         _isSaved = !_isSaved;
 

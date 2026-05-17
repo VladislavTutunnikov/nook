@@ -18,4 +18,9 @@ class AppIcons {
   static const String chevronUp = 'assets/icons/chevron_up.svg';
   static const String chevronLeft = 'assets/icons/chevron_left.svg';
   static const String rotate = 'assets/icons/rotate.svg';
+  static const String copy = 'assets/icons/copy.svg';
+  static const String delete = 'assets/icons/delete.svg';
+  static const String report = 'assets/icons/report.svg';
+  static const String save = 'assets/icons/save.svg';
+  static const String saveFilled = 'assets/icons/save_filled.svg';
 }

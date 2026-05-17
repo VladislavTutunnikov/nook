@@ -24,8 +24,11 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "commentCounter": MessageLookupByLibrary.simpleMessage("Комментариев"),
     "comments": MessageLookupByLibrary.simpleMessage("Комментарии"),
+    "copyText": MessageLookupByLibrary.simpleMessage("Копировать текст"),
     "days": MessageLookupByLibrary.simpleMessage("д."),
+    "delete": MessageLookupByLibrary.simpleMessage("Удалить"),
     "description": MessageLookupByLibrary.simpleMessage("Описание"),
+    "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
     "edited": MessageLookupByLibrary.simpleMessage("изменено"),
     "hours": MessageLookupByLibrary.simpleMessage("ч."),
     "justNow": MessageLookupByLibrary.simpleMessage("только что"),
@@ -34,11 +37,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "minutes": MessageLookupByLibrary.simpleMessage("м."),
     "months": MessageLookupByLibrary.simpleMessage("мес."),
     "postCounter": MessageLookupByLibrary.simpleMessage("Постов"),
+    "postDeletedFromSaved": MessageLookupByLibrary.simpleMessage(
+      "Пост удален из сохраненного",
+    ),
+    "postSaved": MessageLookupByLibrary.simpleMessage("Пост сохранен"),
     "posts": MessageLookupByLibrary.simpleMessage("Посты"),
+    "removeFromSaved": MessageLookupByLibrary.simpleMessage(
+      "Удалить из сохраненного",
+    ),
+    "report": MessageLookupByLibrary.simpleMessage("Пожаловаться"),
     "reposts": MessageLookupByLibrary.simpleMessage("Репосты"),
+    "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Что-то пошло не так :(",
     ),
+    "textCopied": MessageLookupByLibrary.simpleMessage("Текст скопирован"),
     "theresNothingHere": MessageLookupByLibrary.simpleMessage(
       "Тут ничего нет :(",
     ),

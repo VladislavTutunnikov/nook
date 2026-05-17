@@ -72,8 +72,22 @@ final whiteTheme = ThemeData(
   ),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: AppColors.white,
-    shape: CircleBorder(
-      side: BorderSide(color: AppColors.lightGrey, width: 1)
-    )
+    shape: CircleBorder(side: BorderSide(color: AppColors.lightGrey, width: 1)),
+  ),
+  snackBarTheme: SnackBarThemeData(
+    behavior: SnackBarBehavior.floating,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadiusGeometry.circular(1000),
+      side: const BorderSide(width: 1, color: AppColors.lightGrey),
+    ),
+    backgroundColor: AppColors.white,
+    elevation: 0,
+    contentTextStyle: const TextStyle(
+      fontFamily: 'Inter',
+      fontSize: 17,
+      fontWeight: FontWeight.w500,
+      height: 1.4,
+      color: AppColors.black,
+    ),
   ),
 );
