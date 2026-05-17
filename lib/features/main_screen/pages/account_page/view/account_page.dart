@@ -105,7 +105,8 @@ class _AccountPageState extends State<AccountPage> {
         if (state is PostsLoaded) {
           return PostList(
             posts: state.posts,
-            showNook: true,
+            //TODO: set true
+            showNook: false,
             showLoading: state.hasMore,
           );
         } else if (state is CommentsLoaded) {
@@ -175,6 +176,7 @@ class _AccountPageState extends State<AccountPage> {
                 color: AppColors.black,
                 onRefresh: _onRefresh,
                 child: CustomScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
                   controller: _scrollController,
                   slivers: [
                     SliverToBoxAdapter(

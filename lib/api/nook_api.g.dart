@@ -621,7 +621,7 @@ class _NookApiClient implements NookApiClient {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'posts/${postId}/like',
+            '/posts/${postId}/like',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -640,7 +640,7 @@ class _NookApiClient implements NookApiClient {
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'posts/${postId}/like',
+            '/posts/${postId}/like',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -659,7 +659,7 @@ class _NookApiClient implements NookApiClient {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'posts/${postId}/repost',
+            '/posts/${postId}/repost',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -678,7 +678,7 @@ class _NookApiClient implements NookApiClient {
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'posts/${postId}/repost',
+            '/posts/${postId}/repost',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -697,7 +697,7 @@ class _NookApiClient implements NookApiClient {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'posts/${postId}/save',
+            '/posts/${postId}/save',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -716,7 +716,7 @@ class _NookApiClient implements NookApiClient {
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'posts/${postId}/save',
+            '/posts/${postId}/save',
             queryParameters: queryParameters,
             data: _data,
           )

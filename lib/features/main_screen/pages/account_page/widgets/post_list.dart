@@ -9,21 +9,11 @@ class PostList extends StatelessWidget {
     super.key,
     required this.posts,
     required this.showNook,
-    this.onLikeTap,
-    this.onCommentTap,
-    this.onRepostTap,
-    this.onShareTap,
-    this.onMenuTap,
     this.showLoading = false,
   });
 
   final List<PostModel> posts;
   final bool showNook;
-  final void Function(PostModel post)? onLikeTap;
-  final void Function(PostModel post)? onCommentTap;
-  final void Function(PostModel post)? onRepostTap;
-  final void Function(PostModel post)? onShareTap;
-  final void Function(PostModel post)? onMenuTap;
   final bool showLoading;
 
   @override
@@ -51,11 +41,6 @@ class PostList extends StatelessWidget {
                     key: ValueKey(post.id),
                     post: post,
                     showNook: showNook,
-                    onLikeTap: () => onLikeTap?.call(post),
-                    onCommentTap: () => onCommentTap?.call(post),
-                    onRepostTap: () => onRepostTap?.call(post),
-                    onShareTap: () => onShareTap?.call(post),
-                    onMenuTap: () => onMenuTap?.call(post),
                   );
                 },
               ),
