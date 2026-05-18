@@ -101,4 +101,19 @@ class PostRepository {
     }
   }
   
+  Future<void> pinPost({required String postId}) async {
+    try {
+      await apiClient.pinPost(postId: postId);
+    } on DioException catch (e) {
+      throw Exception('Post pin error: ${e.message}');
+    }
+  }
+
+  Future<void> unpinPost({required String postId}) async {
+    try {
+      await apiClient.unpinPost(postId: postId);
+    } on DioException catch (e) {
+      throw Exception('Post unpin error: ${e.message}');
+    }
+  }
 }

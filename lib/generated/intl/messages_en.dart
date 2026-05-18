@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "commentCounter": MessageLookupByLibrary.simpleMessage("Комментариев"),
     "comments": MessageLookupByLibrary.simpleMessage("Комментарии"),
     "copyText": MessageLookupByLibrary.simpleMessage("Копировать текст"),
@@ -36,11 +37,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "likes": MessageLookupByLibrary.simpleMessage("Лайки"),
     "minutes": MessageLookupByLibrary.simpleMessage("м."),
     "months": MessageLookupByLibrary.simpleMessage("мес."),
+    "pin": MessageLookupByLibrary.simpleMessage("Закрепить"),
     "postCounter": MessageLookupByLibrary.simpleMessage("Постов"),
     "postDeletedFromSaved": MessageLookupByLibrary.simpleMessage(
       "Пост удален из сохраненного",
     ),
+    "postPinned": MessageLookupByLibrary.simpleMessage("Пост закреплен"),
     "postSaved": MessageLookupByLibrary.simpleMessage("Пост сохранен"),
+    "postUnpinned": MessageLookupByLibrary.simpleMessage("Пост откреплен"),
     "posts": MessageLookupByLibrary.simpleMessage("Посты"),
     "removeFromSaved": MessageLookupByLibrary.simpleMessage(
       "Удалить из сохраненного",
@@ -55,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "theresNothingHere": MessageLookupByLibrary.simpleMessage(
       "Тут ничего нет :(",
     ),
+    "unpin": MessageLookupByLibrary.simpleMessage("Открепить"),
     "withNook": MessageLookupByLibrary.simpleMessage("C Nook"),
     "years": MessageLookupByLibrary.simpleMessage("г."),
   };

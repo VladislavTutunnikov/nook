@@ -184,6 +184,7 @@ class _AccountPageState extends State<AccountPage> {
                         isOwnerProfile: _isOwnerProfile,
                         user: user,
                         followingUrls: followingUrls,
+                        //TODO: add navigation to follows screen
                         onFollowingTap: null,
                         onQrTap: () async {
                           //TODO: delete this

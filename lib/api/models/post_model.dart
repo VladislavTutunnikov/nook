@@ -12,6 +12,7 @@ class PostModel extends Equatable {
     required this.content,
     required this.photos,
     required this.isEdited,
+    required this.isPinned,
     required this.likeCount,
     required this.commentCount,
     required this.repostCount,
@@ -30,6 +31,9 @@ class PostModel extends Equatable {
 
   @JsonKey(name: 'is_edited')
   final bool isEdited;
+
+  @JsonKey(name: 'is_pinned')
+  final bool isPinned;
 
   @JsonKey(name: 'like_count')
   final int likeCount;

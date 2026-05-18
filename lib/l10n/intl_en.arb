@@ -25,5 +25,10 @@
   "removeFromSaved": "Удалить из сохраненного",
   "postSaved": "Пост сохранен",
   "postDeletedFromSaved": "Пост удален из сохраненного",
-  "textCopied": "Текст скопирован"
+  "textCopied": "Текст скопирован",
+  "pin": "Закрепить",
+  "unpin": "Открепить",
+  "postPinned": "Пост закреплен",
+  "postUnpinned": "Пост откреплен",
+  "cancel": "Отмена"
 }

@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:nook/api/interceptors/auth_interceptor.dart';
 import 'package:nook/api/nook_api.dart';
 import 'package:nook/api/repositories/auth_repository.dart';
+import 'package:nook/api/repositories/nook_repository.dart';
 import 'package:nook/api/repositories/post_repository.dart';
 import 'package:nook/api/repositories/user_repository.dart';
 import 'package:nook/core/storage/secure_storage.dart';
@@ -45,6 +46,10 @@ Future<void> initDependencies() async {
 
   getIt.registerLazySingleton<PostRepository>(
     () => PostRepository(apiClient: getIt<NookApiClient>()),
+  );
+
+  getIt.registerLazySingleton<NookRepository>(
+    () => NookRepository(apiClient: getIt<NookApiClient>()),
   );
 
   getIt.registerLazySingleton<AuthInterceptor>(() => AuthInterceptor());

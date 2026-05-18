@@ -6,14 +6,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nook/api/di/injection.dart';
 import 'package:nook/api/models/post_model.dart';
+import 'package:nook/api/repositories/nook_repository.dart';
 import 'package:nook/api/repositories/post_repository.dart';
+import 'package:nook/api/repositories/user_repository.dart';
 import 'package:nook/features/post_card/bloc/post_bloc.dart';
+import 'package:nook/features/post_card/widgets/delete_post_dialog.dart';
 import 'package:nook/features/post_card/widgets/menu_bottom_sheet.dart';
+import 'package:nook/features/post_card/widgets/post_bottom_buttons.dart';
 import 'package:nook/features/post_card/widgets/post_header.dart';
+import 'package:nook/features/post_card/widgets/post_text_section.dart';
 import 'package:nook/generated/l10n.dart';
 import 'package:nook/router/router.dart';
 import 'package:nook/shared/utils/formaters.dart';
 import 'package:nook/shared/widgets/avatar.dart';
+import 'package:nook/shared/widgets/custom_icon_button.dart';
 import 'package:nook/shared/widgets/photos_list.dart';
 import 'package:nook/shared/widgets/username.dart';
 import 'package:nook/theme/colors.dart';
@@ -37,6 +43,8 @@ class _PostCardState extends State<PostCard> {
     super.initState();
     _postBloc = PostBloc(
       postRepository: getIt<PostRepository>(),
+      userRepository: getIt<UserRepository>(),
+      nookRepository: getIt<NookRepository>(),
       post: widget.post,
     );
 
@@ -90,15 +98,19 @@ class _PostCardState extends State<PostCard> {
                           ),
 
                           const SizedBox(width: 10),
-                          GestureDetector(
-                            //TODO: add on menu tap
+                          CustomIconButton(
+                            iconPath: AppIcons.dots,
+                            color: AppColors.black,
+                            size: 22,
                             onTap: () {
                               showModalBottomSheet(
                                 context: context,
                                 builder: (context) => MenuBottomSheet(
                                   isSaved: state.isSaved,
-                                  showDelete: false,
-                                  showEdit: false,
+                                  isPinned: state.isPinned,
+                                  showDelete: state.canDelete,
+                                  showEdit: state.canEdit,
+                                  showPin: state.canPin,
                                   onSaveTap: () {
                                     Navigator.pop(context);
                                     _postBloc.add(SavePost());
@@ -108,8 +120,25 @@ class _PostCardState extends State<PostCard> {
                                         duration: const Duration(seconds: 1),
                                         content: Text(
                                           state.isSaved
-                                              ? S.of(context).postDeletedFromSaved
+                                              ? S
+                                                    .of(context)
+                                                    .postDeletedFromSaved
                                               : S.of(context).postSaved,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  onPinTap: () {
+                                    Navigator.pop(context);
+                                    _postBloc.add(PinPost());
+
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        duration: const Duration(seconds: 1),
+                                        content: Text(
+                                          state.isPinned
+                                              ? S.of(context).postUnpinned
+                                              : S.of(context).postPinned,
                                         ),
                                       ),
                                     );
@@ -125,52 +154,38 @@ class _PostCardState extends State<PostCard> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         duration: const Duration(seconds: 1),
-                                        content: Text(
-                                          S.of(context).textCopied
-                                        ),
+                                        content: Text(S.of(context).textCopied),
                                       ),
                                     );
                                   },
-                                  
+                                  onDeleteTap: () {
+                                    Navigator.pop(context);
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return DeletePostDialog(
+                                          onDeleteTap: () =>
+                                              _postBloc.add(DeletePost()),
+                                        );
+                                      },
+                                    );
+                                  },
+
                                   //TODO: add functionality
                                   onEditTap: null,
                                   onReportTap: null,
-                                  onDeleteTap: null,
-
                                 ),
                               );
                             },
-                            child: SvgPicture.asset(AppIcons.dots, width: 22),
                           ),
                         ],
                       ),
                       const SizedBox(height: 10),
-                      GestureDetector(
+                      PostTextSection(
+                        title: widget.post.title,
+                        content: widget.post.content,
                         //TODO: add navigation to post screen
                         onTap: null,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              widget.post.title,
-                              style: Theme.of(context).textTheme.titleLarge,
-                            ),
-                            widget.post.content != null
-                                ? Padding(
-                                    padding: const EdgeInsets.only(top: 10),
-                                    child: Text(
-                                      widget.post.content!,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyLarge
-                                          ?.copyWith(color: AppColors.darkGrey),
-                                    ),
-                                  )
-                                : const SizedBox(),
-                          ],
-                        ),
                       ),
                     ],
                   ),
@@ -183,99 +198,28 @@ class _PostCardState extends State<PostCard> {
                       )
                     : const SizedBox(),
 
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 0,
-                    bottom: 15,
-                    left: 15,
-                    right: 15,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                        onTap: () => _postBloc.add(LikePost()),
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(
-                              state.isLiked
-                                  ? AppIcons.likeFilled
-                                  : AppIcons.like,
-                              width: 22,
-                            ),
-                            const SizedBox(width: 3),
-                            Text(
-                              Formaters.formatNumber(state.likeCount),
-                              style: Theme.of(context).textTheme.labelLarge
-                                  ?.copyWith(
-                                    color: state.isLiked
-                                        ? AppColors.red
-                                        : AppColors.black,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 20),
+                PostBottomButtons(
+                  isLiked: state.isLiked,
+                  isReposted: state.isReposted,
+                  isEdited: widget.post.isEdited,
 
-                      GestureDetector(
-                        //TODO: add navigation to post screen
-                        onTap: null,
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(AppIcons.comment, width: 22),
-                            const SizedBox(width: 3),
-                            Text(
-                              Formaters.formatNumber(widget.post.commentCount),
-                              style: Theme.of(context).textTheme.labelLarge,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 20),
+                  likeCount: state.likeCount,
+                  commentCount: widget.post.commentCount,
+                  repostCount: state.repostCount,
 
-                      GestureDetector(
-                        onTap: () => _postBloc.add(RepostPost()),
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(
-                              state.isReposted
-                                  ? AppIcons.repostChecked
-                                  : AppIcons.repost,
-                              width: 22,
-                            ),
-                            const SizedBox(width: 3),
-                            Text(
-                              Formaters.formatNumber(state.repostCount),
-                              style: Theme.of(context).textTheme.labelLarge,
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      const Spacer(),
-                      widget.post.isEdited
-                          ? Text(
-                              S.of(context).edited,
-                              style: Theme.of(context).textTheme.bodyLarge
-                                  ?.copyWith(color: AppColors.darkGrey),
-                            )
-                          : const SizedBox(),
-                      const SizedBox(width: 10),
-                      GestureDetector(
-                        //TODO: add on share tap
-                        onTap: null,
-                        child: SvgPicture.asset(AppIcons.share, width: 22),
-                      ),
-                    ],
-                  ),
+                  onLikeTap: () => _postBloc.add(LikePost()),
+                  //TODO: add navigation to post screen
+                  onCommentTap: null,
+                  onRepostTap: () => _postBloc.add(RepostPost()),
+                  //TODO: add on share tap
+                  onShareTap: null,
                 ),
               ],
             ),
           );
         }
-        //TODO: refactor this
-        return SizedBox();
+
+        return const SizedBox();
       },
     );
   }

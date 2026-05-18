@@ -20,7 +20,7 @@ class TextIconButton extends StatelessWidget {
     this.padding = const EdgeInsets.all(0),
   });
 
-  final String iconPath;
+  final String? iconPath;
   final Color iconColor;
   final double iconSize;
   final String text;
@@ -36,12 +36,14 @@ class TextIconButton extends StatelessWidget {
         onTap: onTap,
         child: Row(
           children: [
-            SvgPicture.asset(
-              iconPath,
-              width: iconSize,
-              height: iconSize,
-              colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
-            ),
+            iconPath != null
+                ? SvgPicture.asset(
+                    iconPath!,
+                    width: iconSize,
+                    height: iconSize,
+                    colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+                  )
+                : const SizedBox(),
             const SizedBox(width: 10),
             Text(text, style: textStyle),
           ],

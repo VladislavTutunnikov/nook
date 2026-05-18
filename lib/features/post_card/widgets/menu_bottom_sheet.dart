@@ -9,23 +9,29 @@ class MenuBottomSheet extends StatelessWidget {
     super.key,
     this.showEdit = false,
     this.showDelete = false,
+    this.showPin = false,
     this.isSaved = false,
+    this.isPinned = false,
     this.onSaveTap,
     this.onCopyTap,
     this.onEditTap,
     this.onReportTap,
     this.onDeleteTap,
+    this.onPinTap,
   });
 
   final bool showEdit;
   final bool showDelete;
+  final bool showPin;
   final bool isSaved;
+  final bool isPinned;
 
   final void Function()? onSaveTap;
   final void Function()? onCopyTap;
   final void Function()? onEditTap;
   final void Function()? onReportTap;
   final void Function()? onDeleteTap;
+  final void Function()? onPinTap;
 
   @override
   Widget build(BuildContext context) {
@@ -76,17 +82,26 @@ class MenuBottomSheet extends StatelessWidget {
                 )
               : const SizedBox(),
 
-          TextIconButton(
-            padding: const EdgeInsets.only(bottom: 20),
-            onTap: onReportTap,
-            iconPath: AppIcons.report,
-            iconColor: AppColors.darkRed,
-            text: S.of(context).report,
-            textStyle: Theme.of(
-              context,
-            ).textTheme.titleLarge?.copyWith(color: AppColors.darkRed),
-          ),
+          showPin
+              ? TextIconButton(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  onTap: onPinTap,
+                  iconPath: isPinned ? AppIcons.unpin : AppIcons.pin,
+                  text: isPinned ? S.of(context).unpin : S.of(context).pin,
+                )
+              : const SizedBox(),
 
+          //TODO: add reports
+          // TextIconButton(
+          //   padding: const EdgeInsets.only(bottom: 20),
+          //   onTap: onReportTap,
+          //   iconPath: AppIcons.report,
+          //   iconColor: AppColors.darkRed,
+          //   text: S.of(context).report,
+          //   textStyle: Theme.of(
+          //     context,
+          //   ).textTheme.titleLarge?.copyWith(color: AppColors.darkRed),
+          // ),
           showDelete
               ? TextIconButton(
                   padding: const EdgeInsets.only(bottom: 20),

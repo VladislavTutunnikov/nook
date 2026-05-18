@@ -202,7 +202,6 @@ class ContentBloc extends Bloc<ContentEvent, ContentState> {
           limit: event.limit,
           offset: event.offset,
         );
-        print('Первый пост isLiked: ${likes.first.isLiked}');
         _cachedLikes.addAll(likes);
         _hasMoreLikes = likes.length >= event.limit;
         _likesOffset = event.offset + likes.length;

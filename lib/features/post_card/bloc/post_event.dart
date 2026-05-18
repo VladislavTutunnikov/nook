@@ -9,3 +9,7 @@ class LikePost extends PostEvent {}
 class RepostPost extends PostEvent {}
 
 class SavePost extends PostEvent {}
+
+class PinPost extends PostEvent {}
+
+class DeletePost extends PostEvent {}

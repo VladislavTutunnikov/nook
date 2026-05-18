@@ -23,4 +23,6 @@ class AppIcons {
   static const String report = 'assets/icons/report.svg';
   static const String save = 'assets/icons/save.svg';
   static const String saveFilled = 'assets/icons/save_filled.svg';
+  static const String pin = 'assets/icons/pin.svg';
+  static const String unpin = 'assets/icons/unpin.svg';
 }

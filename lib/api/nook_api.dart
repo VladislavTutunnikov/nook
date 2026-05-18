@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:nook/api/models/comment_model.dart';
 import 'package:nook/api/models/login_request_model.dart';
 import 'package:nook/api/models/nook_model.dart';
+import 'package:nook/api/models/nook_team_model.dart';
 import 'package:nook/api/models/post_model.dart';
 import 'package:nook/api/models/refresh_request_model.dart';
 import 'package:nook/api/models/register_request_model.dart';
@@ -134,4 +135,16 @@ abstract class NookApiClient {
 
   @DELETE('/posts/{post_id}/save')
   Future<void> unsavePost({@Path('post_id') required String postId});
+
+  @POST('/posts/{post_id}/pin')
+  Future<void> pinPost({@Path('post_id') required String postId});
+
+  @DELETE('/posts/{post_id}/pin')
+  Future<void> unpinPost({@Path('post_id') required String postId});
+
+  //NOOKS
+  @GET('/nooks/{nook_id}/team')
+  Future<NookTeamModel> getNookTeam({
+    @Path('nook_id') required String nookId,
+  });
 }

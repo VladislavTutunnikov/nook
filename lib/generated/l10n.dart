@@ -223,6 +223,41 @@ class S {
       args: [],
     );
   }
+
+  /// `Закрепить`
+  String get pin {
+    return Intl.message('Закрепить', name: 'pin', desc: '', args: []);
+  }
+
+  /// `Открепить`
+  String get unpin {
+    return Intl.message('Открепить', name: 'unpin', desc: '', args: []);
+  }
+
+  /// `Пост закреплен`
+  String get postPinned {
+    return Intl.message(
+      'Пост закреплен',
+      name: 'postPinned',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пост откреплен`
+  String get postUnpinned {
+    return Intl.message(
+      'Пост откреплен',
+      name: 'postUnpinned',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Отмена`
+  String get cancel {
+    return Intl.message('Отмена', name: 'cancel', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
