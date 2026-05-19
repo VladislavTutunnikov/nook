@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nook/generated/l10n.dart';
 import 'package:nook/shared/widgets/text_icon_button.dart';
 import 'package:nook/theme/colors.dart';
-import 'package:nook/theme/icons.dart';
 
 class DeletePostDialog extends StatelessWidget {
   const DeletePostDialog({super.key, this.onDeleteTap});
@@ -20,8 +19,7 @@ class DeletePostDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Вы действительно хотите удалить этот пост?',
-              // 'Удалить этот пост?',
+              S.of(context).confirmationOfPostDeletion,
               style: Theme.of(
                 context,
               ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w400),

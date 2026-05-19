@@ -30,5 +30,17 @@
   "unpin": "Открепить",
   "postPinned": "Пост закреплен",
   "postUnpinned": "Пост откреплен",
-  "cancel": "Отмена"
+  "cancel": "Отмена",
+  "confirmationOfPostDeletion": "Вы действительно хотите удалить этот пост?",
+  "createPost": "Создать пост",
+  "createNook": "Создать уголок",
+  "myNooks": "Мои уголки",
+  "saved": "Сохранено",
+  "statistics": "Статистика",
+  "inviteFriends": "Пригласить друзей",
+  "settings": "Настройки",
+  "aboutUs": "О нас",
+  "reportProblem": "Сообщить о проблеме",
+  "contactSupport": "Обратиться в поддержку",
+  "logout": "Выйти из аккаунта"
 }

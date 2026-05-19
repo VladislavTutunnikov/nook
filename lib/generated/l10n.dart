@@ -258,6 +258,96 @@ class S {
   String get cancel {
     return Intl.message('Отмена', name: 'cancel', desc: '', args: []);
   }
+
+  /// `Вы действительно хотите удалить этот пост?`
+  String get confirmationOfPostDeletion {
+    return Intl.message(
+      'Вы действительно хотите удалить этот пост?',
+      name: 'confirmationOfPostDeletion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Создать пост`
+  String get createPost {
+    return Intl.message('Создать пост', name: 'createPost', desc: '', args: []);
+  }
+
+  /// `Создать уголок`
+  String get createNook {
+    return Intl.message(
+      'Создать уголок',
+      name: 'createNook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Мои уголки`
+  String get myNooks {
+    return Intl.message('Мои уголки', name: 'myNooks', desc: '', args: []);
+  }
+
+  /// `Сохранено`
+  String get saved {
+    return Intl.message('Сохранено', name: 'saved', desc: '', args: []);
+  }
+
+  /// `Статистика`
+  String get statistics {
+    return Intl.message('Статистика', name: 'statistics', desc: '', args: []);
+  }
+
+  /// `Пригласить друзей`
+  String get inviteFriends {
+    return Intl.message(
+      'Пригласить друзей',
+      name: 'inviteFriends',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Настройки`
+  String get settings {
+    return Intl.message('Настройки', name: 'settings', desc: '', args: []);
+  }
+
+  /// `О нас`
+  String get aboutUs {
+    return Intl.message('О нас', name: 'aboutUs', desc: '', args: []);
+  }
+
+  /// `Сообщить о проблеме`
+  String get reportProblem {
+    return Intl.message(
+      'Сообщить о проблеме',
+      name: 'reportProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Обратиться в поддержку`
+  String get contactSupport {
+    return Intl.message(
+      'Обратиться в поддержку',
+      name: 'contactSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выйти из аккаунта`
+  String get logout {
+    return Intl.message(
+      'Выйти из аккаунта',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

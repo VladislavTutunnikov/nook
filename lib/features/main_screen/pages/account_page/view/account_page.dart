@@ -11,7 +11,9 @@ import 'package:nook/features/main_screen/pages/account_page/bloc/account_bloc/a
 import 'package:nook/features/main_screen/pages/account_page/bloc/content_bloc/content_bloc.dart';
 import 'package:nook/features/main_screen/pages/account_page/widgets/account_header.dart';
 import 'package:nook/features/main_screen/pages/account_page/widgets/comment_list.dart';
+import 'package:nook/features/main_screen/pages/account_page/widgets/create_menu_bottom_sheet.dart';
 import 'package:nook/features/main_screen/pages/account_page/widgets/post_list.dart';
+import 'package:nook/features/main_screen/pages/account_page/widgets/profile_menu_bottom_sheet.dart';
 import 'package:nook/features/main_screen/pages/account_page/widgets/tab_header.dart';
 import 'package:nook/features/main_screen/pages/account_page/widgets/profile_bio.dart';
 import 'package:nook/generated/l10n.dart';
@@ -43,6 +45,7 @@ class _AccountPageState extends State<AccountPage> {
   void initState() {
     _accountBloc = AccountBloc(
       userRepository: getIt<UserRepository>(),
+      authRepository: getIt<AuthRepository>(),
       userId: widget.userId,
     );
     _contentBloc = ContentBloc(
@@ -105,7 +108,6 @@ class _AccountPageState extends State<AccountPage> {
         if (state is PostsLoaded) {
           return PostList(
             posts: state.posts,
-            //TODO: set true
             showNook: true,
             showLoading: state.hasMore,
           );
@@ -186,13 +188,38 @@ class _AccountPageState extends State<AccountPage> {
                         followingUrls: followingUrls,
                         //TODO: add navigation to follows screen
                         onFollowingTap: null,
-                        onPlusTap: () async {
-                          //TODO: delete this
-                          await getIt<AuthRepository>().logout();
-                          AutoRouter.of(context).replace(const LoginRoute());
+                        onPlusTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) => const CreateMenuBottomSheet(
+                              //TODO: add functionality
+                              onPostTap: null,
+                              onNookTap: null,
+                            ),
+                          );
                         },
+                        //TODO: add navigation to edit profile screen
                         onEditTap: null,
-                        onMenuTap: null,
+                        onMenuTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) => ProfileMenuBottomSheet(
+                              //TODO: add functionality
+                              onNooksTap: null,
+                              onSavedTap: null,
+                              onStatisticsTap: null,
+                              onFriendsTap: null,
+                              onSettingsTap: null,
+                              onAboutTap: null,
+                              onBugReportTap: null,
+                              onSupportTap: null,
+                              onLogoutTap: () {
+                                Navigator.pop(context);
+                                _accountBloc.add(Logout(context));
+                              },
+                            ),
+                          );
+                        },
                       ),
                     ),
 

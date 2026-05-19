@@ -1,11 +1,14 @@
 class AppIcons {
   static const String bell = 'assets/icons/bell.svg';
   static const String house = 'assets/icons/house.svg';
+  static const String housePlus = 'assets/icons/house_plus.svg';
+  static const String houses = 'assets/icons/houses.svg';
   static const String plusCircle = 'assets/icons/plus_circle.svg';
   static const String plusSquare = 'assets/icons/plus_square.svg';
   static const String search = 'assets/icons/search.svg';
   static const String user = 'assets/icons/user.svg';
   static const String userWhite = 'assets/icons/user_white.svg';
+  static const String userPlus = 'assets/icons/user_plus.svg';
   static const String edit = 'assets/icons/edit.svg';
   static const String burgerMenu = 'assets/icons/burger_menu.svg';
   static const String qr = 'assets/icons/qr.svg';
@@ -13,6 +16,7 @@ class AppIcons {
   static const String like = 'assets/icons/like.svg';
   static const String likeFilled = 'assets/icons/like_filled.svg';
   static const String comment = 'assets/icons/comment.svg';
+  static const String commentPlus = 'assets/icons/comment_plus.svg';
   static const String repost = 'assets/icons/repost.svg';
   static const String repostChecked = 'assets/icons/repost_checked.svg';
   static const String share = 'assets/icons/share.svg';
@@ -26,4 +30,10 @@ class AppIcons {
   static const String saveFilled = 'assets/icons/save_filled.svg';
   static const String pin = 'assets/icons/pin.svg';
   static const String unpin = 'assets/icons/unpin.svg';
+  static const String exit = 'assets/icons/exit.svg';
+  static const String settings = 'assets/icons/settings.svg';
+  static const String logoIcon = 'assets/icons/logo_icon.svg';
+  static const String bug = 'assets/icons/bug.svg';
+  static const String question = 'assets/icons/question.svg';
+  static const String statistics = 'assets/icons/statistics.svg';
 }

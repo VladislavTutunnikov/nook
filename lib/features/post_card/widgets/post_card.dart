@@ -11,7 +11,7 @@ import 'package:nook/api/repositories/post_repository.dart';
 import 'package:nook/api/repositories/user_repository.dart';
 import 'package:nook/features/post_card/bloc/post_bloc.dart';
 import 'package:nook/features/post_card/widgets/delete_post_dialog.dart';
-import 'package:nook/features/post_card/widgets/menu_bottom_sheet.dart';
+import 'package:nook/features/post_card/widgets/post_menu_bottom_sheet.dart';
 import 'package:nook/features/post_card/widgets/post_bottom_buttons.dart';
 import 'package:nook/features/post_card/widgets/post_header.dart';
 import 'package:nook/features/post_card/widgets/post_text_section.dart';

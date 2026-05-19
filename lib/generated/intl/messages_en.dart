@@ -22,21 +22,33 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "aboutUs": MessageLookupByLibrary.simpleMessage("О нас"),
     "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "commentCounter": MessageLookupByLibrary.simpleMessage("Комментариев"),
     "comments": MessageLookupByLibrary.simpleMessage("Комментарии"),
+    "confirmationOfPostDeletion": MessageLookupByLibrary.simpleMessage(
+      "Вы действительно хотите удалить этот пост?",
+    ),
+    "contactSupport": MessageLookupByLibrary.simpleMessage(
+      "Обратиться в поддержку",
+    ),
     "copyText": MessageLookupByLibrary.simpleMessage("Копировать текст"),
+    "createNook": MessageLookupByLibrary.simpleMessage("Создать уголок"),
+    "createPost": MessageLookupByLibrary.simpleMessage("Создать пост"),
     "days": MessageLookupByLibrary.simpleMessage("д."),
     "delete": MessageLookupByLibrary.simpleMessage("Удалить"),
     "description": MessageLookupByLibrary.simpleMessage("Описание"),
     "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
     "edited": MessageLookupByLibrary.simpleMessage("изменено"),
     "hours": MessageLookupByLibrary.simpleMessage("ч."),
+    "inviteFriends": MessageLookupByLibrary.simpleMessage("Пригласить друзей"),
     "justNow": MessageLookupByLibrary.simpleMessage("только что"),
     "likeCounter": MessageLookupByLibrary.simpleMessage("Лайков"),
     "likes": MessageLookupByLibrary.simpleMessage("Лайки"),
+    "logout": MessageLookupByLibrary.simpleMessage("Выйти из аккаунта"),
     "minutes": MessageLookupByLibrary.simpleMessage("м."),
     "months": MessageLookupByLibrary.simpleMessage("мес."),
+    "myNooks": MessageLookupByLibrary.simpleMessage("Мои уголки"),
     "pin": MessageLookupByLibrary.simpleMessage("Закрепить"),
     "postCounter": MessageLookupByLibrary.simpleMessage("Постов"),
     "postDeletedFromSaved": MessageLookupByLibrary.simpleMessage(
@@ -50,11 +62,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "Удалить из сохраненного",
     ),
     "report": MessageLookupByLibrary.simpleMessage("Пожаловаться"),
+    "reportProblem": MessageLookupByLibrary.simpleMessage(
+      "Сообщить о проблеме",
+    ),
     "reposts": MessageLookupByLibrary.simpleMessage("Репосты"),
     "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
+    "saved": MessageLookupByLibrary.simpleMessage("Сохранено"),
+    "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Что-то пошло не так :(",
     ),
+    "statistics": MessageLookupByLibrary.simpleMessage("Статистика"),
     "textCopied": MessageLookupByLibrary.simpleMessage("Текст скопирован"),
     "theresNothingHere": MessageLookupByLibrary.simpleMessage(
       "Тут ничего нет :(",

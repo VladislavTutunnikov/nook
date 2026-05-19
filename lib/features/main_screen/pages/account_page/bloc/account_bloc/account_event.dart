@@ -8,4 +8,7 @@ class LoadAccountData extends AccountEvent {
   final Completer? completer;
 }
 
-class LoadAccountPosts extends AccountEvent {}
+class Logout extends AccountEvent {
+  Logout(this.context);
+  final BuildContext context;
+}

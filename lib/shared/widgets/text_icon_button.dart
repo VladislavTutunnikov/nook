@@ -45,7 +45,7 @@ class TextIconButton extends StatelessWidget {
                   )
                 : const SizedBox(),
             const SizedBox(width: 10),
-            Text(text, style: textStyle),
+            Expanded(child: Text(text, style: textStyle)),
           ],
         ),
       ),
