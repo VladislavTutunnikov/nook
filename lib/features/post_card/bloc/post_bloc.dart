@@ -9,12 +9,8 @@ part 'post_event.dart';
 part 'post_state.dart';
 
 class PostBloc extends Bloc<PostEvent, PostState> {
-  PostBloc({
-    required this.postRepository,
-    required this.userRepository,
-    required this.nookRepository,
-    required this.post,
-  }) : super(PostInitial()) {
+  PostBloc({required this.postRepository, required this.post})
+    : super(PostInitial()) {
     on<SetupData>((event, emit) async {
       emit(
         PostUpdated(
@@ -24,62 +20,11 @@ class PostBloc extends Bloc<PostEvent, PostState> {
           isPinned: _isPinned,
           likeCount: _likeCount,
           repostCount: _repostCount,
-          canDelete: _canDelete,
-          canEdit: _canEdit,
-          canPin: _canPin,
+          canDelete: post.canDelete,
+          canEdit: post.canEdit,
+          canPin: post.canPin,
         ),
       );
-      try {
-        final UserModel user = await userRepository.getUser();
-        final NookTeamModel nookTeam = await nookRepository.getNookTeam(
-          nookId: post.nook.id,
-        );
-
-        if (user.id == post.user.id) {
-          _canEdit = true;
-          _canDelete = true;
-        }
-
-        if (user.id == nookTeam.owner?.id) {
-          _canDelete = true;
-          _canPin = true;
-        }
-
-        final List<String> moderatorsIds =
-            nookTeam.moderators?.map((e) => e.id).toList() ?? [];
-
-        if (moderatorsIds.contains(user.id)) {
-          _canDelete = true;
-        }
-
-        emit(
-          PostUpdated(
-            isLiked: _isLiked,
-            isReposted: _isReposted,
-            isSaved: _isSaved,
-            isPinned: _isPinned,
-            likeCount: _likeCount,
-            repostCount: _repostCount,
-            canDelete: _canDelete,
-            canEdit: _canEdit,
-            canPin: _canPin,
-          ),
-        );
-      } catch (e) {
-        emit(
-          PostUpdated(
-            isLiked: _isLiked,
-            isReposted: _isReposted,
-            isSaved: _isSaved,
-            isPinned: _isPinned,
-            likeCount: _likeCount,
-            repostCount: _repostCount,
-            canDelete: _canDelete,
-            canEdit: _canEdit,
-            canPin: _canPin,
-          ),
-        );
-      }
     });
 
     on<LikePost>((event, emit) async {
@@ -107,9 +52,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
             isPinned: _isPinned,
             likeCount: _likeCount,
             repostCount: _repostCount,
-            canDelete: _canDelete,
-            canEdit: _canEdit,
-            canPin: _canPin,
+            canDelete: post.canDelete,
+            canEdit: post.canEdit,
+            canPin: post.canPin,
           ),
         );
       } catch (e) {
@@ -123,9 +68,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
             isPinned: _isPinned,
             likeCount: _likeCount,
             repostCount: _repostCount,
-            canDelete: _canDelete,
-            canEdit: _canEdit,
-            canPin: _canPin,
+            canDelete: post.canDelete,
+            canEdit: post.canEdit,
+            canPin: post.canPin,
           ),
         );
       } finally {
@@ -158,9 +103,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
             isPinned: _isPinned,
             likeCount: _likeCount,
             repostCount: _repostCount,
-            canDelete: _canDelete,
-            canEdit: _canEdit,
-            canPin: _canPin,
+            canDelete: post.canDelete,
+            canEdit: post.canEdit,
+            canPin: post.canPin,
           ),
         );
       } catch (e) {
@@ -174,9 +119,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
             isPinned: _isPinned,
             likeCount: _likeCount,
             repostCount: _repostCount,
-            canDelete: _canDelete,
-            canEdit: _canEdit,
-            canPin: _canPin,
+            canDelete: post.canDelete,
+            canEdit: post.canEdit,
+            canPin: post.canPin,
           ),
         );
       } finally {
@@ -206,9 +151,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
             isPinned: _isPinned,
             likeCount: _likeCount,
             repostCount: _repostCount,
-            canDelete: _canDelete,
-            canEdit: _canEdit,
-            canPin: _canPin,
+            canDelete: post.canDelete,
+            canEdit: post.canEdit,
+            canPin: post.canPin,
           ),
         );
       } catch (e) {
@@ -221,9 +166,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
             isPinned: _isPinned,
             likeCount: _likeCount,
             repostCount: _repostCount,
-            canDelete: _canDelete,
-            canEdit: _canEdit,
-            canPin: _canPin,
+            canDelete: post.canDelete,
+            canEdit: post.canEdit,
+            canPin: post.canPin,
           ),
         );
       } finally {
@@ -253,9 +198,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
             isPinned: _isPinned,
             likeCount: _likeCount,
             repostCount: _repostCount,
-            canDelete: _canDelete,
-            canEdit: _canEdit,
-            canPin: _canPin,
+            canDelete: post.canDelete,
+            canEdit: post.canEdit,
+            canPin: post.canPin,
           ),
         );
       } catch (e) {
@@ -268,9 +213,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
             isPinned: _isPinned,
             likeCount: _likeCount,
             repostCount: _repostCount,
-            canDelete: _canDelete,
-            canEdit: _canEdit,
-            canPin: _canPin,
+            canDelete: post.canDelete,
+            canEdit: post.canEdit,
+            canPin: post.canPin,
           ),
         );
       } finally {
@@ -291,9 +236,9 @@ class PostBloc extends Bloc<PostEvent, PostState> {
             isPinned: _isPinned,
             likeCount: _likeCount,
             repostCount: _repostCount,
-            canDelete: _canDelete,
-            canEdit: _canEdit,
-            canPin: _canPin,
+            canDelete: post.canDelete,
+            canEdit: post.canEdit,
+            canPin: post.canPin,
           ),
         );
       }
@@ -315,11 +260,5 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   bool _isProcessingSave = false;
   bool _isProcessingPin = false;
 
-  bool _canDelete = false;
-  bool _canEdit = false;
-  bool _canPin = false;
-
   final PostRepository postRepository;
-  final UserRepository userRepository;
-  final NookRepository nookRepository;
 }

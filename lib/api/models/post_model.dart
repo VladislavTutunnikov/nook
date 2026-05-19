@@ -22,6 +22,9 @@ class PostModel extends Equatable {
     required this.isLiked,
     required this.isReposted,
     required this.isSaved,
+    required this.canDelete,
+    required this.canEdit,
+    required this.canPin,
   });
 
   final String id;
@@ -58,6 +61,15 @@ class PostModel extends Equatable {
 
   @JsonKey(name: 'is_saved')
   final bool isSaved;
+
+  @JsonKey(name: 'can_delete')
+  final bool canDelete;
+
+  @JsonKey(name: 'can_edit')
+  final bool canEdit;
+
+  @JsonKey(name: 'can_pin')
+  final bool canPin;
 
   factory PostModel.fromJson(Map<String, dynamic> json) =>
       _$PostModelFromJson(json);

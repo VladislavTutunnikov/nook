@@ -106,7 +106,7 @@ class _AccountPageState extends State<AccountPage> {
           return PostList(
             posts: state.posts,
             //TODO: set true
-            showNook: false,
+            showNook: true,
             showLoading: state.hasMore,
           );
         } else if (state is CommentsLoaded) {
@@ -186,7 +186,7 @@ class _AccountPageState extends State<AccountPage> {
                         followingUrls: followingUrls,
                         //TODO: add navigation to follows screen
                         onFollowingTap: null,
-                        onQrTap: () async {
+                        onPlusTap: () async {
                           //TODO: delete this
                           await getIt<AuthRepository>().logout();
                           AutoRouter.of(context).replace(const LoginRoute());

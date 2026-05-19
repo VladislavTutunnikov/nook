@@ -16,7 +16,7 @@ class AccountHeader extends StatelessWidget {
     required this.followingUrls,
     required this.isOwnerProfile,
     this.onFollowingTap,
-    this.onQrTap,
+    this.onPlusTap,
     this.onEditTap,
     this.onMenuTap,
   });
@@ -25,7 +25,7 @@ class AccountHeader extends StatelessWidget {
   final List<String> followingUrls;
   final bool isOwnerProfile;
   final void Function()? onFollowingTap;
-  final void Function()? onQrTap;
+  final void Function()? onPlusTap;
   final void Function()? onEditTap;
   final void Function()? onMenuTap;
 
@@ -46,7 +46,7 @@ class AccountHeader extends StatelessWidget {
               padding: const EdgeInsetsGeometry.symmetric(horizontal: 10),
               child: TopButtons(
                 isOwnerProfile: isOwnerProfile,
-                onQrTap: onQrTap,
+                onPlusTap: onPlusTap,
                 onEditTap: onEditTap,
                 onMenuTap: onMenuTap,
               ),

@@ -6,14 +6,14 @@ import 'package:nook/theme/icons.dart';
 class TopButtons extends StatelessWidget {
   const TopButtons({
     super.key,
-    this.onQrTap,
+    this.onPlusTap,
     this.onEditTap,
     this.onMenuTap,
     required this.isOwnerProfile,
   });
 
   final bool isOwnerProfile;
-  final void Function()? onQrTap;
+  final void Function()? onPlusTap;
   final void Function()? onEditTap;
   final void Function()? onMenuTap;
 
@@ -23,14 +23,16 @@ class TopButtons extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         isOwnerProfile
-            ? CustomIconButton(iconPath: AppIcons.qr, onTap: onQrTap)
+            ? CustomIconButton(iconPath: AppIcons.plusSquare, onTap: onPlusTap)
             : const CustomBackButton(),
         const Spacer(),
         isOwnerProfile
             ? CustomIconButton(iconPath: AppIcons.edit, onTap: onEditTap)
             : const SizedBox(),
         const SizedBox(width: 15),
-        CustomIconButton(iconPath: AppIcons.burgerMenu, onTap: onMenuTap),
+        isOwnerProfile
+            ? CustomIconButton(iconPath: AppIcons.burgerMenu, onTap: onMenuTap)
+            : const SizedBox(),
       ],
     );
   }

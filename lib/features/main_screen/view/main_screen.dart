@@ -62,7 +62,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              AppIcons.plusCircle,
+              AppIcons.plusSquare,
               width: 24,
               height: 24,
               colorFilter: ColorFilter.mode(_currentColor(2), BlendMode.srcIn),

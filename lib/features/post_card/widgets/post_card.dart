@@ -24,6 +24,7 @@ import 'package:nook/shared/widgets/photos_list.dart';
 import 'package:nook/shared/widgets/username.dart';
 import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
+import 'package:share_plus/share_plus.dart';
 
 class PostCard extends StatefulWidget {
   const PostCard({super.key, required this.post, this.showNook = false});
@@ -43,8 +44,6 @@ class _PostCardState extends State<PostCard> {
     super.initState();
     _postBloc = PostBloc(
       postRepository: getIt<PostRepository>(),
-      userRepository: getIt<UserRepository>(),
-      nookRepository: getIt<NookRepository>(),
       post: widget.post,
     );
 
@@ -212,7 +211,12 @@ class _PostCardState extends State<PostCard> {
                   onCommentTap: null,
                   onRepostTap: () => _postBloc.add(RepostPost()),
                   //TODO: add on share tap
-                  onShareTap: null,
+                  onShareTap: () => SharePlus.instance.share(
+                    ShareParams(
+                      text:
+                          '${widget.post.title}\n\n${widget.post.content ?? ''}',
+                    ),
+                  ),
                 ),
               ],
             ),

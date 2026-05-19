@@ -2,6 +2,7 @@ class AppIcons {
   static const String bell = 'assets/icons/bell.svg';
   static const String house = 'assets/icons/house.svg';
   static const String plusCircle = 'assets/icons/plus_circle.svg';
+  static const String plusSquare = 'assets/icons/plus_square.svg';
   static const String search = 'assets/icons/search.svg';
   static const String user = 'assets/icons/user.svg';
   static const String userWhite = 'assets/icons/user_white.svg';

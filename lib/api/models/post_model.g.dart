@@ -22,6 +22,9 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) => PostModel(
   isLiked: json['is_liked'] as bool,
   isReposted: json['is_reposted'] as bool,
   isSaved: json['is_saved'] as bool,
+  canDelete: json['can_delete'] as bool,
+  canEdit: json['can_edit'] as bool,
+  canPin: json['can_pin'] as bool,
 );
 
 Map<String, dynamic> _$PostModelToJson(PostModel instance) => <String, dynamic>{
@@ -40,4 +43,7 @@ Map<String, dynamic> _$PostModelToJson(PostModel instance) => <String, dynamic>{
   'is_liked': instance.isLiked,
   'is_reposted': instance.isReposted,
   'is_saved': instance.isSaved,
+  'can_delete': instance.canDelete,
+  'can_edit': instance.canEdit,
+  'can_pin': instance.canPin,
 };
