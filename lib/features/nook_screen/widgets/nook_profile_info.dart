@@ -26,40 +26,48 @@ class NookProfileInfo extends StatelessWidget {
         children: [
           Avatar(size: 50, avatarUrl: avatarUrl),
           const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Row(
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
                   children: [
                     SvgPicture.asset(AppIcons.house, width: 20),
                     const SizedBox(width: 5),
-                    Text(name, style: Theme.of(context).textTheme.titleLarge),
+                    Flexible(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          name,
+                          style: Theme.of(context).textTheme.titleLarge,
+                          maxLines: 1,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 3),
-              Row(
-                children: [
-                  SvgPicture.asset(
-                    AppIcons.users,
-                    width: 20,
-                    colorFilter: const ColorFilter.mode(
-                      AppColors.darkGrey,
-                      BlendMode.srcIn,
+                const SizedBox(height: 3),
+                Row(
+                  children: [
+                    SvgPicture.asset(
+                      AppIcons.users,
+                      width: 16,
+                      colorFilter: const ColorFilter.mode(
+                        AppColors.darkGrey,
+                        BlendMode.srcIn,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 5),
-                  Text(
-                    Formaters.formatNumber(followersCount),
-                    style: Theme.of(
-                      context,
-                    ).textTheme.titleLarge?.copyWith(color: AppColors.darkGrey),
-                  ),
-                ],
-              ),
-            ],
+                    const SizedBox(width: 5),
+                    Text(
+                      Formaters.formatNumber(followersCount),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: AppColors.darkGrey,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),

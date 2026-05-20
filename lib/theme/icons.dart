@@ -37,4 +37,7 @@ class AppIcons {
   static const String bug = 'assets/icons/bug.svg';
   static const String question = 'assets/icons/question.svg';
   static const String statistics = 'assets/icons/statistics.svg';
+  static const String plus = 'assets/icons/plus.svg';
+  static const String scales = 'assets/icons/scales.svg';
+  static const String sparkle = 'assets/icons/sparkle.svg';
 }

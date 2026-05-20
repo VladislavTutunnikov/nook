@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "months": MessageLookupByLibrary.simpleMessage("мес."),
     "myNooks": MessageLookupByLibrary.simpleMessage("Мои уголки"),
     "pin": MessageLookupByLibrary.simpleMessage("Закрепить"),
+    "pinned": MessageLookupByLibrary.simpleMessage("Закреплено"),
     "postCounter": MessageLookupByLibrary.simpleMessage("Постов"),
     "postDeletedFromSaved": MessageLookupByLibrary.simpleMessage(
       "Пост удален из сохраненного",
@@ -67,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Сообщить о проблеме",
     ),
     "reposts": MessageLookupByLibrary.simpleMessage("Репосты"),
+    "rules": MessageLookupByLibrary.simpleMessage("Правила"),
     "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
     "saved": MessageLookupByLibrary.simpleMessage("Сохранено"),
     "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
@@ -74,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Что-то пошло не так :(",
     ),
     "statistics": MessageLookupByLibrary.simpleMessage("Статистика"),
+    "team": MessageLookupByLibrary.simpleMessage("Команда"),
     "textCopied": MessageLookupByLibrary.simpleMessage("Текст скопирован"),
     "theresNothingHere": MessageLookupByLibrary.simpleMessage(
       "Тут ничего нет :(",

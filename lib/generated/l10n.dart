@@ -358,6 +358,21 @@ class S {
   String get unfollow {
     return Intl.message('Отписаться', name: 'unfollow', desc: '', args: []);
   }
+
+  /// `Правила`
+  String get rules {
+    return Intl.message('Правила', name: 'rules', desc: '', args: []);
+  }
+
+  /// `Команда`
+  String get team {
+    return Intl.message('Команда', name: 'team', desc: '', args: []);
+  }
+
+  /// `Закреплено`
+  String get pinned {
+    return Intl.message('Закреплено', name: 'pinned', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
