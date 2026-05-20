@@ -348,6 +348,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Подписаться`
+  String get follow {
+    return Intl.message('Подписаться', name: 'follow', desc: '', args: []);
+  }
+
+  /// `Отписаться`
+  String get unfollow {
+    return Intl.message('Отписаться', name: 'unfollow', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

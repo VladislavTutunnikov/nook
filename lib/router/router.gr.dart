@@ -104,3 +104,47 @@ class MainRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [NookScreen]
+class NookRoute extends PageRouteInfo<NookRouteArgs> {
+  NookRoute({Key? key, required String nookId, List<PageRouteInfo>? children})
+    : super(
+        NookRoute.name,
+        args: NookRouteArgs(key: key, nookId: nookId),
+        initialChildren: children,
+      );
+
+  static const String name = 'NookRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NookRouteArgs>();
+      return NookScreen(key: args.key, nookId: args.nookId);
+    },
+  );
+}
+
+class NookRouteArgs {
+  const NookRouteArgs({this.key, required this.nookId});
+
+  final Key? key;
+
+  final String nookId;
+
+  @override
+  String toString() {
+    return 'NookRouteArgs{key: $key, nookId: $nookId}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! NookRouteArgs) return false;
+    return key == other.key && nookId == other.nookId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ nookId.hashCode;
+}

@@ -85,7 +85,7 @@ class _PostCardState extends State<PostCard> {
                                   : widget.post.user.username,
                               onAvatarTap: () {
                                 if (widget.showNook) {
-                                  //TODO: add navigation to nook screen
+                                  AutoRouter.of(context).push(NookRoute(nookId: widget.post.nook.id));
                                 } else {
                                   AutoRouter.of(context).push(
                                     AccountRoute(userId: widget.post.user.id),

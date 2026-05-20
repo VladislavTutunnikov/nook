@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "description": MessageLookupByLibrary.simpleMessage("Описание"),
     "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
     "edited": MessageLookupByLibrary.simpleMessage("изменено"),
+    "follow": MessageLookupByLibrary.simpleMessage("Подписаться"),
     "hours": MessageLookupByLibrary.simpleMessage("ч."),
     "inviteFriends": MessageLookupByLibrary.simpleMessage("Пригласить друзей"),
     "justNow": MessageLookupByLibrary.simpleMessage("только что"),
@@ -77,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "theresNothingHere": MessageLookupByLibrary.simpleMessage(
       "Тут ничего нет :(",
     ),
+    "unfollow": MessageLookupByLibrary.simpleMessage("Отписаться"),
     "unpin": MessageLookupByLibrary.simpleMessage("Открепить"),
     "withNook": MessageLookupByLibrary.simpleMessage("C Nook"),
     "years": MessageLookupByLibrary.simpleMessage("г."),

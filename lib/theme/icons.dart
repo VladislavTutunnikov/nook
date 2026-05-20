@@ -9,6 +9,7 @@ class AppIcons {
   static const String user = 'assets/icons/user.svg';
   static const String userWhite = 'assets/icons/user_white.svg';
   static const String userPlus = 'assets/icons/user_plus.svg';
+  static const String users = 'assets/icons/users.svg';
   static const String edit = 'assets/icons/edit.svg';
   static const String burgerMenu = 'assets/icons/burger_menu.svg';
   static const String qr = 'assets/icons/qr.svg';
