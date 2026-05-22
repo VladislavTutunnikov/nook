@@ -373,6 +373,16 @@ class S {
   String get pinned {
     return Intl.message('Закреплено', name: 'pinned', desc: '', args: []);
   }
+
+  /// `Популярное`
+  String get popular {
+    return Intl.message('Популярное', name: 'popular', desc: '', args: []);
+  }
+
+  /// `Новое`
+  String get fresh {
+    return Intl.message('Новое', name: 'fresh', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

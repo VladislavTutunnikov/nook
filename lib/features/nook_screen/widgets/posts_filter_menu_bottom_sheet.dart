@@ -2,31 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:nook/generated/l10n.dart';
 import 'package:nook/shared/widgets/bottom_sheet_container.dart';
 import 'package:nook/shared/widgets/text_icon_button.dart';
-import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
 
-class CreateMenuBottomSheet extends StatelessWidget {
-  const CreateMenuBottomSheet({super.key, this.onPostTap, this.onNookTap});
-
-  final void Function()? onPostTap;
-  final void Function()? onNookTap;
-
+class PostsFilterMenuBottomSheet extends StatelessWidget {
+  const PostsFilterMenuBottomSheet({
+    super.key,
+    this.onPopularTap,
+    this.onNewTap,
+  });
+  final void Function()? onPopularTap;
+  final void Function()? onNewTap;
   @override
   Widget build(BuildContext context) {
     return BottomSheetContainer(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextIconButton(
+            onTap: onPopularTap,
             padding: const EdgeInsets.only(bottom: 20),
-            onTap: onPostTap,
-            iconPath: AppIcons.commentPlus,
-            text: S.of(context).createPost,
+            iconPath: AppIcons.fire,
+            text: S.of(context).popular,
           ),
           TextIconButton(
+            onTap: onNewTap,
             padding: const EdgeInsets.only(bottom: 20),
-            onTap: onNookTap,
-            iconPath: AppIcons.housePlus,
-            text: S.of(context).createNook,
+            iconPath: AppIcons.clockArrowUp,
+            text: S.of(context).fresh,
           ),
         ],
       ),

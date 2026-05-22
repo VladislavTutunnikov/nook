@@ -18,6 +18,8 @@ class TextIconButton extends StatelessWidget {
     ),
     this.onTap,
     this.padding = const EdgeInsets.all(0),
+    this.gap = 10,
+    this.isExpanded = true,
   });
 
   final String? iconPath;
@@ -27,6 +29,8 @@ class TextIconButton extends StatelessWidget {
   final TextStyle? textStyle;
   final void Function()? onTap;
   final EdgeInsetsGeometry padding;
+  final double gap;
+  final bool isExpanded;
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +48,10 @@ class TextIconButton extends StatelessWidget {
                     colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
                   )
                 : const SizedBox(),
-            const SizedBox(width: 10),
-            Expanded(child: Text(text, style: textStyle)),
+            SizedBox(width: gap),
+            isExpanded
+                ? Expanded(child: Text(text, style: textStyle))
+                : Text(text, style: textStyle),
           ],
         ),
       ),

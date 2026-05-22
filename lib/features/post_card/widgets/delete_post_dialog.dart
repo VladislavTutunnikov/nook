@@ -29,12 +29,14 @@ class DeletePostDialog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextIconButton(
+                  isExpanded: false,
                   onTap: () => Navigator.pop(context),
                   iconPath: null,
                   text: S.of(context).cancel,
                 ),
                 const SizedBox(width: 30),
                 TextIconButton(
+                  isExpanded: false,
                   onTap: () {
                     Navigator.pop(context);
                     onDeleteTap?.call();

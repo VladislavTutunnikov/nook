@@ -12,7 +12,7 @@ import 'package:nook/features/main_screen/pages/account_page/bloc/content_bloc/c
 import 'package:nook/features/main_screen/pages/account_page/widgets/account_header.dart';
 import 'package:nook/features/main_screen/pages/account_page/widgets/comment_list.dart';
 import 'package:nook/features/main_screen/pages/account_page/widgets/create_menu_bottom_sheet.dart';
-import 'package:nook/features/main_screen/pages/account_page/widgets/post_list.dart';
+import 'package:nook/shared/widgets/post_list.dart';
 import 'package:nook/features/main_screen/pages/account_page/widgets/profile_menu_bottom_sheet.dart';
 import 'package:nook/features/main_screen/pages/account_page/widgets/tab_header.dart';
 import 'package:nook/features/main_screen/pages/account_page/widgets/profile_bio.dart';

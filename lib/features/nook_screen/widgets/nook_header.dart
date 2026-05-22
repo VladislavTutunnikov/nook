@@ -19,7 +19,7 @@ class NookHeader extends StatelessWidget {
     this.showMenu = false,
     this.onMenuTap,
     this.onFollowersTap,
-    required this.isFollow,
+    required this.isFollowed,
     this.onFollowTap,
     this.showDescription = false,
     this.onDescriptionTap,
@@ -27,11 +27,13 @@ class NookHeader extends StatelessWidget {
     this.onRulesTap,
     this.onStatisticsTap,
     this.onTeamTap,
+    required this.followersCount,
   });
   final NookModel nook;
+  final bool isFollowed;
+  final int followersCount;
 
   final bool showMenu;
-  final bool isFollow;
   final bool showDescription;
   final void Function()? onMenuTap;
   final void Function()? onFollowersTap;
@@ -79,7 +81,7 @@ class NookHeader extends StatelessWidget {
                       child: NookProfileInfo(
                         avatarUrl: nook.avatarUrl ?? '',
                         name: nook.name,
-                        followersCount: 32,
+                        followersCount: followersCount,
                         onTap: onFollowersTap,
                       ),
                     ),
@@ -89,17 +91,19 @@ class NookHeader extends StatelessWidget {
                         horizontal: 14,
                         vertical: 3,
                       ),
-                      text: isFollow
+                      text: isFollowed
                           ? S.of(context).unfollow
                           : S.of(context).follow,
                       textStyle: Theme.of(context).textTheme.titleMedium
                           ?.copyWith(
-                            color: isFollow ? AppColors.black : AppColors.white,
+                            color: isFollowed
+                                ? AppColors.black
+                                : AppColors.white,
                           ),
-                      backgroundColor: isFollow
+                      backgroundColor: isFollowed
                           ? AppColors.white
                           : AppColors.black,
-                      border: isFollow
+                      border: isFollowed
                           ? Border.all(width: 1, color: AppColors.black)
                           : null,
                     ),

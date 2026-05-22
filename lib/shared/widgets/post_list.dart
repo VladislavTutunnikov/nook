@@ -10,17 +10,19 @@ class PostList extends StatelessWidget {
     required this.posts,
     required this.showNook,
     this.showLoading = false,
+    this.padding = const EdgeInsets.all(15),
   });
 
   final List<PostModel> posts;
   final bool showNook;
   final bool showLoading;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
     return posts.isEmpty
         ? Padding(
-            padding: const EdgeInsets.all(15),
+            padding: padding,
             child: Text(
               S.of(context).theresNothingHere,
               style: Theme.of(context).textTheme.titleMedium,
@@ -30,7 +32,7 @@ class PostList extends StatelessWidget {
             children: [
               ListView.separated(
                 addAutomaticKeepAlives: true,
-                padding: const EdgeInsets.all(15),
+                padding: padding,
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: posts.length,

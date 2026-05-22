@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
     "edited": MessageLookupByLibrary.simpleMessage("изменено"),
     "follow": MessageLookupByLibrary.simpleMessage("Подписаться"),
+    "fresh": MessageLookupByLibrary.simpleMessage("Новое"),
     "hours": MessageLookupByLibrary.simpleMessage("ч."),
     "inviteFriends": MessageLookupByLibrary.simpleMessage("Пригласить друзей"),
     "justNow": MessageLookupByLibrary.simpleMessage("только что"),
@@ -52,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "myNooks": MessageLookupByLibrary.simpleMessage("Мои уголки"),
     "pin": MessageLookupByLibrary.simpleMessage("Закрепить"),
     "pinned": MessageLookupByLibrary.simpleMessage("Закреплено"),
+    "popular": MessageLookupByLibrary.simpleMessage("Популярное"),
     "postCounter": MessageLookupByLibrary.simpleMessage("Постов"),
     "postDeletedFromSaved": MessageLookupByLibrary.simpleMessage(
       "Пост удален из сохраненного",

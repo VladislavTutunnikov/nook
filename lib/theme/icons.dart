@@ -40,4 +40,7 @@ class AppIcons {
   static const String plus = 'assets/icons/plus.svg';
   static const String scales = 'assets/icons/scales.svg';
   static const String sparkle = 'assets/icons/sparkle.svg';
+  static const String options = 'assets/icons/options.svg';
+  static const String clockArrowUp = 'assets/icons/clock_arrow_up.svg';
+  static const String fire = 'assets/icons/fire.svg';
 }

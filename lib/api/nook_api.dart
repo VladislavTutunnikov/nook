@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:nook/api/models/comment_model.dart';
 import 'package:nook/api/models/login_request_model.dart';
+import 'package:nook/api/models/nook_member_model.dart';
 import 'package:nook/api/models/nook_model.dart';
 import 'package:nook/api/models/nook_team_model.dart';
 import 'package:nook/api/models/post_model.dart';
@@ -143,8 +145,38 @@ abstract class NookApiClient {
   Future<void> unpinPost({@Path('post_id') required String postId});
 
   //NOOKS
-  @GET('/nooks/{nook_id}/team')
-  Future<NookTeamModel> getNookTeam({
+  @GET('/nooks/{nook_id}')
+  Future<NookModel> getNook({@Path('nook_id') required String nookId});
+
+  @GET('/nooks/{nook_id}/posts')
+  Future<List<PostModel>> getNookPosts({
     @Path('nook_id') required String nookId,
+    @Query('filter') String? filter,
+    @Query('prompt') String? prompt,
+    @Query('limit') int? limit,
+    @Query('offset') int? offset,
   });
+
+  @GET('/nooks/{nook_id}/pinned')
+  Future<List<PostModel>> getNookPinnedPosts({
+    @Path('nook_id') required String nookId,
+    @Query('limit') int? limit,
+    @Query('offset') int? offset,
+  });
+
+  @POST('/nooks/{nook_id}/follow')
+  Future<void> followNook({@Path('nook_id') required String nookId});
+
+  @DELETE('/nooks/{nook_id}/follow')
+  Future<void> unfollowNook({@Path('nook_id') required String nookId});
+
+  @GET('/nooks/{nook_id}/followers')
+  Future<List<NookMemberModel>> getNookFollowers({
+    @Path('nook_id') required String nookId,
+    @Query('limit') int? limit,
+    @Query('offset') int? offset,
+  });
+
+  @GET('/nooks/{nook_id}/team')
+  Future<NookTeamModel> getNookTeam({@Path('nook_id') required String nookId});
 }
