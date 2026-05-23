@@ -403,6 +403,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Лишить прав модератора`
+  String get deleteModerator {
+    return Intl.message(
+      'Лишить прав модератора',
+      name: 'deleteModerator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выдать права модератора`
+  String get addModerator {
+    return Intl.message(
+      'Выдать права модератора',
+      name: 'addModerator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Разблокировать`
+  String get unban {
+    return Intl.message('Разблокировать', name: 'unban', desc: '', args: []);
+  }
+
+  /// `Заблокировать`
+  String get ban {
+    return Intl.message('Заблокировать', name: 'ban', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

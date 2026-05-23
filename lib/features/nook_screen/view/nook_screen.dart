@@ -156,8 +156,6 @@ class _NookScreenState extends State<NookScreen> {
                           onTeamTap: () => AutoRouter.of(context).push(
                             NookTeamRoute(
                               nookId: widget.nookId,
-                              isOwner: state.isOwner,
-                              isModerator: state.isModerator,
                             ),
                           ),
                         ),

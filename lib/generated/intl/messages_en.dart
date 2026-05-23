@@ -23,6 +23,10 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "aboutUs": MessageLookupByLibrary.simpleMessage("О нас"),
+    "addModerator": MessageLookupByLibrary.simpleMessage(
+      "Выдать права модератора",
+    ),
+    "ban": MessageLookupByLibrary.simpleMessage("Заблокировать"),
     "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "commentCounter": MessageLookupByLibrary.simpleMessage("Комментариев"),
     "comments": MessageLookupByLibrary.simpleMessage("Комментарии"),
@@ -37,6 +41,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "createPost": MessageLookupByLibrary.simpleMessage("Создать пост"),
     "days": MessageLookupByLibrary.simpleMessage("д."),
     "delete": MessageLookupByLibrary.simpleMessage("Удалить"),
+    "deleteModerator": MessageLookupByLibrary.simpleMessage(
+      "Лишить прав модератора",
+    ),
     "description": MessageLookupByLibrary.simpleMessage("Описание"),
     "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
     "edited": MessageLookupByLibrary.simpleMessage("изменено"),
@@ -85,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "theresNothingHere": MessageLookupByLibrary.simpleMessage(
       "Тут ничего нет :(",
     ),
+    "unban": MessageLookupByLibrary.simpleMessage("Разблокировать"),
     "unfollow": MessageLookupByLibrary.simpleMessage("Отписаться"),
     "unpin": MessageLookupByLibrary.simpleMessage("Открепить"),
     "withNook": MessageLookupByLibrary.simpleMessage("C Nook"),

@@ -16,6 +16,9 @@ class NookMemberModel extends Equatable {
     required this.username,
     required this.avatarUrl,
     required this.role,
+    required this.isBanned,
+    required this.canBan,
+    required this.canMakeModerator,
   });
 
   final String id;
@@ -25,6 +28,15 @@ class NookMemberModel extends Equatable {
   final String? avatarUrl;
 
   final MemberRole role;
+
+  @JsonKey(name: 'is_banned')
+  final bool isBanned;
+
+  @JsonKey(name: 'can_ban')
+  final bool canBan;
+
+  @JsonKey(name: 'can_make_moderator')
+  final bool canMakeModerator;
 
   factory NookMemberModel.fromJson(Map<String, dynamic> json) =>
       _$NookMemberModelFromJson(json);

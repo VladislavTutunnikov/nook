@@ -177,6 +177,38 @@ abstract class NookApiClient {
     @Query('offset') int? offset,
   });
 
+  @GET('/nooks/{nook_id}/banned')
+  Future<List<NookMemberModel>> getNookBannedFollowers({
+    @Path('nook_id') required String nookId,
+    @Query('limit') int? limit,
+    @Query('offset') int? offset,
+  });
+
   @GET('/nooks/{nook_id}/team')
   Future<NookTeamModel> getNookTeam({@Path('nook_id') required String nookId});
+
+  @POST('/nooks/{nook_id}/followers/{follower_id}/ban')
+  Future<void> banFollower({
+    @Path('nook_id') required String nookId,
+    @Path('follower_id') required String followerId,
+    @Query('reason') String? reason,
+  });
+
+  @DELETE('/nooks/{nook_id}/followers/{follower_id}/ban')
+  Future<void> unbanFollower({
+    @Path('nook_id') required String nookId,
+    @Path('follower_id') required String followerId,
+  });
+
+  @POST('/nooks/{nook_id}/followers/{follower_id}/moderator')
+  Future<void> createModerator({
+    @Path('nook_id') required String nookId,
+    @Path('follower_id') required String followerId,
+  });
+
+  @DELETE('/nooks/{nook_id}/followers/{follower_id}/moderator')
+  Future<void> deleteModerator({
+    @Path('nook_id') required String nookId,
+    @Path('follower_id') required String followerId,
+  });
 }

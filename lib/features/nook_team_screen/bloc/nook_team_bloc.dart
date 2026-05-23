@@ -8,10 +8,8 @@ part 'nook_team_event.dart';
 part 'nook_team_state.dart';
 
 class NookTeamBloc extends Bloc<NookTeamEvent, NookTeamState> {
-  NookTeamBloc({
-    required this.nookRepository,
-    required this.nookId,
-  }) : super(NookTeamInitial()) {
+  NookTeamBloc({required this.nookRepository, required this.nookId})
+    : super(NookTeamInitial()) {
     on<LoadNookTeam>((event, emit) async {
       emit(NookTeamLoading());
 
@@ -27,6 +25,9 @@ class NookTeamBloc extends Bloc<NookTeamEvent, NookTeamState> {
                 username: team.owner!.username,
                 avatarUrl: team.owner!.avatarUrl,
                 role: MemberRole.moderator,
+                isBanned: false,
+                canBan: false,
+                canMakeModerator: false,
               );
         final List<NookMemberModel>? moderators = team.moderators;
 

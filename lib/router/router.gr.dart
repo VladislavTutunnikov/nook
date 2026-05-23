@@ -211,17 +211,10 @@ class NookTeamRoute extends PageRouteInfo<NookTeamRouteArgs> {
   NookTeamRoute({
     Key? key,
     required String nookId,
-    required bool isOwner,
-    required bool isModerator,
     List<PageRouteInfo>? children,
   }) : super(
          NookTeamRoute.name,
-         args: NookTeamRouteArgs(
-           key: key,
-           nookId: nookId,
-           isOwner: isOwner,
-           isModerator: isModerator,
-         ),
+         args: NookTeamRouteArgs(key: key, nookId: nookId),
          initialChildren: children,
        );
 
@@ -231,48 +224,30 @@ class NookTeamRoute extends PageRouteInfo<NookTeamRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<NookTeamRouteArgs>();
-      return NookTeamScreen(
-        key: args.key,
-        nookId: args.nookId,
-        isOwner: args.isOwner,
-        isModerator: args.isModerator,
-      );
+      return NookTeamScreen(key: args.key, nookId: args.nookId);
     },
   );
 }
 
 class NookTeamRouteArgs {
-  const NookTeamRouteArgs({
-    this.key,
-    required this.nookId,
-    required this.isOwner,
-    required this.isModerator,
-  });
+  const NookTeamRouteArgs({this.key, required this.nookId});
 
   final Key? key;
 
   final String nookId;
 
-  final bool isOwner;
-
-  final bool isModerator;
-
   @override
   String toString() {
-    return 'NookTeamRouteArgs{key: $key, nookId: $nookId, isOwner: $isOwner, isModerator: $isModerator}';
+    return 'NookTeamRouteArgs{key: $key, nookId: $nookId}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! NookTeamRouteArgs) return false;
-    return key == other.key &&
-        nookId == other.nookId &&
-        isOwner == other.isOwner &&
-        isModerator == other.isModerator;
+    return key == other.key && nookId == other.nookId;
   }
 
   @override
-  int get hashCode =>
-      key.hashCode ^ nookId.hashCode ^ isOwner.hashCode ^ isModerator.hashCode;
+  int get hashCode => key.hashCode ^ nookId.hashCode;
 }

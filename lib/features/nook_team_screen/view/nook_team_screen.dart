@@ -15,15 +15,8 @@ import 'package:nook/theme/colors.dart';
 
 @RoutePage()
 class NookTeamScreen extends StatefulWidget {
-  const NookTeamScreen({
-    super.key,
-    required this.nookId,
-    required this.isOwner,
-    required this.isModerator,
-  });
+  const NookTeamScreen({super.key, required this.nookId});
   final String nookId;
-  final bool isOwner;
-  final bool isModerator;
 
   @override
   State<NookTeamScreen> createState() => _NookTeamScreenState();
@@ -85,9 +78,8 @@ class _NookTeamScreenState extends State<NookTeamScreen> {
                         ? Padding(
                             padding: const EdgeInsets.only(bottom: 25),
                             child: MemberCard(
-                              isOwner: widget.isOwner,
-                              isModerator: widget.isModerator,
                               member: state.owner!,
+                              nookId: widget.nookId,
                               showAsOwner: true,
                             ),
                           )
@@ -111,12 +103,8 @@ class _NookTeamScreenState extends State<NookTeamScreen> {
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: state.moderators!.length,
-                            itemBuilder: (context, index) => MemberCard(
-                              isOwner: widget.isOwner,
-                              isModerator: widget.isModerator,
-                              member: state.moderators![index],
-                              showMenu: widget.isOwner,
-                            ),
+                            itemBuilder: (context, index) =>
+                                MemberCard(member: state.moderators![index], nookId: widget.nookId,),
                           )
                         : const SizedBox(),
 

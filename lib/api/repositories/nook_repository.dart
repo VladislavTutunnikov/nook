@@ -102,6 +102,20 @@ class NookRepository {
     }
   }
 
+  Future<List<NookMemberModel>> getNookBannedFollowers({
+    required String nookId,
+    int limit = 20,
+    int offset = 0,
+  }) async {
+    try {
+      final List<NookMemberModel> response = await apiClient
+          .getNookBannedFollowers(nookId: nookId, limit: limit, offset: offset);
+      return response;
+    } on DioException catch (e) {
+      throw Exception('Nook banned followers upload error: ${e.message}');
+    }
+  }
+
   Future<NookTeamModel> getNookTeam({required String nookId}) async {
     try {
       final NookTeamModel response = await apiClient.getNookTeam(
@@ -110,6 +124,55 @@ class NookRepository {
       return response;
     } on DioException catch (e) {
       throw Exception('Nook team upload error: ${e.message}');
+    }
+  }
+
+  Future<void> banFollower({
+    required String nookId,
+    required String followerId,
+    String? reason,
+  }) async {
+    try {
+      await apiClient.banFollower(
+        nookId: nookId,
+        followerId: followerId,
+        reason: reason,
+      );
+    } on DioException catch (e) {
+      throw Exception('Follower ban error: ${e.message}');
+    }
+  }
+
+  Future<void> unbanFollower({
+    required String nookId,
+    required String followerId,
+  }) async {
+    try {
+      await apiClient.unbanFollower(nookId: nookId, followerId: followerId);
+    } on DioException catch (e) {
+      throw Exception('Follower unban error: ${e.message}');
+    }
+  }
+
+  Future<void> createModerator({
+    required String nookId,
+    required String followerId,
+  }) async {
+    try {
+      await apiClient.createModerator(nookId: nookId, followerId: followerId);
+    } on DioException catch (e) {
+      throw Exception('Create moderator error: ${e.message}');
+    }
+  }
+
+  Future<void> deleteModerator({
+    required String nookId,
+    required String followerId,
+  }) async {
+    try {
+      await apiClient.deleteModerator(nookId: nookId, followerId: followerId);
+    } on DioException catch (e) {
+      throw Exception('Delete moderator error: ${e.message}');
     }
   }
 }
