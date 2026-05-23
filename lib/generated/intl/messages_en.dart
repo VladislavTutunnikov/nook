@@ -51,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "minutes": MessageLookupByLibrary.simpleMessage("м."),
     "months": MessageLookupByLibrary.simpleMessage("мес."),
     "myNooks": MessageLookupByLibrary.simpleMessage("Мои уголки"),
+    "nookModerators": MessageLookupByLibrary.simpleMessage("Модераторы уголка"),
+    "nookOwner": MessageLookupByLibrary.simpleMessage("Владелец уголка"),
     "pin": MessageLookupByLibrary.simpleMessage("Закрепить"),
     "pinned": MessageLookupByLibrary.simpleMessage("Закреплено"),
     "popular": MessageLookupByLibrary.simpleMessage("Популярное"),

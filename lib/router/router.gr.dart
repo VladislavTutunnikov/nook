@@ -106,6 +106,62 @@ class MainRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NookRulesScreen]
+class NookRulesRoute extends PageRouteInfo<NookRulesRouteArgs> {
+  NookRulesRoute({
+    Key? key,
+    String? rules,
+    required String nookName,
+    List<PageRouteInfo>? children,
+  }) : super(
+         NookRulesRoute.name,
+         args: NookRulesRouteArgs(key: key, rules: rules, nookName: nookName),
+         initialChildren: children,
+       );
+
+  static const String name = 'NookRulesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NookRulesRouteArgs>();
+      return NookRulesScreen(
+        key: args.key,
+        rules: args.rules,
+        nookName: args.nookName,
+      );
+    },
+  );
+}
+
+class NookRulesRouteArgs {
+  const NookRulesRouteArgs({this.key, this.rules, required this.nookName});
+
+  final Key? key;
+
+  final String? rules;
+
+  final String nookName;
+
+  @override
+  String toString() {
+    return 'NookRulesRouteArgs{key: $key, rules: $rules, nookName: $nookName}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! NookRulesRouteArgs) return false;
+    return key == other.key &&
+        rules == other.rules &&
+        nookName == other.nookName;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ rules.hashCode ^ nookName.hashCode;
+}
+
+/// generated route for
 /// [NookScreen]
 class NookRoute extends PageRouteInfo<NookRouteArgs> {
   NookRoute({Key? key, required String nookId, List<PageRouteInfo>? children})
@@ -147,4 +203,76 @@ class NookRouteArgs {
 
   @override
   int get hashCode => key.hashCode ^ nookId.hashCode;
+}
+
+/// generated route for
+/// [NookTeamScreen]
+class NookTeamRoute extends PageRouteInfo<NookTeamRouteArgs> {
+  NookTeamRoute({
+    Key? key,
+    required String nookId,
+    required bool isOwner,
+    required bool isModerator,
+    List<PageRouteInfo>? children,
+  }) : super(
+         NookTeamRoute.name,
+         args: NookTeamRouteArgs(
+           key: key,
+           nookId: nookId,
+           isOwner: isOwner,
+           isModerator: isModerator,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'NookTeamRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NookTeamRouteArgs>();
+      return NookTeamScreen(
+        key: args.key,
+        nookId: args.nookId,
+        isOwner: args.isOwner,
+        isModerator: args.isModerator,
+      );
+    },
+  );
+}
+
+class NookTeamRouteArgs {
+  const NookTeamRouteArgs({
+    this.key,
+    required this.nookId,
+    required this.isOwner,
+    required this.isModerator,
+  });
+
+  final Key? key;
+
+  final String nookId;
+
+  final bool isOwner;
+
+  final bool isModerator;
+
+  @override
+  String toString() {
+    return 'NookTeamRouteArgs{key: $key, nookId: $nookId, isOwner: $isOwner, isModerator: $isModerator}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! NookTeamRouteArgs) return false;
+    return key == other.key &&
+        nookId == other.nookId &&
+        isOwner == other.isOwner &&
+        isModerator == other.isModerator;
+  }
+
+  @override
+  int get hashCode =>
+      key.hashCode ^ nookId.hashCode ^ isOwner.hashCode ^ isModerator.hashCode;
 }

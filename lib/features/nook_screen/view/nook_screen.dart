@@ -18,6 +18,7 @@ import 'package:nook/features/nook_screen/widgets/nook_header.dart';
 import 'package:nook/features/nook_screen/widgets/pinned_post_list.dart';
 import 'package:nook/features/nook_screen/widgets/posts_filter_menu_bottom_sheet.dart';
 import 'package:nook/generated/l10n.dart';
+import 'package:nook/router/router.dart';
 import 'package:nook/shared/widgets/error_message.dart';
 import 'package:nook/shared/widgets/loading_dots.dart';
 import 'package:nook/shared/widgets/post_list.dart';
@@ -145,9 +146,20 @@ class _NookScreenState extends State<NookScreen> {
                             _showDescription = !_showDescription;
                           }),
                           onCreatePostTap: null,
-                          onRulesTap: null,
+                          onRulesTap: () => AutoRouter.of(context).push(
+                            NookRulesRoute(
+                              nookName: state.nook.name,
+                              rules: state.nook.rules,
+                            ),
+                          ),
                           onStatisticsTap: null,
-                          onTeamTap: null,
+                          onTeamTap: () => AutoRouter.of(context).push(
+                            NookTeamRoute(
+                              nookId: widget.nookId,
+                              isOwner: state.isOwner,
+                              isModerator: state.isModerator,
+                            ),
+                          ),
                         ),
                       ),
                       SliverToBoxAdapter(
@@ -158,6 +170,7 @@ class _NookScreenState extends State<NookScreen> {
                               return PinnedPostList(
                                 scrollController: _pinnedPostsScrollController,
                                 posts: state.posts,
+                                showLoading: state.hasMore,
                               );
                             }
                             return const SizedBox();
@@ -258,7 +271,6 @@ class _NookScreenState extends State<NookScreen> {
               ],
             );
           } else if (state is NookLoadingFailure) {
-            //TODO: add onTap
             return Center(child: ErrorMessage(onTap: _onRefresh));
           } else {
             return const Center(child: LoadingDots());

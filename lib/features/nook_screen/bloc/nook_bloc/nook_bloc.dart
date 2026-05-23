@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nook/api/models/nook_model.dart';
+import 'package:nook/api/models/nook_team_model.dart';
 import 'package:nook/api/models/user_model.dart';
 import 'package:nook/api/repositories/nook_repository.dart';
 import 'package:nook/api/repositories/user_repository.dart';
@@ -20,10 +21,19 @@ class NookBloc extends Bloc<NookEvent, NookState> {
 
       try {
         final NookModel nook = await nookRepository.getNook(nookId: nookId);
+        final NookTeamModel team = await nookRepository.getNookTeam(
+          nookId: nookId,
+        );
         final UserModel currentUser = await userRepository.getUser();
 
+        final List<String>? moderatorsList = team.moderators
+            ?.map((e) => e.id)
+            .toList();
         _isOwner = nook.ownerId == currentUser.id;
 
+        if (moderatorsList != null && moderatorsList.isNotEmpty) {
+          _isModerator = moderatorsList.contains(currentUser.id);
+        }
         _nook = nook;
         _isFollowed = nook.isFollowed;
         _followersCount = nook.followersCount;
@@ -34,6 +44,7 @@ class NookBloc extends Bloc<NookEvent, NookState> {
             isFollowed: _isFollowed,
             followersCount: _followersCount,
             isOwner: _isOwner,
+            isModerator: _isModerator,
           ),
         );
       } catch (e) {
@@ -42,7 +53,7 @@ class NookBloc extends Bloc<NookEvent, NookState> {
     });
 
     on<FollowNook>((event, emit) async {
-      if(state is! NookLoaded) return;
+      if (state is! NookLoaded) return;
 
       if (_isOwner) return;
 
@@ -68,6 +79,7 @@ class NookBloc extends Bloc<NookEvent, NookState> {
             isFollowed: _isFollowed,
             followersCount: _followersCount,
             isOwner: _isOwner,
+            isModerator: _isModerator,
           ),
         );
       } catch (e) {
@@ -79,6 +91,7 @@ class NookBloc extends Bloc<NookEvent, NookState> {
             isFollowed: _isFollowed,
             followersCount: _followersCount,
             isOwner: _isOwner,
+            isModerator: _isModerator,
           ),
         );
       } finally {
@@ -95,5 +108,6 @@ class NookBloc extends Bloc<NookEvent, NookState> {
   bool _isFollowed = false;
   int _followersCount = 0;
   bool _isOwner = false;
+  bool _isModerator = false;
   bool _isProcessingFollow = false;
 }

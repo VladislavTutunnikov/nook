@@ -383,6 +383,26 @@ class S {
   String get fresh {
     return Intl.message('Новое', name: 'fresh', desc: '', args: []);
   }
+
+  /// `Владелец уголка`
+  String get nookOwner {
+    return Intl.message(
+      'Владелец уголка',
+      name: 'nookOwner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Модераторы уголка`
+  String get nookModerators {
+    return Intl.message(
+      'Модераторы уголка',
+      name: 'nookModerators',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -29,14 +29,10 @@ class NookPinnedBloc extends Bloc<NookPinnedEvent, NookPinnedState> {
           limit: event.limit,
           offset: event.offset,
         );
-        print(
-          '🐦‍🔥🐦‍🔥🐦‍🔥🐦‍🔥🐦‍🔥🐦‍🔥🐦‍🔥🐦‍🔥🐦‍🔥🐦‍🔥 ПОДГРУЗИЛИ ПОСТЫ ОФСЕТ ${event.offset}',
-        );
+
         _cachedPosts.addAll(posts);
         _hasMorePosts = posts.length >= event.limit;
         _postsOffset = event.offset + posts.length;
-
-        print('🔁🔁🔁🔁🔁🔁🔁🔁🔁🔁 КОЛВО ПИНОВ ${_cachedPosts.length}');
 
         emit(
           NookPinnedPostsLoaded(

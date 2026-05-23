@@ -3,13 +3,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nook/api/models/post_model.dart';
 import 'package:nook/features/nook_screen/widgets/mini_post_card.dart';
 import 'package:nook/generated/l10n.dart';
+import 'package:nook/shared/widgets/loading_dots.dart';
 import 'package:nook/theme/icons.dart';
 
 class PinnedPostList extends StatelessWidget {
-  const PinnedPostList({super.key, required this.posts, this.scrollController});
+  const PinnedPostList({
+    super.key,
+    required this.posts,
+    this.scrollController,
+    this.showLoading = false,
+  });
 
   final List<PostModel> posts;
   final ScrollController? scrollController;
+  final bool showLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +54,20 @@ class PinnedPostList extends StatelessWidget {
                   separatorBuilder: (_, __) => const SizedBox(width: 15),
                   itemBuilder: (context, index) {
                     final post = posts[index];
-                    return MiniPostCard(
-                      key: ValueKey(post.id),
-                      title: post.title,
-                      //TODO: add navigation to post screen
-                      onTap: null,
-                    );
+                    if (index == posts.length - 1 && showLoading) {
+                      return const SizedBox(
+                        height: 120,
+                        width: 60,
+                        child: LoadingDots(),
+                      );
+                    } else {
+                      return MiniPostCard(
+                        key: ValueKey(post.id),
+                        title: post.title,
+                        //TODO: add navigation to post screen
+                        onTap: null,
+                      );
+                    }
                   },
                 ),
               ),

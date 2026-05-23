@@ -43,4 +43,5 @@ class AppIcons {
   static const String options = 'assets/icons/options.svg';
   static const String clockArrowUp = 'assets/icons/clock_arrow_up.svg';
   static const String fire = 'assets/icons/fire.svg';
+  static const String crown = 'assets/icons/crown.svg';
 }
