@@ -139,7 +139,9 @@ class _NookScreenState extends State<NookScreen> {
                           followersCount: state.followersCount,
                           //TODO: add functionality
                           onMenuTap: null,
-                          onFollowersTap: null,
+                          onFollowersTap: () => AutoRouter.of(
+                            context,
+                          ).push(NookFollowersRoute(nookId: widget.nookId)),
                           onFollowTap: () => _nookBloc.add(FollowNook()),
                           showDescription: _showDescription,
                           onDescriptionTap: () => setState(() {
@@ -147,17 +149,22 @@ class _NookScreenState extends State<NookScreen> {
                           }),
                           onCreatePostTap: null,
                           onRulesTap: () => AutoRouter.of(context).push(
+                            //TODO: delete nookName param
                             NookRulesRoute(
                               nookName: state.nook.name,
                               rules: state.nook.rules,
                             ),
                           ),
-                          onStatisticsTap: null,
-                          onTeamTap: () => AutoRouter.of(context).push(
-                            NookTeamRoute(
+                          showBanned: state.isModerator || state.isOwner,
+                          onBannedTap: () => AutoRouter.of(context).push(
+                            NookFollowersRoute(
                               nookId: widget.nookId,
+                              showBanned: true,
                             ),
                           ),
+                          onTeamTap: () => AutoRouter.of(
+                            context,
+                          ).push(NookTeamRoute(nookId: widget.nookId)),
                         ),
                       ),
                       SliverToBoxAdapter(

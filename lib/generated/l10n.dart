@@ -433,6 +433,11 @@ class S {
   String get ban {
     return Intl.message('Заблокировать', name: 'ban', desc: '', args: []);
   }
+
+  /// `В бане`
+  String get inBan {
+    return Intl.message('В бане', name: 'inBan', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -10,11 +10,15 @@ class NookHeaderButtons extends StatelessWidget {
     this.onRulesTap,
     this.onTeamTap,
     this.onStatisticsTap,
+    this.onBannedTap,
+    this.showBanned = false,
   });
   final void Function()? onCreatePostTap;
   final void Function()? onRulesTap;
+  final void Function()? onBannedTap;
   final void Function()? onStatisticsTap;
   final void Function()? onTeamTap;
+  final bool showBanned;
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +39,21 @@ class NookHeaderButtons extends StatelessWidget {
             text: S.of(context).rules,
           ),
           const SizedBox(width: 10),
-          CapsuleButton(
-            onTap: onStatisticsTap,
-            iconPath: AppIcons.statistics,
-            text: S.of(context).statistics,
-          ),
-          const SizedBox(width: 10),
+          //TODO: add statistics button
+          // CapsuleButton(
+          //   onTap: onStatisticsTap,
+          //   iconPath: AppIcons.statistics,
+          //   text: S.of(context).statistics,
+          // ),
+          // const SizedBox(width: 10),
+          showBanned
+              ? CapsuleButton(
+                  onTap: onBannedTap,
+                  iconPath: AppIcons.ban,
+                  text: S.of(context).inBan,
+                )
+              : const SizedBox(),
+          showBanned ? const SizedBox(width: 10) : const SizedBox(),
           CapsuleButton(
             onTap: onTeamTap,
             iconPath: AppIcons.sparkle,

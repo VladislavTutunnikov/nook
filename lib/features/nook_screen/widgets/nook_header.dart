@@ -28,6 +28,8 @@ class NookHeader extends StatelessWidget {
     this.onStatisticsTap,
     this.onTeamTap,
     required this.followersCount,
+    this.showBanned = false,
+    this.onBannedTap,
   });
   final NookModel nook;
   final bool isFollowed;
@@ -35,6 +37,7 @@ class NookHeader extends StatelessWidget {
 
   final bool showMenu;
   final bool showDescription;
+  final bool showBanned;
   final void Function()? onMenuTap;
   final void Function()? onFollowersTap;
   final void Function()? onFollowTap;
@@ -44,6 +47,7 @@ class NookHeader extends StatelessWidget {
   final void Function()? onCreatePostTap;
   final void Function()? onRulesTap;
   final void Function()? onStatisticsTap;
+  final void Function()? onBannedTap;
   final void Function()? onTeamTap;
 
   @override
@@ -138,6 +142,8 @@ class NookHeader extends StatelessWidget {
             onCreatePostTap: onCreatePostTap,
             onRulesTap: onRulesTap,
             onStatisticsTap: onStatisticsTap,
+            showBanned: showBanned,
+            onBannedTap: onBannedTap,
             onTeamTap: onTeamTap,
           ),
           const SizedBox(height: 15),

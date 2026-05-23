@@ -18,17 +18,6 @@ class NookPostsBloc extends Bloc<NookPostsEvent, NookPostsState> {
 
       if (_isLoading) return;
 
-      // if (_cachedPosts.isNotEmpty && !event.isRefresh && event.offset == 0) {
-      //   emit(
-      //     NookPostsLoaded(
-      //       posts: _cachedPosts,
-      //       hasMore: _hasMorePosts,
-      //       offset: _postsOffset,
-      //     ),
-      //   );
-      //   return;
-      // }
-
       if (event.offset > 0 && !_hasMorePosts) {
         return;
       }

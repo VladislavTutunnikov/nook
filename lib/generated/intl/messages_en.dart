@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "follow": MessageLookupByLibrary.simpleMessage("Подписаться"),
     "fresh": MessageLookupByLibrary.simpleMessage("Новое"),
     "hours": MessageLookupByLibrary.simpleMessage("ч."),
+    "inBan": MessageLookupByLibrary.simpleMessage("В бане"),
     "inviteFriends": MessageLookupByLibrary.simpleMessage("Пригласить друзей"),
     "justNow": MessageLookupByLibrary.simpleMessage("только что"),
     "likeCounter": MessageLookupByLibrary.simpleMessage("Лайков"),

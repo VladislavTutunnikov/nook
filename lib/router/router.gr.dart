@@ -106,6 +106,70 @@ class MainRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NookFollowersScreen]
+class NookFollowersRoute extends PageRouteInfo<NookFollowersRouteArgs> {
+  NookFollowersRoute({
+    Key? key,
+    required String nookId,
+    bool showBanned = false,
+    List<PageRouteInfo>? children,
+  }) : super(
+         NookFollowersRoute.name,
+         args: NookFollowersRouteArgs(
+           key: key,
+           nookId: nookId,
+           showBanned: showBanned,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'NookFollowersRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NookFollowersRouteArgs>();
+      return NookFollowersScreen(
+        key: args.key,
+        nookId: args.nookId,
+        showBanned: args.showBanned,
+      );
+    },
+  );
+}
+
+class NookFollowersRouteArgs {
+  const NookFollowersRouteArgs({
+    this.key,
+    required this.nookId,
+    this.showBanned = false,
+  });
+
+  final Key? key;
+
+  final String nookId;
+
+  final bool showBanned;
+
+  @override
+  String toString() {
+    return 'NookFollowersRouteArgs{key: $key, nookId: $nookId, showBanned: $showBanned}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! NookFollowersRouteArgs) return false;
+    return key == other.key &&
+        nookId == other.nookId &&
+        showBanned == other.showBanned;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ nookId.hashCode ^ showBanned.hashCode;
+}
+
+/// generated route for
 /// [NookRulesScreen]
 class NookRulesRoute extends PageRouteInfo<NookRulesRouteArgs> {
   NookRulesRoute({
