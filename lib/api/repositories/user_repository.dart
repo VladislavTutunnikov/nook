@@ -179,4 +179,16 @@ class UserRepository {
       throw Exception('Follows list upload error: ${e.message}');
     }
   }
+
+  Future<List<NookModel>> getMyNooks({int limit = 20, int offset = 0}) async {
+    try {
+      final List<NookModel> response = await apiClient.getMyNooks(
+        limit: limit,
+        offset: offset,
+      );
+      return response;
+    } on DioException catch (e) {
+      throw Exception('Nooks list upload error: ${e.message}');
+    }
+  }
 }

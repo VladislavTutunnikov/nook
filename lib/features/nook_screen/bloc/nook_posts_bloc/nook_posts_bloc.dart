@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nook/api/models/post_model.dart';
-import 'package:nook/api/nook_api.dart';
 import 'package:nook/api/repositories/nook_repository.dart';
 part 'nook_posts_event.dart';
 part 'nook_posts_state.dart';

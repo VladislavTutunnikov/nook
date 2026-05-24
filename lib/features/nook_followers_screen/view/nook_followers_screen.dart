@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nook/api/di/injection.dart';
 import 'package:nook/api/repositories/nook_repository.dart';
-import 'package:nook/features/member_card/widgets/member_card.dart';
 import 'package:nook/features/nook_followers_screen/bloc/nook_followers_bloc.dart';
 import 'package:nook/shared/widgets/custom_back_button.dart';
 import 'package:nook/shared/widgets/error_message.dart';

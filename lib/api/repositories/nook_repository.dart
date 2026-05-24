@@ -1,10 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:nook/api/models/comment_model.dart';
 import 'package:nook/api/models/nook_member_model.dart';
 import 'package:nook/api/models/nook_model.dart';
 import 'package:nook/api/models/nook_team_model.dart';
 import 'package:nook/api/models/post_model.dart';
-import 'package:nook/api/models/user_model.dart';
 import 'package:nook/api/nook_api.dart';
 
 enum PostFilter { byPopularity, byNovelty }

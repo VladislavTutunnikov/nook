@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nook/api/models/nook_model.dart';
 import 'package:nook/features/nook_screen/widgets/nook_header_buttons.dart';
 import 'package:nook/features/nook_screen/widgets/nook_profile_info.dart';
 import 'package:nook/generated/l10n.dart';
-import 'package:nook/shared/widgets/avatar.dart';
 import 'package:nook/shared/widgets/capsule_button.dart';
 import 'package:nook/shared/widgets/custom_back_button.dart';
 import 'package:nook/shared/widgets/custom_icon_button.dart';
 import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
-import 'package:nook/theme/theme.dart';
 
 class NookHeader extends StatelessWidget {
   const NookHeader({

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nook/api/di/injection.dart';
 import 'package:nook/api/repositories/user_repository.dart';
-import 'package:nook/features/followed_nooks_screen/bloc/followed_nooks_bloc.dart';
+import 'package:nook/features/user_nooks_screen/bloc/user_nooks_bloc.dart';
 import 'package:nook/shared/widgets/custom_back_button.dart';
 import 'package:nook/shared/widgets/error_message.dart';
 import 'package:nook/shared/widgets/loading_dots.dart';
@@ -13,22 +13,21 @@ import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
 
 @RoutePage()
-class FollowedNooksScreen extends StatefulWidget {
-  const FollowedNooksScreen({super.key, this.userId});
-  final String? userId;
+class UserNooksScreen extends StatefulWidget {
+  const UserNooksScreen({super.key});
 
   @override
-  State<FollowedNooksScreen> createState() => _FollowedNooksScreenState();
+  State<UserNooksScreen> createState() => _UserNooksScreenState();
 }
 
-class _FollowedNooksScreenState extends State<FollowedNooksScreen> {
-  late final FollowedNooksBloc _followedNooksBloc;
+class _UserNooksScreenState extends State<UserNooksScreen> {
+  late final UserNooksBloc _userNooksBloc;
 
   bool _showFloatingButton = false;
   final ScrollController _scrollController = ScrollController();
 
   void _onScroll() {
-    final state = _followedNooksBloc.state;
+    final state = _userNooksBloc.state;
 
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
@@ -41,27 +40,23 @@ class _FollowedNooksScreenState extends State<FollowedNooksScreen> {
       }
     }
 
-    if (state is FollowedNooksLoaded) {
+    if (state is UserNooksLoaded) {
       if (state.hasMore && currentScroll >= maxScroll - 200) {
-        _followedNooksBloc.add(LoadFollowedNooks(offset: state.offset));
+        _userNooksBloc.add(LoadUserNooks(offset: state.offset));
       }
     }
   }
 
   Future<void> _onRefresh() async {
-    _followedNooksBloc.add(LoadFollowedNooks(isRefresh: true));
+    _userNooksBloc.add(LoadUserNooks(isRefresh: true));
   }
 
   @override
   void initState() {
     super.initState();
+    _userNooksBloc = UserNooksBloc(userRepository: getIt<UserRepository>());
 
-    _followedNooksBloc = FollowedNooksBloc(
-      userRepository: getIt<UserRepository>(),
-      userId: widget.userId,
-    );
-
-    _followedNooksBloc.add(LoadFollowedNooks(isRefresh: true));
+    _userNooksBloc.add(LoadUserNooks(isRefresh: true));
 
     _scrollController.addListener(() => _onScroll());
   }
@@ -70,10 +65,10 @@ class _FollowedNooksScreenState extends State<FollowedNooksScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: BlocBuilder<FollowedNooksBloc, FollowedNooksState>(
-        bloc: _followedNooksBloc,
+      body: BlocBuilder<UserNooksBloc, UserNooksState>(
+        bloc: _userNooksBloc,
         builder: (context, state) {
-          if (state is FollowedNooksLoaded) {
+          if (state is UserNooksLoaded) {
             return Stack(
               children: [
                 RefreshIndicator(
@@ -97,7 +92,7 @@ class _FollowedNooksScreenState extends State<FollowedNooksScreen> {
                               child: CustomBackButton(color: AppColors.black),
                             ),
                             NookList(
-                              nooks: state.followedNooks,
+                              nooks: state.nooks,
                               showLoading: state.hasMore,
                             ),
                             const SizedBox(height: 60),
@@ -131,7 +126,7 @@ class _FollowedNooksScreenState extends State<FollowedNooksScreen> {
                 ),
               ],
             );
-          } else if (state is FollowedNooksLoadingFailure) {
+          } else if (state is UserNooksLoadingFailure) {
             return Center(child: ErrorMessage(onTap: _onRefresh));
           } else {
             return const Center(child: LoadingDots());

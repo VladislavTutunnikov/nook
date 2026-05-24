@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nook/generated/l10n.dart';
 import 'package:nook/shared/widgets/bottom_sheet_container.dart';
 import 'package:nook/shared/widgets/text_icon_button.dart';
-import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
 
 class CreateMenuBottomSheet extends StatelessWidget {

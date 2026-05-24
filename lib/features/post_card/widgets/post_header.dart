@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nook/api/models/post_model.dart';
 import 'package:nook/shared/utils/formaters.dart';
 import 'package:nook/shared/widgets/avatar.dart';
-import 'package:nook/shared/widgets/username.dart';
 import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
 

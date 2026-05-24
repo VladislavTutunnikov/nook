@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nook/api/di/injection.dart';
 import 'package:nook/api/repositories/nook_repository.dart';
-import 'package:nook/features/main_screen/pages/account_page/widgets/stat_time_card.dart';
 import 'package:nook/features/main_screen/pages/search_page/bloc/search_bloc.dart';
 import 'package:nook/generated/l10n.dart';
 import 'package:nook/shared/widgets/error_message.dart';

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:nook/api/models/comment_model.dart';
 import 'package:nook/api/models/login_request_model.dart';
 import 'package:nook/api/models/nook_member_model.dart';
@@ -37,6 +36,12 @@ abstract class NookApiClient {
 
   @GET('/users/me/follows')
   Future<List<NookModel>> getMyFollows({
+    @Query('limit') int? limit,
+    @Query('offset') int? offset,
+  });
+
+  @GET('/users/me/nooks')
+  Future<List<NookModel>> getMyNooks({
     @Query('limit') int? limit,
     @Query('offset') int? offset,
   });

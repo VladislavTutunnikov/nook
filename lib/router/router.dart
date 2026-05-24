@@ -10,6 +10,7 @@ import 'package:nook/features/nook_rules_screen/view/nook_rules_screen.dart';
 import 'package:nook/features/nook_screen/view/nook_screen.dart';
 import 'package:nook/features/nook_team_screen/view/nook_team_screen.dart';
 import 'package:nook/features/saved_posts_screen/view/saved_posts_screen.dart';
+import 'package:nook/features/user_nooks_screen/view/user_nooks_screen.dart';
 part 'router.gr.dart';
 
 @AutoRouterConfig()
@@ -26,5 +27,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: NookFollowersRoute.page),
     AutoRoute(page: SavedPostsRoute.page),
     AutoRoute(page: FollowedNooksRoute.page),
+    AutoRoute(page: UserNooksRoute.page),
   ];
 }

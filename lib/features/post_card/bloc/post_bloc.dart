@@ -1,10 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nook/api/models/nook_team_model.dart';
 import 'package:nook/api/models/post_model.dart';
-import 'package:nook/api/models/user_model.dart';
-import 'package:nook/api/repositories/nook_repository.dart';
 import 'package:nook/api/repositories/post_repository.dart';
-import 'package:nook/api/repositories/user_repository.dart';
 part 'post_event.dart';
 part 'post_state.dart';
 

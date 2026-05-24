@@ -377,3 +377,19 @@ class SavedPostsRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [UserNooksScreen]
+class UserNooksRoute extends PageRouteInfo<void> {
+  const UserNooksRoute({List<PageRouteInfo>? children})
+    : super(UserNooksRoute.name, initialChildren: children);
+
+  static const String name = 'UserNooksRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const UserNooksScreen();
+    },
+  );
+}

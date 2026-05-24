@@ -1,9 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nook/api/models/nook_member_model.dart';
 import 'package:nook/api/models/nook_team_model.dart';
-import 'package:nook/api/models/user_model.dart';
 import 'package:nook/api/repositories/nook_repository.dart';
-import 'package:nook/api/repositories/user_repository.dart';
 part 'nook_team_event.dart';
 part 'nook_team_state.dart';
 

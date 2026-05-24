@@ -204,14 +204,19 @@ class _AccountPageState extends State<AccountPage> {
                           showModalBottomSheet(
                             context: context,
                             builder: (context) => ProfileMenuBottomSheet(
-                              //TODO: add functionality
-                              onNooksTap: null,
+                              onNooksTap: () {
+                                Navigator.pop(context);
+                                AutoRouter.of(
+                                  context,
+                                ).push(const UserNooksRoute());
+                              },
                               onSavedTap: () {
                                 Navigator.pop(context);
                                 AutoRouter.of(
                                   context,
                                 ).push(const SavedPostsRoute());
                               },
+                              //TODO: add functionality
                               onStatisticsTap: null,
                               onFriendsTap: null,
                               onSettingsTap: null,
@@ -219,6 +224,7 @@ class _AccountPageState extends State<AccountPage> {
                               onBugReportTap: null,
                               onSupportTap: null,
                               onLogoutTap: () {
+                                //TODO: add logout dialog
                                 Navigator.pop(context);
                                 _accountBloc.add(Logout(context));
                               },
