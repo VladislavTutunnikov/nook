@@ -3,38 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nook/api/di/injection.dart';
-import 'package:nook/api/repositories/nook_repository.dart';
-import 'package:nook/features/member_card/widgets/member_card.dart';
-import 'package:nook/features/nook_followers_screen/bloc/nook_followers_bloc.dart';
+import 'package:nook/api/repositories/user_repository.dart';
+import 'package:nook/features/saved_posts_screen/bloc/saved_posts_bloc.dart';
 import 'package:nook/shared/widgets/custom_back_button.dart';
 import 'package:nook/shared/widgets/error_message.dart';
 import 'package:nook/shared/widgets/loading_dots.dart';
-import 'package:nook/shared/widgets/member_list.dart';
+import 'package:nook/shared/widgets/post_list.dart';
 import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
 
 @RoutePage()
-class NookFollowersScreen extends StatefulWidget {
-  const NookFollowersScreen({
-    super.key,
-    required this.nookId,
-    this.showBanned = false,
-  });
-  final String nookId;
-  final bool showBanned;
+class SavedPostsScreen extends StatefulWidget {
+  const SavedPostsScreen({super.key});
 
   @override
-  State<NookFollowersScreen> createState() => _NookFollowersScreenState();
+  State<SavedPostsScreen> createState() => _SavedPostsScreenState();
 }
 
-class _NookFollowersScreenState extends State<NookFollowersScreen> {
-  late final NookFollowersBloc _nookFollowersBloc;
+class _SavedPostsScreenState extends State<SavedPostsScreen> {
+  late final SavedPostsBloc _savedPostsBloc;
 
   bool _showFloatingButton = false;
   final ScrollController _scrollController = ScrollController();
 
   void _onScroll() {
-    final state = _nookFollowersBloc.state;
+    final state = _savedPostsBloc.state;
 
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
@@ -47,27 +40,23 @@ class _NookFollowersScreenState extends State<NookFollowersScreen> {
       }
     }
 
-    if (state is NookFollowersLoaded) {
+    if (state is SavedPostsLoaded) {
       if (state.hasMore && currentScroll >= maxScroll - 200) {
-        _nookFollowersBloc.add(LoadFollowers(offset: state.offset));
+        _savedPostsBloc.add(LoadSavedPosts(offset: state.offset));
       }
     }
   }
 
   Future<void> _onRefresh() async {
-    _nookFollowersBloc.add(LoadFollowers(isRefresh: true));
+    _savedPostsBloc.add(LoadSavedPosts(isRefresh: true));
   }
 
   @override
   void initState() {
     super.initState();
-    _nookFollowersBloc = NookFollowersBloc(
-      nookRepository: getIt<NookRepository>(),
-      nookId: widget.nookId,
-      showBanned: widget.showBanned,
-    );
 
-    _nookFollowersBloc.add(LoadFollowers(isRefresh: true));
+    _savedPostsBloc = SavedPostsBloc(userRepository: getIt<UserRepository>());
+    _savedPostsBloc.add(LoadSavedPosts(isRefresh: true));
 
     _scrollController.addListener(() => _onScroll());
   }
@@ -75,11 +64,10 @@ class _NookFollowersScreenState extends State<NookFollowersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
-      body: BlocBuilder<NookFollowersBloc, NookFollowersState>(
-        bloc: _nookFollowersBloc,
+      body: BlocBuilder<SavedPostsBloc, SavedPostsState>(
+        bloc: _savedPostsBloc,
         builder: (context, state) {
-          if (state is NookFollowersLoaded) {
+          if (state is SavedPostsLoaded) {
             return Stack(
               children: [
                 RefreshIndicator(
@@ -95,16 +83,13 @@ class _NookFollowersScreenState extends State<NookFollowersScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Padding(
-                              padding: EdgeInsets.only(
-                                left: 15,
-                                top: 60,
-                                bottom: 25,
-                              ),
+                              padding: EdgeInsets.only(left: 15, top: 60),
                               child: CustomBackButton(color: AppColors.black),
                             ),
-                            FollowersList(
-                              followers: state.followers,
-                              nookId: widget.nookId,
+
+                            PostList(
+                              posts: state.savedPosts,
+                              showNook: true,
                               showLoading: state.hasMore,
                             ),
                             const SizedBox(height: 60),
@@ -137,7 +122,7 @@ class _NookFollowersScreenState extends State<NookFollowersScreen> {
                 ),
               ],
             );
-          } else if (state is NookFollowersLoadingFailure) {
+          } else if (state is SavedPostsLoadingFailure) {
             return Center(child: ErrorMessage(onTap: _onRefresh));
           } else {
             return const Center(child: LoadingDots());

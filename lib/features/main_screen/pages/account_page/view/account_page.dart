@@ -206,7 +206,12 @@ class _AccountPageState extends State<AccountPage> {
                             builder: (context) => ProfileMenuBottomSheet(
                               //TODO: add functionality
                               onNooksTap: null,
-                              onSavedTap: null,
+                              onSavedTap: () {
+                                Navigator.pop(context);
+                                AutoRouter.of(
+                                  context,
+                                ).push(const SavedPostsRoute());
+                              },
                               onStatisticsTap: null,
                               onFriendsTap: null,
                               onSettingsTap: null,

@@ -315,3 +315,19 @@ class NookTeamRouteArgs {
   @override
   int get hashCode => key.hashCode ^ nookId.hashCode;
 }
+
+/// generated route for
+/// [SavedPostsScreen]
+class SavedPostsRoute extends PageRouteInfo<void> {
+  const SavedPostsRoute({List<PageRouteInfo>? children})
+    : super(SavedPostsRoute.name, initialChildren: children);
+
+  static const String name = 'SavedPostsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SavedPostsScreen();
+    },
+  );
+}

@@ -65,6 +65,12 @@ abstract class NookApiClient {
     @Query('offset') int? offset,
   });
 
+  @GET('/users/me/saved-posts')
+  Future<List<PostModel>> getMySavedPosts({
+    @Query('limit') int? limit,
+    @Query('offset') int? offset,
+  });
+
   //USERS
   @GET('/users/{user_id}')
   Future<UserModel> getUser({@Path('user_id') required String userId});

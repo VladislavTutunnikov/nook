@@ -141,4 +141,16 @@ class UserRepository {
       throw Exception('Post list upload error: ${e.message}');
     }
   }
+
+  Future<List<PostModel>> getMySavedPosts({
+    int limit = 20,
+    int offset = 0,
+  }) async {
+    try {
+      final List<PostModel> response = await apiClient.getMySavedPosts(limit: limit, offset: offset);
+      return response;
+    } on DioException catch (e) {
+      throw Exception('Saved post list upload error: ${e.message}');
+    }
+  }
 }

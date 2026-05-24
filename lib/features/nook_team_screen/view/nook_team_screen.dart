@@ -56,7 +56,7 @@ class _NookTeamScreenState extends State<NookTeamScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Padding(
-                      padding: EdgeInsets.only(top: 60, left: 25),
+                      padding: EdgeInsets.only(top: 60, left: 15),
                       child: CustomBackButton(color: AppColors.black),
                     ),
                     const SizedBox(height: 25),
@@ -103,8 +103,10 @@ class _NookTeamScreenState extends State<NookTeamScreen> {
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: state.moderators!.length,
-                            itemBuilder: (context, index) =>
-                                MemberCard(member: state.moderators![index], nookId: widget.nookId,),
+                            itemBuilder: (context, index) => MemberCard(
+                              member: state.moderators![index],
+                              nookId: widget.nookId,
+                            ),
                           )
                         : const SizedBox(),
 
