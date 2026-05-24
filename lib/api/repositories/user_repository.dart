@@ -24,7 +24,7 @@ class UserRepository {
     }
   }
 
-  Future<List<String>> getUserFollowingAvatars({
+  Future<List<String>> getUserFollowedAvatars({
     String? userId,
     int limit = 3,
   }) async {
@@ -147,10 +147,36 @@ class UserRepository {
     int offset = 0,
   }) async {
     try {
-      final List<PostModel> response = await apiClient.getMySavedPosts(limit: limit, offset: offset);
+      final List<PostModel> response = await apiClient.getMySavedPosts(
+        limit: limit,
+        offset: offset,
+      );
       return response;
     } on DioException catch (e) {
       throw Exception('Saved post list upload error: ${e.message}');
+    }
+  }
+
+  Future<List<NookModel>> getUserFollows({
+    String? userId,
+    int limit = 20,
+    int offset = 0,
+  }) async {
+    try {
+      final List<NookModel> response;
+      if (userId == null) {
+        response = await apiClient.getMyFollows(limit: limit, offset: offset);
+      } else {
+        response = await apiClient.getUserFollows(
+          userId: userId,
+          limit: limit,
+          offset: offset,
+        );
+      }
+
+      return response;
+    } on DioException catch (e) {
+      throw Exception('Follows list upload error: ${e.message}');
     }
   }
 }

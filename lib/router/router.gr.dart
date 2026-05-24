@@ -74,6 +74,52 @@ class AuthWrapperRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [FollowedNooksScreen]
+class FollowedNooksRoute extends PageRouteInfo<FollowedNooksRouteArgs> {
+  FollowedNooksRoute({Key? key, String? userId, List<PageRouteInfo>? children})
+    : super(
+        FollowedNooksRoute.name,
+        args: FollowedNooksRouteArgs(key: key, userId: userId),
+        initialChildren: children,
+      );
+
+  static const String name = 'FollowedNooksRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<FollowedNooksRouteArgs>(
+        orElse: () => const FollowedNooksRouteArgs(),
+      );
+      return FollowedNooksScreen(key: args.key, userId: args.userId);
+    },
+  );
+}
+
+class FollowedNooksRouteArgs {
+  const FollowedNooksRouteArgs({this.key, this.userId});
+
+  final Key? key;
+
+  final String? userId;
+
+  @override
+  String toString() {
+    return 'FollowedNooksRouteArgs{key: $key, userId: $userId}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! FollowedNooksRouteArgs) return false;
+    return key == other.key && userId == other.userId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ userId.hashCode;
+}
+
+/// generated route for
 /// [LoginScreen]
 class LoginRoute extends PageRouteInfo<void> {
   const LoginRoute({List<PageRouteInfo>? children})

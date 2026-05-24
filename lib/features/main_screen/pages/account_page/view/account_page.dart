@@ -187,7 +187,7 @@ class _AccountPageState extends State<AccountPage> {
                         user: user,
                         followingUrls: followingUrls,
                         //TODO: add navigation to follows screen
-                        onFollowingTap: null,
+                        onFollowingTap: () => AutoRouter.of(context).push(FollowedNooksRoute(userId: widget.userId)),
                         onPlusTap: () {
                           showModalBottomSheet(
                             context: context,

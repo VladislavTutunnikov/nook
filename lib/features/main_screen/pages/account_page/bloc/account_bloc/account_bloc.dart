@@ -10,7 +10,11 @@ part 'account_state.dart';
 part 'account_event.dart';
 
 class AccountBloc extends Bloc<AccountEvent, AccountState> {
-  AccountBloc({required this.userRepository, required this.authRepository, this.userId}) : super(AccountInitial()) {
+  AccountBloc({
+    required this.userRepository,
+    required this.authRepository,
+    this.userId,
+  }) : super(AccountInitial()) {
     on<LoadAccountData>((event, emit) async {
       if (state is! AccountLoaded) {
         emit(AccountLoading());
@@ -18,7 +22,9 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
 
       try {
         final userData = await userRepository.getUser(userId: userId);
-        final followingUrls = await userRepository.getUserFollowingAvatars(userId: userId);
+        final followingUrls = await userRepository.getUserFollowedAvatars(
+          userId: userId,
+        );
 
         emit(AccountLoaded(user: userData, followingUrls: followingUrls));
       } catch (e) {
