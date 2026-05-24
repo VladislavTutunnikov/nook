@@ -61,6 +61,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "myNooks": MessageLookupByLibrary.simpleMessage("Мои уголки"),
     "nookModerators": MessageLookupByLibrary.simpleMessage("Модераторы уголка"),
     "nookOwner": MessageLookupByLibrary.simpleMessage("Владелец уголка"),
+    "nothingWasFound": MessageLookupByLibrary.simpleMessage(
+      "Ничего не найдено...",
+    ),
     "pin": MessageLookupByLibrary.simpleMessage("Закрепить"),
     "pinned": MessageLookupByLibrary.simpleMessage("Закреплено"),
     "popular": MessageLookupByLibrary.simpleMessage("Популярное"),
@@ -83,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "rules": MessageLookupByLibrary.simpleMessage("Правила"),
     "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
     "saved": MessageLookupByLibrary.simpleMessage("Сохранено"),
+    "search": MessageLookupByLibrary.simpleMessage("Поиск..."),
     "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Что-то пошло не так :(",
@@ -92,6 +96,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "textCopied": MessageLookupByLibrary.simpleMessage("Текст скопирован"),
     "theresNothingHere": MessageLookupByLibrary.simpleMessage(
       "Тут ничего нет :(",
+    ),
+    "tryToFindSomething": MessageLookupByLibrary.simpleMessage(
+      "Попробуйте найти что-нибудь",
     ),
     "unban": MessageLookupByLibrary.simpleMessage("Разблокировать"),
     "unfollow": MessageLookupByLibrary.simpleMessage("Отписаться"),

@@ -438,6 +438,31 @@ class S {
   String get inBan {
     return Intl.message('В бане', name: 'inBan', desc: '', args: []);
   }
+
+  /// `Поиск...`
+  String get search {
+    return Intl.message('Поиск...', name: 'search', desc: '', args: []);
+  }
+
+  /// `Попробуйте найти что-нибудь`
+  String get tryToFindSomething {
+    return Intl.message(
+      'Попробуйте найти что-нибудь',
+      name: 'tryToFindSomething',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ничего не найдено...`
+  String get nothingWasFound {
+    return Intl.message(
+      'Ничего не найдено...',
+      name: 'nothingWasFound',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

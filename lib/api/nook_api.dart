@@ -151,6 +151,13 @@ abstract class NookApiClient {
   Future<void> unpinPost({@Path('post_id') required String postId});
 
   //NOOKS
+  @GET('/nooks')
+  Future<List<NookModel>> searchNooks({
+    @Query('prompt') required String prompt,
+    @Query('limit') int? limit,
+    @Query('offset') int? offset,
+  });
+
   @GET('/nooks/{nook_id}')
   Future<NookModel> getNook({@Path('nook_id') required String nookId});
 

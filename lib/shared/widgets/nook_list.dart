@@ -5,18 +5,29 @@ import 'package:nook/shared/widgets/loading_dots.dart';
 import 'package:nook/shared/widgets/nook_card.dart';
 
 class NookList extends StatelessWidget {
-  const NookList({super.key, required this.nooks, this.showLoading = false});
+  const NookList({
+    super.key,
+    required this.nooks,
+    this.showLoading = false,
+    this.placeholderTextAlign,
+    this.placeholderTextPadding = const EdgeInsets.only(left: 25),
+    this.placeholderText,
+  });
 
   final List<NookModel> nooks;
   final bool showLoading;
+  final TextAlign? placeholderTextAlign;
+  final EdgeInsetsGeometry placeholderTextPadding;
+  final String? placeholderText;
 
   @override
   Widget build(BuildContext context) {
     return nooks.isEmpty
         ? Padding(
-            padding: const EdgeInsets.only(left: 25),
+            padding: placeholderTextPadding,
             child: Text(
-              S.of(context).theresNothingHere,
+              textAlign: placeholderTextAlign,
+              placeholderText ?? S.of(context).theresNothingHere,
               style: Theme.of(context).textTheme.titleMedium,
             ),
           )

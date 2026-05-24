@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nook/features/main_screen/pages/account_page/view/account_page.dart';
+import 'package:nook/features/main_screen/pages/search_page/view/search_page.dart';
 import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
 
@@ -32,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
 
   static final List<Widget> _pages = [
     const AccountPage(),
-    const AccountPage(),
+    const SearchPage(),
     const Text('data'),
     const AccountPage(),
     const AccountPage(),

@@ -175,4 +175,21 @@ class NookRepository {
       throw Exception('Delete moderator error: ${e.message}');
     }
   }
+
+  Future<List<NookModel>> searchNooks({
+    required String prompt,
+    int limit = 20,
+    int offset = 0,
+  }) async {
+    try {
+      final List<NookModel> response = await apiClient.searchNooks(
+        prompt: prompt,
+        limit: limit,
+        offset: offset,
+      );
+      return response;
+    } on DioException catch (e) {
+      throw Exception('Search nooks error: ${e.message}');
+    }
+  }
 }
