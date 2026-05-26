@@ -27,12 +27,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "Выдать права модератора",
     ),
     "ban": MessageLookupByLibrary.simpleMessage("Заблокировать"),
+    "bio": MessageLookupByLibrary.simpleMessage("О себе"),
     "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
     "chooseNook": MessageLookupByLibrary.simpleMessage("Выберите уголок"),
     "commentCounter": MessageLookupByLibrary.simpleMessage("Комментариев"),
     "comments": MessageLookupByLibrary.simpleMessage("Комментарии"),
     "confirmationOfPostDeletion": MessageLookupByLibrary.simpleMessage(
       "Вы действительно хотите удалить этот пост?",
+    ),
+    "connectionError": MessageLookupByLibrary.simpleMessage(
+      "Что то пошло не так :( Проверьте подключение к интернету.",
     ),
     "contactSupport": MessageLookupByLibrary.simpleMessage(
       "Обратиться в поддержку",
@@ -41,7 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "createNook": MessageLookupByLibrary.simpleMessage("Создать уголок"),
     "createPost": MessageLookupByLibrary.simpleMessage("Создать пост"),
     "createPostFailureMessage": MessageLookupByLibrary.simpleMessage(
-      "Что-то пошло не так :(\\nВозможно, вы заблокированы в этом уголке или вы не являетесь его участником.",
+      "Что-то пошло не так :( Возможно, вы заблокированы в этом уголке или вы не являетесь его участником.",
     ),
     "createPostNookErrorMessage": MessageLookupByLibrary.simpleMessage(
       "Необходимо выбрать уголок",
@@ -55,8 +59,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Лишить прав модератора",
     ),
     "description": MessageLookupByLibrary.simpleMessage("Описание"),
+    "done": MessageLookupByLibrary.simpleMessage("Готово"),
     "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
     "edited": MessageLookupByLibrary.simpleMessage("изменено"),
+    "emptyUsernameError": MessageLookupByLibrary.simpleMessage(
+      "Имя пользователя не может быть пустым",
+    ),
     "follow": MessageLookupByLibrary.simpleMessage("Подписаться"),
     "fresh": MessageLookupByLibrary.simpleMessage("Новое"),
     "header": MessageLookupByLibrary.simpleMessage("Заголовок"),
@@ -74,6 +82,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "nookOwner": MessageLookupByLibrary.simpleMessage("Владелец уголка"),
     "nothingWasFound": MessageLookupByLibrary.simpleMessage(
       "Ничего не найдено...",
+    ),
+    "onlyImagesCanBeUsedForAvatar": MessageLookupByLibrary.simpleMessage(
+      "Для аватара можно использовать только изображения",
     ),
     "pin": MessageLookupByLibrary.simpleMessage("Закрепить"),
     "pinned": MessageLookupByLibrary.simpleMessage("Закреплено"),
@@ -117,6 +128,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "unban": MessageLookupByLibrary.simpleMessage("Разблокировать"),
     "unfollow": MessageLookupByLibrary.simpleMessage("Отписаться"),
     "unpin": MessageLookupByLibrary.simpleMessage("Открепить"),
+    "username": MessageLookupByLibrary.simpleMessage("Имя пользователя"),
+    "usernameAlreadyTakenError": MessageLookupByLibrary.simpleMessage(
+      "Это имя пользователя занято",
+    ),
     "withNook": MessageLookupByLibrary.simpleMessage("C Nook"),
     "years": MessageLookupByLibrary.simpleMessage("г."),
     "youCanNotAddVideoFiles": MessageLookupByLibrary.simpleMessage(

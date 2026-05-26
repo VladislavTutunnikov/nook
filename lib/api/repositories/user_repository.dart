@@ -191,4 +191,43 @@ class UserRepository {
       throw Exception('Nooks list upload error: ${e.message}');
     }
   }
+
+  Future<void> deleteAvatar() async {
+    try {
+      await apiClient.deleteAvatar();
+    } on DioException catch (e) {
+      throw Exception('Delete avatar error: ${e.message}');
+    }
+  }
+
+  Future<UserModel> updateUserProfile({
+    required String username,
+    required String bio,
+    String? avatarPath,
+  }) async {
+    try {
+      final MultipartFile? avatarImg;
+      if (avatarPath != null && avatarPath.isNotEmpty) {
+        avatarImg = await MultipartFile.fromFile(avatarPath);
+      } else {
+        avatarImg = null;
+      }
+      final UserModel response = await apiClient.updateProfile(
+        username: username,
+        bio: bio,
+        avatarImg: avatarImg,
+      );
+      return response;
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 409) {
+        throw UsernameTakenException('Username already taken');
+      }
+      throw Exception('Profile update error: ${e.message}');
+    }
+  }
+}
+
+class UsernameTakenException implements Exception {
+  final String message;
+  UsernameTakenException(this.message);
 }

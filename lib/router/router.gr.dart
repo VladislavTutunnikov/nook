@@ -449,3 +449,50 @@ class UserNooksRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [UserProfileEditScreen]
+class UserProfileEditRoute extends PageRouteInfo<UserProfileEditRouteArgs> {
+  UserProfileEditRoute({
+    Key? key,
+    required UserModel user,
+    List<PageRouteInfo>? children,
+  }) : super(
+         UserProfileEditRoute.name,
+         args: UserProfileEditRouteArgs(key: key, user: user),
+         initialChildren: children,
+       );
+
+  static const String name = 'UserProfileEditRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<UserProfileEditRouteArgs>();
+      return UserProfileEditScreen(key: args.key, user: args.user);
+    },
+  );
+}
+
+class UserProfileEditRouteArgs {
+  const UserProfileEditRouteArgs({this.key, required this.user});
+
+  final Key? key;
+
+  final UserModel user;
+
+  @override
+  String toString() {
+    return 'UserProfileEditRouteArgs{key: $key, user: $user}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! UserProfileEditRouteArgs) return false;
+    return key == other.key && user == other.user;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ user.hashCode;
+}

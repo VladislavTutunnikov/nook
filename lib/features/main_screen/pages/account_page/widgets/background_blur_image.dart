@@ -25,6 +25,7 @@ class BackgroundBlurImage extends StatelessWidget {
           blurColor: AppColors.transparent,
           colorOpacity: 0.13,
           child: FadeInImage.assetNetwork(
+            key: ValueKey(imgUrl),
             placeholder: 'assets/images/avatar.png',
             image: '$baseUrl$imgUrl',
             width: screenWidth,

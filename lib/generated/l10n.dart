@@ -529,11 +529,71 @@ class S {
     );
   }
 
-  /// `Что-то пошло не так :(\nВозможно, вы заблокированы в этом уголке или вы не являетесь его участником.`
+  /// `Что-то пошло не так :( Возможно, вы заблокированы в этом уголке или вы не являетесь его участником.`
   String get createPostFailureMessage {
     return Intl.message(
-      'Что-то пошло не так :(\\nВозможно, вы заблокированы в этом уголке или вы не являетесь его участником.',
+      'Что-то пошло не так :( Возможно, вы заблокированы в этом уголке или вы не являетесь его участником.',
       name: 'createPostFailureMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Готово`
+  String get done {
+    return Intl.message('Готово', name: 'done', desc: '', args: []);
+  }
+
+  /// `Имя пользователя`
+  String get username {
+    return Intl.message(
+      'Имя пользователя',
+      name: 'username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `О себе`
+  String get bio {
+    return Intl.message('О себе', name: 'bio', desc: '', args: []);
+  }
+
+  /// `Это имя пользователя занято`
+  String get usernameAlreadyTakenError {
+    return Intl.message(
+      'Это имя пользователя занято',
+      name: 'usernameAlreadyTakenError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Имя пользователя не может быть пустым`
+  String get emptyUsernameError {
+    return Intl.message(
+      'Имя пользователя не может быть пустым',
+      name: 'emptyUsernameError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Что то пошло не так :( Проверьте подключение к интернету.`
+  String get connectionError {
+    return Intl.message(
+      'Что то пошло не так :( Проверьте подключение к интернету.',
+      name: 'connectionError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Для аватара можно использовать только изображения`
+  String get onlyImagesCanBeUsedForAvatar {
+    return Intl.message(
+      'Для аватара можно использовать только изображения',
+      name: 'onlyImagesCanBeUsedForAvatar',
       desc: '',
       args: [],
     );

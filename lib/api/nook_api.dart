@@ -76,6 +76,17 @@ abstract class NookApiClient {
     @Query('offset') int? offset,
   });
 
+  @DELETE('/users/me/avatar')
+  Future<void> deleteAvatar();
+
+  @PATCH('/users/me')
+  @MultiPart()
+  Future<UserModel> updateProfile({
+    @Part(name: 'username') required String username,
+    @Part(name: 'bio') required String bio,
+    @Part(name: 'avatar_img') MultipartFile? avatarImg,
+  });
+
   //USERS
   @GET('/users/{user_id}')
   Future<UserModel> getUser({@Path('user_id') required String userId});

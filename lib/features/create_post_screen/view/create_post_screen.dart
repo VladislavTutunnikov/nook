@@ -7,7 +7,7 @@ import 'package:nook/api/models/nook_model.dart';
 import 'package:nook/api/repositories/post_repository.dart';
 import 'package:nook/features/create_post_screen/bloc/create_post_bloc.dart';
 import 'package:nook/features/create_post_screen/widgets/choose_nook_button.dart';
-import 'package:nook/features/create_post_screen/widgets/error_dialog.dart';
+import 'package:nook/features/create_post_screen/widgets/create_post_error_dialog.dart';
 import 'package:nook/features/create_post_screen/widgets/selected_images_list.dart';
 import 'package:nook/features/create_post_screen/widgets/text_input_section.dart';
 import 'package:nook/generated/l10n.dart';
@@ -121,7 +121,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
             showDialog(
               context: context,
               builder: (BuildContext context) {
-                return const ErrorDialog();
+                return const CreatePostErrorDialog();
               },
             );
           } else if (state is PostCreated) {

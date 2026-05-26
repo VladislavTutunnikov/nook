@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nook/generated/l10n.dart';
 import 'package:nook/theme/colors.dart';
 
-class ErrorDialog extends StatelessWidget {
-  const ErrorDialog({super.key});
+class UserProfileErrorDialog extends StatelessWidget {
+  const UserProfileErrorDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ErrorDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              S.of(context).createPostFailureMessage,
+              S.of(context).connectionError,
               style: Theme.of(
                 context,
               ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w400),

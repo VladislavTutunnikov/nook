@@ -52,7 +52,11 @@ class AccountHeader extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 25),
-            Avatar(avatarUrl: user.avatarUrl ?? '', size: 150),
+            Avatar(
+              key: ValueKey(user.avatarUrl),
+              avatarUrl: user.avatarUrl ?? '',
+              size: 150,
+            ),
             const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),

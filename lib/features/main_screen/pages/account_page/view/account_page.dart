@@ -203,8 +203,15 @@ class _AccountPageState extends State<AccountPage> {
                             ),
                           );
                         },
-                        //TODO: add navigation to edit profile screen
-                        onEditTap: null,
+                        onEditTap: () async {
+                          final bool? needRefresh = await AutoRouter.of(
+                            context,
+                          ).push<bool>(UserProfileEditRoute(user: state.user));
+
+                          if (needRefresh == true) {
+                            _accountBloc.add(LoadAccountData());
+                          }
+                        },
                         onMenuTap: () {
                           showModalBottomSheet(
                             context: context,
