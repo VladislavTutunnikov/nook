@@ -59,5 +59,13 @@
   "inBan": "В бане",
   "search": "Поиск...",
   "tryToFindSomething": "Попробуйте найти что-нибудь",
-  "nothingWasFound": "Ничего не найдено..."
+  "nothingWasFound": "Ничего не найдено...",
+  "header": "Заголовок",
+  "textOptional": "Текст (необязательно)",
+  "youCanNotAddVideoFiles": "Нельзя добавлять видеофайлы",
+  "youCanSelectUpTo10Images": "Можно выбрать не более 10 изображений",
+  "chooseNook": "Выберите уголок",
+  "createPostTitleErrorMessage": "Заголовок поста не может быть пустым",
+  "createPostNookErrorMessage": "Необходимо выбрать уголок",
+  "createPostFailureMessage": "Что-то пошло не так :(\\nВозможно, вы заблокированы в этом уголке или вы не являетесь его участником."
 }

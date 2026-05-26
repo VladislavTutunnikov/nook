@@ -141,11 +141,9 @@ class _NookScreenState extends State<NookScreen> {
                           onDescriptionTap: () => setState(() {
                             _showDescription = !_showDescription;
                           }),
-                          onCreatePostTap: null,
+                          onCreatePostTap: () => AutoRouter.of(context).push(CreatePostRoute(nook: state.nook)),
                           onRulesTap: () => AutoRouter.of(context).push(
-                            //TODO: delete nookName param
                             NookRulesRoute(
-                              nookName: state.nook.name,
                               rules: state.nook.rules,
                             ),
                           ),

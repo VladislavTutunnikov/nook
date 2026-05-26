@@ -6,9 +6,8 @@ import 'package:nook/theme/colors.dart';
 
 @RoutePage()
 class NookRulesScreen extends StatelessWidget {
-  const NookRulesScreen({super.key, this.rules, required this.nookName});
+  const NookRulesScreen({super.key, this.rules});
 
-  final String nookName;
   final String? rules;
 
   @override

@@ -74,14 +74,68 @@ class AuthWrapperRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [FollowedNooksScreen]
-class FollowedNooksRoute extends PageRouteInfo<FollowedNooksRouteArgs> {
-  FollowedNooksRoute({Key? key, String? userId, List<PageRouteInfo>? children})
+/// [CreatePostScreen]
+class CreatePostRoute extends PageRouteInfo<CreatePostRouteArgs> {
+  CreatePostRoute({Key? key, NookModel? nook, List<PageRouteInfo>? children})
     : super(
-        FollowedNooksRoute.name,
-        args: FollowedNooksRouteArgs(key: key, userId: userId),
+        CreatePostRoute.name,
+        args: CreatePostRouteArgs(key: key, nook: nook),
         initialChildren: children,
       );
+
+  static const String name = 'CreatePostRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CreatePostRouteArgs>(
+        orElse: () => const CreatePostRouteArgs(),
+      );
+      return CreatePostScreen(key: args.key, nook: args.nook);
+    },
+  );
+}
+
+class CreatePostRouteArgs {
+  const CreatePostRouteArgs({this.key, this.nook});
+
+  final Key? key;
+
+  final NookModel? nook;
+
+  @override
+  String toString() {
+    return 'CreatePostRouteArgs{key: $key, nook: $nook}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CreatePostRouteArgs) return false;
+    return key == other.key && nook == other.nook;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ nook.hashCode;
+}
+
+/// generated route for
+/// [FollowedNooksScreen]
+class FollowedNooksRoute extends PageRouteInfo<FollowedNooksRouteArgs> {
+  FollowedNooksRoute({
+    Key? key,
+    String? userId,
+    bool selectMode = false,
+    List<PageRouteInfo>? children,
+  }) : super(
+         FollowedNooksRoute.name,
+         args: FollowedNooksRouteArgs(
+           key: key,
+           userId: userId,
+           selectMode: selectMode,
+         ),
+         initialChildren: children,
+       );
 
   static const String name = 'FollowedNooksRoute';
 
@@ -91,32 +145,44 @@ class FollowedNooksRoute extends PageRouteInfo<FollowedNooksRouteArgs> {
       final args = data.argsAs<FollowedNooksRouteArgs>(
         orElse: () => const FollowedNooksRouteArgs(),
       );
-      return FollowedNooksScreen(key: args.key, userId: args.userId);
+      return FollowedNooksScreen(
+        key: args.key,
+        userId: args.userId,
+        selectMode: args.selectMode,
+      );
     },
   );
 }
 
 class FollowedNooksRouteArgs {
-  const FollowedNooksRouteArgs({this.key, this.userId});
+  const FollowedNooksRouteArgs({
+    this.key,
+    this.userId,
+    this.selectMode = false,
+  });
 
   final Key? key;
 
   final String? userId;
 
+  final bool selectMode;
+
   @override
   String toString() {
-    return 'FollowedNooksRouteArgs{key: $key, userId: $userId}';
+    return 'FollowedNooksRouteArgs{key: $key, userId: $userId, selectMode: $selectMode}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! FollowedNooksRouteArgs) return false;
-    return key == other.key && userId == other.userId;
+    return key == other.key &&
+        userId == other.userId &&
+        selectMode == other.selectMode;
   }
 
   @override
-  int get hashCode => key.hashCode ^ userId.hashCode;
+  int get hashCode => key.hashCode ^ userId.hashCode ^ selectMode.hashCode;
 }
 
 /// generated route for
@@ -218,57 +284,47 @@ class NookFollowersRouteArgs {
 /// generated route for
 /// [NookRulesScreen]
 class NookRulesRoute extends PageRouteInfo<NookRulesRouteArgs> {
-  NookRulesRoute({
-    Key? key,
-    String? rules,
-    required String nookName,
-    List<PageRouteInfo>? children,
-  }) : super(
-         NookRulesRoute.name,
-         args: NookRulesRouteArgs(key: key, rules: rules, nookName: nookName),
-         initialChildren: children,
-       );
+  NookRulesRoute({Key? key, String? rules, List<PageRouteInfo>? children})
+    : super(
+        NookRulesRoute.name,
+        args: NookRulesRouteArgs(key: key, rules: rules),
+        initialChildren: children,
+      );
 
   static const String name = 'NookRulesRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<NookRulesRouteArgs>();
-      return NookRulesScreen(
-        key: args.key,
-        rules: args.rules,
-        nookName: args.nookName,
+      final args = data.argsAs<NookRulesRouteArgs>(
+        orElse: () => const NookRulesRouteArgs(),
       );
+      return NookRulesScreen(key: args.key, rules: args.rules);
     },
   );
 }
 
 class NookRulesRouteArgs {
-  const NookRulesRouteArgs({this.key, this.rules, required this.nookName});
+  const NookRulesRouteArgs({this.key, this.rules});
 
   final Key? key;
 
   final String? rules;
 
-  final String nookName;
-
   @override
   String toString() {
-    return 'NookRulesRouteArgs{key: $key, rules: $rules, nookName: $nookName}';
+    return 'NookRulesRouteArgs{key: $key, rules: $rules}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! NookRulesRouteArgs) return false;
-    return key == other.key &&
-        rules == other.rules &&
-        nookName == other.nookName;
+    return key == other.key && rules == other.rules;
   }
 
   @override
-  int get hashCode => key.hashCode ^ rules.hashCode ^ nookName.hashCode;
+  int get hashCode => key.hashCode ^ rules.hashCode;
 }
 
 /// generated route for

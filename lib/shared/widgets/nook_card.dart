@@ -8,8 +8,9 @@ import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
 
 class NookCard extends StatelessWidget {
-  const NookCard({super.key, required this.nook});
+  const NookCard({super.key, required this.nook, this.onTap});
   final NookModel nook;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +25,10 @@ class NookCard extends StatelessWidget {
         children: [
           Expanded(
             child: GestureDetector(
-              onTap: () =>
-                  AutoRouter.of(context).push(NookRoute(nookId: nook.id)),
+              onTap: onTap == null
+                  ? () =>
+                        AutoRouter.of(context).push(NookRoute(nookId: nook.id))
+                  : onTap,
               child: Row(
                 children: [
                   Avatar(avatarUrl: nook.avatarUrl ?? ''),

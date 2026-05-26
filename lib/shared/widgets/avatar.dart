@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:nook/api/di/injection.dart';
 
 class Avatar extends StatelessWidget {
-  const Avatar({super.key, required this.avatarUrl, this.size = 40});
+  const Avatar({
+    super.key,
+    required this.avatarUrl,
+    this.size = 40,
+    this.placeholderImagePath = 'assets/images/avatar.png',
+  });
   final String avatarUrl;
+  final String placeholderImagePath;
   final double size;
 
   @override
@@ -11,7 +17,7 @@ class Avatar extends StatelessWidget {
     final baseUrl = getIt<String>();
     return ClipOval(
       child: FadeInImage.assetNetwork(
-        placeholder: 'assets/images/avatar.png',
+        placeholder: placeholderImagePath,
         image: '$baseUrl$avatarUrl',
         width: size,
         height: size,
@@ -19,7 +25,7 @@ class Avatar extends StatelessWidget {
         imageErrorBuilder: (context, error, stackTrace) {
           return ClipOval(
             child: Image.asset(
-              'assets/images/avatar.png',
+              placeholderImagePath,
               width: size,
               height: size,
               fit: BoxFit.cover,

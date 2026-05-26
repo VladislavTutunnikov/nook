@@ -463,6 +463,81 @@ class S {
       args: [],
     );
   }
+
+  /// `Заголовок`
+  String get header {
+    return Intl.message('Заголовок', name: 'header', desc: '', args: []);
+  }
+
+  /// `Текст (необязательно)`
+  String get textOptional {
+    return Intl.message(
+      'Текст (необязательно)',
+      name: 'textOptional',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Нельзя добавлять видеофайлы`
+  String get youCanNotAddVideoFiles {
+    return Intl.message(
+      'Нельзя добавлять видеофайлы',
+      name: 'youCanNotAddVideoFiles',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Можно выбрать не более 10 изображений`
+  String get youCanSelectUpTo10Images {
+    return Intl.message(
+      'Можно выбрать не более 10 изображений',
+      name: 'youCanSelectUpTo10Images',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выберите уголок`
+  String get chooseNook {
+    return Intl.message(
+      'Выберите уголок',
+      name: 'chooseNook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Заголовок поста не может быть пустым`
+  String get createPostTitleErrorMessage {
+    return Intl.message(
+      'Заголовок поста не может быть пустым',
+      name: 'createPostTitleErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Необходимо выбрать уголок`
+  String get createPostNookErrorMessage {
+    return Intl.message(
+      'Необходимо выбрать уголок',
+      name: 'createPostNookErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Что-то пошло не так :(\nВозможно, вы заблокированы в этом уголке или вы не являетесь его участником.`
+  String get createPostFailureMessage {
+    return Intl.message(
+      'Что-то пошло не так :(\\nВозможно, вы заблокированы в этом уголке или вы не являетесь его участником.',
+      name: 'createPostFailureMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

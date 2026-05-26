@@ -12,6 +12,7 @@ class NookList extends StatelessWidget {
     this.placeholderTextAlign,
     this.placeholderTextPadding = const EdgeInsets.only(left: 25),
     this.placeholderText,
+    this.onNookTap,
   });
 
   final List<NookModel> nooks;
@@ -19,6 +20,7 @@ class NookList extends StatelessWidget {
   final TextAlign? placeholderTextAlign;
   final EdgeInsetsGeometry placeholderTextPadding;
   final String? placeholderText;
+  final void Function(NookModel)? onNookTap;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,12 @@ class NookList extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: nooks.length,
                 itemBuilder: (context, index) {
-                  return NookCard(nook: nooks[index]);
+                  return NookCard(
+                    nook: nooks[index],
+                    onTap: onNookTap != null
+                        ? () => onNookTap?.call(nooks[index])
+                        : null,
+                  );
                 },
               ),
 

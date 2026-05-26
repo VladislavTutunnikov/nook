@@ -14,8 +14,9 @@ import 'package:nook/theme/icons.dart';
 
 @RoutePage()
 class FollowedNooksScreen extends StatefulWidget {
-  const FollowedNooksScreen({super.key, this.userId});
+  const FollowedNooksScreen({super.key, this.userId, this.selectMode = false});
   final String? userId;
+  final bool selectMode;
 
   @override
   State<FollowedNooksScreen> createState() => _FollowedNooksScreenState();
@@ -99,6 +100,9 @@ class _FollowedNooksScreenState extends State<FollowedNooksScreen> {
                             NookList(
                               nooks: state.followedNooks,
                               showLoading: state.hasMore,
+                              onNookTap: widget.selectMode
+                                  ? (nook) => Navigator.pop(context, nook)
+                                  : null,
                             ),
                             const SizedBox(height: 60),
                           ],

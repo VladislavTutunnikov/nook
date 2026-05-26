@@ -187,13 +187,18 @@ class _AccountPageState extends State<AccountPage> {
                         user: user,
                         followingUrls: followingUrls,
                         //TODO: add navigation to follows screen
-                        onFollowingTap: () => AutoRouter.of(context).push(FollowedNooksRoute(userId: widget.userId)),
+                        onFollowingTap: () => AutoRouter.of(
+                          context,
+                        ).push(FollowedNooksRoute(userId: widget.userId)),
                         onPlusTap: () {
                           showModalBottomSheet(
                             context: context,
-                            builder: (context) => const CreateMenuBottomSheet(
+                            builder: (context) => CreateMenuBottomSheet(
+                              onPostTap: () {
+                                Navigator.pop(context);
+                                AutoRouter.of(context).push(CreatePostRoute());
+                              },
                               //TODO: add functionality
-                              onPostTap: null,
                               onNookTap: null,
                             ),
                           );

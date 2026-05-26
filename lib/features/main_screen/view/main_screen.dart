@@ -1,9 +1,11 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nook/features/main_screen/pages/account_page/view/account_page.dart';
 import 'package:nook/features/main_screen/pages/search_page/view/search_page.dart';
+import 'package:nook/router/router.dart';
 import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
 
@@ -22,6 +24,10 @@ class _MainScreenState extends State<MainScreen> {
 
   void _onSelectTab(int index) {
     if (_selectedTab == index) return;
+    if (index == 2) {
+      AutoRouter.of(context).push(CreatePostRoute());
+      return;
+    }
     setState(() {
       _selectedTab = index;
     });
@@ -34,7 +40,7 @@ class _MainScreenState extends State<MainScreen> {
   static final List<Widget> _pages = [
     const AccountPage(),
     const SearchPage(),
-    const Text('data'),
+    const SizedBox(),
     const AccountPage(),
     const AccountPage(),
   ];

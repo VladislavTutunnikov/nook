@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "ban": MessageLookupByLibrary.simpleMessage("Заблокировать"),
     "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
+    "chooseNook": MessageLookupByLibrary.simpleMessage("Выберите уголок"),
     "commentCounter": MessageLookupByLibrary.simpleMessage("Комментариев"),
     "comments": MessageLookupByLibrary.simpleMessage("Комментарии"),
     "confirmationOfPostDeletion": MessageLookupByLibrary.simpleMessage(
@@ -39,6 +40,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "copyText": MessageLookupByLibrary.simpleMessage("Копировать текст"),
     "createNook": MessageLookupByLibrary.simpleMessage("Создать уголок"),
     "createPost": MessageLookupByLibrary.simpleMessage("Создать пост"),
+    "createPostFailureMessage": MessageLookupByLibrary.simpleMessage(
+      "Что-то пошло не так :(\\nВозможно, вы заблокированы в этом уголке или вы не являетесь его участником.",
+    ),
+    "createPostNookErrorMessage": MessageLookupByLibrary.simpleMessage(
+      "Необходимо выбрать уголок",
+    ),
+    "createPostTitleErrorMessage": MessageLookupByLibrary.simpleMessage(
+      "Заголовок поста не может быть пустым",
+    ),
     "days": MessageLookupByLibrary.simpleMessage("д."),
     "delete": MessageLookupByLibrary.simpleMessage("Удалить"),
     "deleteModerator": MessageLookupByLibrary.simpleMessage(
@@ -49,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "edited": MessageLookupByLibrary.simpleMessage("изменено"),
     "follow": MessageLookupByLibrary.simpleMessage("Подписаться"),
     "fresh": MessageLookupByLibrary.simpleMessage("Новое"),
+    "header": MessageLookupByLibrary.simpleMessage("Заголовок"),
     "hours": MessageLookupByLibrary.simpleMessage("ч."),
     "inBan": MessageLookupByLibrary.simpleMessage("В бане"),
     "inviteFriends": MessageLookupByLibrary.simpleMessage("Пригласить друзей"),
@@ -94,6 +105,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "statistics": MessageLookupByLibrary.simpleMessage("Статистика"),
     "team": MessageLookupByLibrary.simpleMessage("Команда"),
     "textCopied": MessageLookupByLibrary.simpleMessage("Текст скопирован"),
+    "textOptional": MessageLookupByLibrary.simpleMessage(
+      "Текст (необязательно)",
+    ),
     "theresNothingHere": MessageLookupByLibrary.simpleMessage(
       "Тут ничего нет :(",
     ),
@@ -105,5 +119,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "unpin": MessageLookupByLibrary.simpleMessage("Открепить"),
     "withNook": MessageLookupByLibrary.simpleMessage("C Nook"),
     "years": MessageLookupByLibrary.simpleMessage("г."),
+    "youCanNotAddVideoFiles": MessageLookupByLibrary.simpleMessage(
+      "Нельзя добавлять видеофайлы",
+    ),
+    "youCanSelectUpTo10Images": MessageLookupByLibrary.simpleMessage(
+      "Можно выбрать не более 10 изображений",
+    ),
   };
 }

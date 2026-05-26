@@ -46,4 +46,8 @@ class AppIcons {
   static const String crown = 'assets/icons/crown.svg';
   static const String ban = 'assets/icons/ban.svg';
   static const String circleCheck = 'assets/icons/circle_check.svg';
+  static const String x = 'assets/icons/x.svg';
+  static const String paperclip = 'assets/icons/paperclip.svg';
+  static const String send = 'assets/icons/send.svg';
+  static const String chevronsUpDown = 'assets/icons/chevrons_up_down.svg';
 }
