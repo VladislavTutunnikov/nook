@@ -74,5 +74,8 @@
   "usernameAlreadyTakenError": "Это имя пользователя занято",
   "emptyUsernameError": "Имя пользователя не может быть пустым",
   "connectionError": "Что то пошло не так :( Проверьте подключение к интернету.",
-  "onlyImagesCanBeUsedForAvatar": "Для аватара можно использовать только изображения"
+  "onlyImagesCanBeUsedForAvatar": "Для аватара можно использовать только изображения",
+  "nookName": "Название уголка",
+  "nookRules": "Правила уголка",
+  "chooseCategory": "Выберите категорию"
 }

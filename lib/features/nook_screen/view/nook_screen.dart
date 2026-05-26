@@ -9,6 +9,7 @@ import 'package:nook/features/nook_screen/bloc/nook_bloc/nook_bloc.dart';
 import 'package:nook/features/nook_screen/bloc/nook_pinned_bloc/nook_pinned_bloc.dart';
 import 'package:nook/features/nook_screen/bloc/nook_posts_bloc/nook_posts_bloc.dart';
 import 'package:nook/features/nook_screen/widgets/nook_header.dart';
+import 'package:nook/features/nook_screen/widgets/nook_menu_bottom_sheet.dart';
 import 'package:nook/features/nook_screen/widgets/pinned_post_list.dart';
 import 'package:nook/features/nook_screen/widgets/posts_filter_menu_bottom_sheet.dart';
 import 'package:nook/generated/l10n.dart';
@@ -127,12 +128,23 @@ class _NookScreenState extends State<NookScreen> {
                       SliverToBoxAdapter(
                         child: NookHeader(
                           nook: state.nook,
-                          //TODO: change this
                           showMenu: state.isOwner,
                           isFollowed: state.isFollowed,
                           followersCount: state.followersCount,
-                          //TODO: add functionality
-                          onMenuTap: null,
+                          onMenuTap: () => showModalBottomSheet(
+                            context: context,
+                            builder: (context) => NookMenuBottomSheet(
+                              onEditTap: () {
+                                AutoRouter.of(
+                                  context,
+                                ).push(NookEditRoute(nook: state.nook));
+                                //TODO: add refresh after pop
+                              },
+                              //TODO: add on delete tap
+                              onDeleteTap: null,
+                            ),
+                          ),
+
                           onFollowersTap: () => AutoRouter.of(
                             context,
                           ).push(NookFollowersRoute(nookId: widget.nookId)),
@@ -141,12 +153,12 @@ class _NookScreenState extends State<NookScreen> {
                           onDescriptionTap: () => setState(() {
                             _showDescription = !_showDescription;
                           }),
-                          onCreatePostTap: () => AutoRouter.of(context).push(CreatePostRoute(nook: state.nook)),
-                          onRulesTap: () => AutoRouter.of(context).push(
-                            NookRulesRoute(
-                              rules: state.nook.rules,
-                            ),
-                          ),
+                          onCreatePostTap: () => AutoRouter.of(
+                            context,
+                          ).push(CreatePostRoute(nook: state.nook)),
+                          onRulesTap: () => AutoRouter.of(
+                            context,
+                          ).push(NookRulesRoute(rules: state.nook.rules)),
                           showBanned: state.isModerator || state.isOwner,
                           onBannedTap: () => AutoRouter.of(context).push(
                             NookFollowersRoute(

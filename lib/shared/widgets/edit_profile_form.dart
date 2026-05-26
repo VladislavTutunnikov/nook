@@ -6,14 +6,16 @@ import 'package:nook/theme/colors.dart';
 class EditProfileForm extends StatelessWidget {
   const EditProfileForm({
     super.key,
-    this.usernameController,
-    this.bioController,
-    required this.errorText,
+    this.nameController,
+    this.descriptionController,
+    required this.errorText, required this.nameHintText, required this.descriptionHintText,
   });
 
-  final TextEditingController? usernameController;
-  final TextEditingController? bioController;
+  final TextEditingController? nameController;
+  final TextEditingController? descriptionController;
   final String errorText;
+  final String nameHintText;
+  final String descriptionHintText;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class EditProfileForm extends StatelessWidget {
               FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9_.-]')),
               FilteringTextInputFormatter.deny(RegExp(r'\s')),
             ],
-            controller: usernameController,
+            controller: nameController,
 
             maxLength: 50,
             buildCounter:
@@ -43,7 +45,7 @@ class EditProfileForm extends StatelessWidget {
                 }) => const SizedBox(),
             style: Theme.of(context).textTheme.titleMedium,
             decoration: InputDecoration(
-              hintText: S.of(context).username,
+              hintText: nameHintText,
               hintStyle: Theme.of(
                 context,
               ).textTheme.titleMedium?.copyWith(color: AppColors.darkGrey),
@@ -65,11 +67,11 @@ class EditProfileForm extends StatelessWidget {
               : const SizedBox(),
           const Divider(thickness: 1, color: AppColors.lightGrey),
           TextField(
-            controller: bioController,
+            controller: descriptionController,
             style: Theme.of(context).textTheme.titleMedium,
             maxLines: null,
             decoration: InputDecoration(
-              hintText: S.of(context).bio,
+              hintText: descriptionHintText,
               hintStyle: Theme.of(
                 context,
               ).textTheme.titleMedium?.copyWith(color: AppColors.darkGrey),

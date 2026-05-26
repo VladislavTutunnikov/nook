@@ -29,6 +29,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "ban": MessageLookupByLibrary.simpleMessage("Заблокировать"),
     "bio": MessageLookupByLibrary.simpleMessage("О себе"),
     "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
+    "chooseCategory": MessageLookupByLibrary.simpleMessage(
+      "Выберите категорию",
+    ),
     "chooseNook": MessageLookupByLibrary.simpleMessage("Выберите уголок"),
     "commentCounter": MessageLookupByLibrary.simpleMessage("Комментариев"),
     "comments": MessageLookupByLibrary.simpleMessage("Комментарии"),
@@ -79,7 +82,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "months": MessageLookupByLibrary.simpleMessage("мес."),
     "myNooks": MessageLookupByLibrary.simpleMessage("Мои уголки"),
     "nookModerators": MessageLookupByLibrary.simpleMessage("Модераторы уголка"),
+    "nookName": MessageLookupByLibrary.simpleMessage("Название уголка"),
     "nookOwner": MessageLookupByLibrary.simpleMessage("Владелец уголка"),
+    "nookRules": MessageLookupByLibrary.simpleMessage("Правила уголка"),
     "nothingWasFound": MessageLookupByLibrary.simpleMessage(
       "Ничего не найдено...",
     ),

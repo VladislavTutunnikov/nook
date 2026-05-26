@@ -598,6 +598,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Название уголка`
+  String get nookName {
+    return Intl.message(
+      'Название уголка',
+      name: 'nookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Правила уголка`
+  String get nookRules {
+    return Intl.message(
+      'Правила уголка',
+      name: 'nookRules',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выберите категорию`
+  String get chooseCategory {
+    return Intl.message(
+      'Выберите категорию',
+      name: 'chooseCategory',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

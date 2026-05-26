@@ -10,7 +10,7 @@ import 'package:nook/api/di/injection.dart';
 import 'package:nook/api/models/user_model.dart';
 import 'package:nook/api/repositories/user_repository.dart';
 import 'package:nook/features/user_profile_edit_screen/bloc/user_edit_bloc.dart';
-import 'package:nook/features/user_profile_edit_screen/widgets/edit_profile_form.dart';
+import 'package:nook/shared/widgets/edit_profile_form.dart';
 import 'package:nook/features/user_profile_edit_screen/widgets/user_profile_error_dialog.dart';
 import 'package:nook/generated/l10n.dart';
 import 'package:nook/shared/widgets/avatar.dart';
@@ -239,8 +239,10 @@ class _UserProfileEditScreenState extends State<UserProfileEditScreen> {
                           padding: const EdgeInsets.all(20),
                           child: EditProfileForm(
                             errorText: _errorText,
-                            usernameController: _usernameController,
-                            bioController: _bioController,
+                            nameController: _usernameController,
+                            descriptionController: _bioController,
+                            nameHintText: S.of(context).username,
+                            descriptionHintText: S.of(context).bio,
                           ),
                         ),
                       ],
