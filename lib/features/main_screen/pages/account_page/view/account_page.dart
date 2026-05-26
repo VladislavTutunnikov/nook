@@ -208,6 +208,7 @@ class _AccountPageState extends State<AccountPage> {
                         onMenuTap: () {
                           showModalBottomSheet(
                             context: context,
+                            isScrollControlled: true,
                             builder: (context) => ProfileMenuBottomSheet(
                               onNooksTap: () {
                                 Navigator.pop(context);

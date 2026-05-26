@@ -84,12 +84,14 @@ class AccountHeader extends StatelessWidget {
                   followingUrls: followingUrls,
                   onTap: onFollowingTap,
                 ),
-                const Spacer(),
-                StatsRow(
-                  likeCount: user.likeCount,
-                  postCount: user.postCount,
-                  commentCount: user.commentCount,
-                  createdAt: user.createdAt,
+                const SizedBox(width: 5),
+                Expanded(
+                  child: StatsRow(
+                    likeCount: user.likeCount,
+                    postCount: user.postCount,
+                    commentCount: user.commentCount,
+                    createdAt: user.createdAt,
+                  ),
                 ),
               ],
             ),

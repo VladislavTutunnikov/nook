@@ -20,14 +20,12 @@ class StatsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         StatCard(number: likeCount, label: S.of(context).likeCounter),
-        const SizedBox(width: 15),
         StatCard(number: postCount, label: S.of(context).postCounter),
-        const SizedBox(width: 15),
         StatCard(number: commentCount, label: S.of(context).commentCounter),
-        const SizedBox(width: 15),
         StatTimeCard(time: createdAt, label: S.of(context).withNook),
       ],
     );
