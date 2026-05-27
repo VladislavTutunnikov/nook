@@ -668,6 +668,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Вы действительно хотите удалить этот уголок? Это действие нельзя отменить. Все посты и данные будут удалены навсегда.`
+  String get confirmationOfNookDeletion {
+    return Intl.message(
+      'Вы действительно хотите удалить этот уголок? Это действие нельзя отменить. Все посты и данные будут удалены навсегда.',
+      name: 'confirmationOfNookDeletion',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

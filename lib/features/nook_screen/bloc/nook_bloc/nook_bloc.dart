@@ -96,6 +96,15 @@ class NookBloc extends Bloc<NookEvent, NookState> {
         _isProcessingFollow = false;
       }
     });
+
+    on<DeleteNook>((event, emit) async {
+      try {
+        await nookRepository.deleteNook(nookId: nookId);
+        emit(NookDeleteSuccess());
+      } catch (e) {
+        emit(NookLoadingFailure(error: e.toString()));
+      }
+    });
   }
 
   final NookRepository nookRepository;

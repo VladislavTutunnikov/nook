@@ -199,6 +199,9 @@ abstract class NookApiClient {
     @Part(name: 'avatar_img') MultipartFile? avatarImg,
   });
 
+  @DELETE('/nooks/{nook_id}')
+  Future<void> deleteNook({@Path('nook_id') required String nookId});
+
   @DELETE('/nooks/{nook_id}/avatar')
   Future<void> deleteNookAvatar({@Path('nook_id') required String nookId});
 

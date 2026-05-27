@@ -272,6 +272,14 @@ class NookRepository {
       throw Exception('Create nook error: ${e.message}');
     }
   }
+
+  Future<void> deleteNook({required String nookId}) async {
+    try {
+      await apiClient.deleteNook(nookId: nookId);
+    } on DioException catch (e) {
+      throw Exception('Delete nook error: ${e.message}');
+    }
+  }
 }
 
 class NameTakenException implements Exception {

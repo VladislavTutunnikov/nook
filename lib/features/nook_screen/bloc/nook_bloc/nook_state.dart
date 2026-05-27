@@ -26,3 +26,5 @@ class NookLoadingFailure extends NookState {
   NookLoadingFailure({required this.error});
   final String error;
 }
+
+class NookDeleteSuccess extends NookState {}

@@ -8,6 +8,7 @@ import 'package:nook/api/repositories/user_repository.dart';
 import 'package:nook/features/nook_screen/bloc/nook_bloc/nook_bloc.dart';
 import 'package:nook/features/nook_screen/bloc/nook_pinned_bloc/nook_pinned_bloc.dart';
 import 'package:nook/features/nook_screen/bloc/nook_posts_bloc/nook_posts_bloc.dart';
+import 'package:nook/features/nook_screen/widgets/delete_nook_dialog.dart';
 import 'package:nook/features/nook_screen/widgets/nook_header.dart';
 import 'package:nook/features/nook_screen/widgets/nook_menu_bottom_sheet.dart';
 import 'package:nook/features/nook_screen/widgets/pinned_post_list.dart';
@@ -111,184 +112,204 @@ class _NookScreenState extends State<NookScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<NookBloc, NookState>(
+      body: BlocListener<NookBloc, NookState>(
         bloc: _nookBloc,
-        builder: (context, state) {
-          if (state is NookLoaded) {
-            return Stack(
-              children: [
-                RefreshIndicator(
-                  color: AppColors.black,
-                  backgroundColor: AppColors.white,
-                  onRefresh: _onRefresh,
-                  child: CustomScrollView(
-                    controller: _mainScrollController,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    slivers: [
-                      SliverToBoxAdapter(
-                        child: NookHeader(
-                          nook: state.nook,
-                          showMenu: state.isOwner,
-                          isFollowed: state.isFollowed,
-                          followersCount: state.followersCount,
-                          onMenuTap: () => showModalBottomSheet(
-                            context: context,
-                            builder: (context) => NookMenuBottomSheet(
-                              onEditTap: () async {
-                                Navigator.pop(context);
-                                final bool? needRefresh = await AutoRouter.of(
-                                  context,
-                                ).push<bool>(NookEditRoute(nook: state.nook));
-
-                                if (needRefresh == true) {
-                                  _nookBloc.add(LoadNookData());
-                                }
-                              },
-                              //TODO: add on delete tap
-                              onDeleteTap: null,
-                            ),
-                          ),
-
-                          onFollowersTap: () => AutoRouter.of(
-                            context,
-                          ).push(NookFollowersRoute(nookId: widget.nookId)),
-                          onFollowTap: () => _nookBloc.add(FollowNook()),
-                          showDescription: _showDescription,
-                          onDescriptionTap: () => setState(() {
-                            _showDescription = !_showDescription;
-                          }),
-                          onCreatePostTap: () => AutoRouter.of(
-                            context,
-                          ).push(CreatePostRoute(nook: state.nook)),
-                          onRulesTap: () => AutoRouter.of(
-                            context,
-                          ).push(NookRulesRoute(rules: state.nook.rules)),
-                          showBanned: state.isModerator || state.isOwner,
-                          onBannedTap: () => AutoRouter.of(context).push(
-                            NookFollowersRoute(
-                              nookId: widget.nookId,
-                              showBanned: true,
-                            ),
-                          ),
-                          onTeamTap: () => AutoRouter.of(
-                            context,
-                          ).push(NookTeamRoute(nookId: widget.nookId)),
-                        ),
-                      ),
-                      SliverToBoxAdapter(
-                        child: BlocBuilder<NookPinnedBloc, NookPinnedState>(
-                          bloc: _nookPinnedBloc,
-                          builder: (context, state) {
-                            if (state is NookPinnedPostsLoaded) {
-                              return PinnedPostList(
-                                scrollController: _pinnedPostsScrollController,
-                                posts: state.posts,
-                                showLoading: state.hasMore,
-                              );
-                            }
-                            return const SizedBox();
-                          },
-                        ),
-                      ),
-
-                      SliverToBoxAdapter(
-                        child: TextIconButton(
-                          padding: const EdgeInsetsGeometry.symmetric(
-                            horizontal: 15,
-                            vertical: 10,
-                          ),
-                          gap: 5,
-                          iconPath: AppIcons.options,
-                          iconSize: 16,
-                          text: _postFilter == PostFilter.byPopularity
-                              ? S.of(context).popular
-                              : S.of(context).fresh,
-                          textStyle: Theme.of(context).textTheme.titleMedium,
-                          onTap: () {
-                            showModalBottomSheet(
+        listener: (context, state) {
+          if (state is NookDeleteSuccess) {
+            AutoRouter.of(context).replaceAll([const MainRoute()]);
+          }
+        },
+        child: BlocBuilder<NookBloc, NookState>(
+          bloc: _nookBloc,
+          builder: (context, state) {
+            if (state is NookLoaded) {
+              return Stack(
+                children: [
+                  RefreshIndicator(
+                    color: AppColors.black,
+                    backgroundColor: AppColors.white,
+                    onRefresh: _onRefresh,
+                    child: CustomScrollView(
+                      controller: _mainScrollController,
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      slivers: [
+                        SliverToBoxAdapter(
+                          child: NookHeader(
+                            nook: state.nook,
+                            showMenu: state.isOwner,
+                            isFollowed: state.isFollowed,
+                            followersCount: state.followersCount,
+                            onMenuTap: () => showModalBottomSheet(
                               context: context,
-                              builder: (context) => PostsFilterMenuBottomSheet(
-                                onPopularTap: () {
+                              builder: (context) => NookMenuBottomSheet(
+                                onEditTap: () async {
                                   Navigator.pop(context);
-                                  setState(() {
-                                    _postFilter = PostFilter.byPopularity;
-                                  });
-                                  _nookPostsBloc.add(
-                                    LoadNookPosts(
-                                      filter: _postFilter,
-                                      isRefresh: true,
-                                    ),
-                                  );
+                                  final bool? needRefresh = await AutoRouter.of(
+                                    context,
+                                  ).push<bool>(NookEditRoute(nook: state.nook));
+
+                                  if (needRefresh == true) {
+                                    _nookBloc.add(LoadNookData());
+                                  }
                                 },
-                                onNewTap: () {
+                                onDeleteTap: () {
                                   Navigator.pop(context);
-                                  setState(() {
-                                    _postFilter = PostFilter.byNovelty;
-                                  });
-                                  _nookPostsBloc.add(
-                                    LoadNookPosts(
-                                      filter: _postFilter,
-                                      isRefresh: true,
-                                    ),
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return DeleteNookDialog(
+                                        onDeleteTap: () =>
+                                            _nookBloc.add(DeleteNook()),
+                                      );
+                                    },
                                   );
                                 },
                               ),
-                            );
-                          },
-                        ),
-                      ),
-                      SliverToBoxAdapter(
-                        child: BlocBuilder<NookPostsBloc, NookPostsState>(
-                          bloc: _nookPostsBloc,
-                          builder: (context, state) {
-                            if (state is NookPostsLoaded) {
-                              return PostList(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 15,
-                                ),
-                                posts: state.posts,
-                                showNook: false,
-                                showLoading: state.hasMore,
-                              );
-                            }
-                            return Center(
-                              child: ErrorMessage(onTap: _onRefresh),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  right: 10,
-                  bottom: 40,
-                  child: _showFloatingButton
-                      ? FloatingActionButton(
-                          elevation: 0,
-                          onPressed: () {
-                            _mainScrollController.animateTo(
-                              0,
-                              duration: const Duration(milliseconds: 400),
-                              curve: Curves.easeOut,
-                            );
-                          },
-                          child: SvgPicture.asset(
-                            AppIcons.chevronUp,
-                            width: 30,
-                            height: 30,
+                            ),
+
+                            onFollowersTap: () => AutoRouter.of(
+                              context,
+                            ).push(NookFollowersRoute(nookId: widget.nookId)),
+                            onFollowTap: () => _nookBloc.add(FollowNook()),
+                            showDescription: _showDescription,
+                            onDescriptionTap: () => setState(() {
+                              _showDescription = !_showDescription;
+                            }),
+                            onCreatePostTap: () => AutoRouter.of(
+                              context,
+                            ).push(CreatePostRoute(nook: state.nook)),
+                            onRulesTap: () => AutoRouter.of(
+                              context,
+                            ).push(NookRulesRoute(rules: state.nook.rules)),
+                            showBanned: state.isModerator || state.isOwner,
+                            onBannedTap: () => AutoRouter.of(context).push(
+                              NookFollowersRoute(
+                                nookId: widget.nookId,
+                                showBanned: true,
+                              ),
+                            ),
+                            onTeamTap: () => AutoRouter.of(
+                              context,
+                            ).push(NookTeamRoute(nookId: widget.nookId)),
                           ),
-                        )
-                      : const SizedBox(),
-                ),
-              ],
-            );
-          } else if (state is NookLoadingFailure) {
-            return Center(child: ErrorMessage(onTap: _onRefresh));
-          } else {
-            return const Center(child: LoadingDots());
-          }
-        },
+                        ),
+                        SliverToBoxAdapter(
+                          child: BlocBuilder<NookPinnedBloc, NookPinnedState>(
+                            bloc: _nookPinnedBloc,
+                            builder: (context, state) {
+                              if (state is NookPinnedPostsLoaded) {
+                                return PinnedPostList(
+                                  scrollController:
+                                      _pinnedPostsScrollController,
+                                  posts: state.posts,
+                                  showLoading: state.hasMore,
+                                );
+                              }
+                              return const SizedBox();
+                            },
+                          ),
+                        ),
+
+                        SliverToBoxAdapter(
+                          child: TextIconButton(
+                            padding: const EdgeInsetsGeometry.symmetric(
+                              horizontal: 15,
+                              vertical: 10,
+                            ),
+                            gap: 5,
+                            iconPath: AppIcons.options,
+                            iconSize: 16,
+                            text: _postFilter == PostFilter.byPopularity
+                                ? S.of(context).popular
+                                : S.of(context).fresh,
+                            textStyle: Theme.of(context).textTheme.titleMedium,
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) =>
+                                    PostsFilterMenuBottomSheet(
+                                      onPopularTap: () {
+                                        Navigator.pop(context);
+                                        setState(() {
+                                          _postFilter = PostFilter.byPopularity;
+                                        });
+                                        _nookPostsBloc.add(
+                                          LoadNookPosts(
+                                            filter: _postFilter,
+                                            isRefresh: true,
+                                          ),
+                                        );
+                                      },
+                                      onNewTap: () {
+                                        Navigator.pop(context);
+                                        setState(() {
+                                          _postFilter = PostFilter.byNovelty;
+                                        });
+                                        _nookPostsBloc.add(
+                                          LoadNookPosts(
+                                            filter: _postFilter,
+                                            isRefresh: true,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                              );
+                            },
+                          ),
+                        ),
+                        SliverToBoxAdapter(
+                          child: BlocBuilder<NookPostsBloc, NookPostsState>(
+                            bloc: _nookPostsBloc,
+                            builder: (context, state) {
+                              if (state is NookPostsLoaded) {
+                                return PostList(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 15,
+                                  ),
+                                  posts: state.posts,
+                                  showNook: false,
+                                  showLoading: state.hasMore,
+                                );
+                              }
+                              return Center(
+                                child: ErrorMessage(onTap: _onRefresh),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    right: 10,
+                    bottom: 40,
+                    child: _showFloatingButton
+                        ? FloatingActionButton(
+                            elevation: 0,
+                            onPressed: () {
+                              _mainScrollController.animateTo(
+                                0,
+                                duration: const Duration(milliseconds: 400),
+                                curve: Curves.easeOut,
+                              );
+                            },
+                            child: SvgPicture.asset(
+                              AppIcons.chevronUp,
+                              width: 30,
+                              height: 30,
+                            ),
+                          )
+                        : const SizedBox(),
+                  ),
+                ],
+              );
+            } else if (state is NookLoadingFailure) {
+              return Center(child: ErrorMessage(onTap: _onRefresh));
+            } else {
+              return const Center(child: LoadingDots());
+            }
+          },
+        ),
       ),
     );
   }

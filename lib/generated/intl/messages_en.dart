@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "chooseNook": MessageLookupByLibrary.simpleMessage("Выберите уголок"),
     "commentCounter": MessageLookupByLibrary.simpleMessage("Комментариев"),
     "comments": MessageLookupByLibrary.simpleMessage("Комментарии"),
+    "confirmationOfNookDeletion": MessageLookupByLibrary.simpleMessage(
+      "Вы действительно хотите удалить этот уголок? Это действие нельзя отменить. Все посты и данные будут удалены навсегда.",
+    ),
     "confirmationOfPostDeletion": MessageLookupByLibrary.simpleMessage(
       "Вы действительно хотите удалить этот пост?",
     ),
