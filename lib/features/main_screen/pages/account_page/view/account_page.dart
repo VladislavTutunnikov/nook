@@ -198,8 +198,10 @@ class _AccountPageState extends State<AccountPage> {
                                 Navigator.pop(context);
                                 AutoRouter.of(context).push(CreatePostRoute());
                               },
-                              //TODO: add functionality
-                              onNookTap: null,
+                              onNookTap: () {
+                                Navigator.pop(context);
+                                AutoRouter.of(context).push(NookEditRoute());
+                              },
                             ),
                           );
                         },

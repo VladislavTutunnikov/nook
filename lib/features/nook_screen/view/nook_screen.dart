@@ -134,11 +134,15 @@ class _NookScreenState extends State<NookScreen> {
                           onMenuTap: () => showModalBottomSheet(
                             context: context,
                             builder: (context) => NookMenuBottomSheet(
-                              onEditTap: () {
-                                AutoRouter.of(
+                              onEditTap: () async {
+                                Navigator.pop(context);
+                                final bool? needRefresh = await AutoRouter.of(
                                   context,
-                                ).push(NookEditRoute(nook: state.nook));
-                                //TODO: add refresh after pop
+                                ).push<bool>(NookEditRoute(nook: state.nook));
+
+                                if (needRefresh == true) {
+                                  _nookBloc.add(LoadNookData());
+                                }
                               },
                               //TODO: add on delete tap
                               onDeleteTap: null,

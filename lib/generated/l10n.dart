@@ -628,6 +628,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Категория уголка:`
+  String get nookCategory {
+    return Intl.message(
+      'Категория уголка:',
+      name: 'nookCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Это название уже занято`
+  String get nameAlreadyTakenError {
+    return Intl.message(
+      'Это название уже занято',
+      name: 'nameAlreadyTakenError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Название уголка не может быть пустым`
+  String get emptyNameError {
+    return Intl.message(
+      'Название уголка не может быть пустым',
+      name: 'emptyNameError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вы не выбрали категорию`
+  String get emptyCategoryError {
+    return Intl.message(
+      'Вы не выбрали категорию',
+      name: 'emptyCategoryError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

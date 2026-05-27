@@ -178,6 +178,30 @@ abstract class NookApiClient {
   @GET('/nooks/categories')
   Future<List<CategoryModel>> getNookCategories();
 
+  @PATCH('/nooks/{nook_id}')
+  @MultiPart()
+  Future<NookModel> updateNook({
+    @Path('nook_id') required String nookId,
+    @Part(name: 'name') required String name,
+    @Part(name: 'description') required String description,
+    @Part(name: 'rules') required String rules,
+    @Part(name: 'category_id') required String categoryId,
+    @Part(name: 'avatar_img') MultipartFile? avatarImg,
+  });
+
+  @POST('/nooks')
+  @MultiPart()
+  Future<NookModel> createNook({
+    @Part(name: 'name') required String name,
+    @Part(name: 'description') required String description,
+    @Part(name: 'rules') required String rules,
+    @Part(name: 'category_id') required String categoryId,
+    @Part(name: 'avatar_img') MultipartFile? avatarImg,
+  });
+
+  @DELETE('/nooks/{nook_id}/avatar')
+  Future<void> deleteNookAvatar({@Path('nook_id') required String nookId});
+
   @GET('/nooks/{nook_id}')
   Future<NookModel> getNook({@Path('nook_id') required String nookId});
 

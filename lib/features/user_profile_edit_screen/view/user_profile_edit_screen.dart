@@ -11,11 +11,11 @@ import 'package:nook/api/models/user_model.dart';
 import 'package:nook/api/repositories/user_repository.dart';
 import 'package:nook/features/user_profile_edit_screen/bloc/user_edit_bloc.dart';
 import 'package:nook/shared/widgets/edit_profile_form.dart';
-import 'package:nook/features/user_profile_edit_screen/widgets/user_profile_error_dialog.dart';
 import 'package:nook/generated/l10n.dart';
 import 'package:nook/shared/widgets/avatar.dart';
 import 'package:nook/shared/widgets/capsule_button.dart';
 import 'package:nook/shared/widgets/loading_dots.dart';
+import 'package:nook/shared/widgets/network_error_dialog.dart';
 import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
 
@@ -102,7 +102,7 @@ class _UserProfileEditScreenState extends State<UserProfileEditScreen> {
             showDialog(
               context: context,
               builder: (BuildContext context) {
-                return const UserProfileErrorDialog();
+                return const NetworkErrorDialog();
               },
             );
           } else if (state is UserProfileUpdated) {

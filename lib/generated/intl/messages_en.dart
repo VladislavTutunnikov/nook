@@ -65,6 +65,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "done": MessageLookupByLibrary.simpleMessage("Готово"),
     "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
     "edited": MessageLookupByLibrary.simpleMessage("изменено"),
+    "emptyCategoryError": MessageLookupByLibrary.simpleMessage(
+      "Вы не выбрали категорию",
+    ),
+    "emptyNameError": MessageLookupByLibrary.simpleMessage(
+      "Название уголка не может быть пустым",
+    ),
     "emptyUsernameError": MessageLookupByLibrary.simpleMessage(
       "Имя пользователя не может быть пустым",
     ),
@@ -81,6 +87,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "minutes": MessageLookupByLibrary.simpleMessage("м."),
     "months": MessageLookupByLibrary.simpleMessage("мес."),
     "myNooks": MessageLookupByLibrary.simpleMessage("Мои уголки"),
+    "nameAlreadyTakenError": MessageLookupByLibrary.simpleMessage(
+      "Это название уже занято",
+    ),
+    "nookCategory": MessageLookupByLibrary.simpleMessage("Категория уголка:"),
     "nookModerators": MessageLookupByLibrary.simpleMessage("Модераторы уголка"),
     "nookName": MessageLookupByLibrary.simpleMessage("Название уголка"),
     "nookOwner": MessageLookupByLibrary.simpleMessage("Владелец уголка"),

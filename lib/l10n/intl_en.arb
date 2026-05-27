@@ -77,5 +77,9 @@
   "onlyImagesCanBeUsedForAvatar": "Для аватара можно использовать только изображения",
   "nookName": "Название уголка",
   "nookRules": "Правила уголка",
-  "chooseCategory": "Выберите категорию"
+  "chooseCategory": "Выберите категорию",
+  "nookCategory": "Категория уголка:",
+  "nameAlreadyTakenError": "Это название уже занято",
+  "emptyNameError": "Название уголка не может быть пустым",
+  "emptyCategoryError": "Вы не выбрали категорию"
 }

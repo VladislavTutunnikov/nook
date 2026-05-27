@@ -958,6 +958,118 @@ class _NookApiClient implements NookApiClient {
   }
 
   @override
+  Future<NookModel> updateNook({
+    required String nookId,
+    required String name,
+    required String description,
+    required String rules,
+    required String categoryId,
+    MultipartFile? avatarImg,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.fields.add(MapEntry('name', name));
+    _data.fields.add(MapEntry('description', description));
+    _data.fields.add(MapEntry('rules', rules));
+    _data.fields.add(MapEntry('category_id', categoryId));
+    if (avatarImg != null) {
+      _data.files.add(MapEntry('avatar_img', avatarImg));
+    }
+    final _options = _setStreamType<NookModel>(
+      Options(
+            method: 'PATCH',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
+          .compose(
+            _dio.options,
+            '/nooks/${nookId}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late NookModel _value;
+    try {
+      _value = NookModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<NookModel> createNook({
+    required String name,
+    required String description,
+    required String rules,
+    required String categoryId,
+    MultipartFile? avatarImg,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.fields.add(MapEntry('name', name));
+    _data.fields.add(MapEntry('description', description));
+    _data.fields.add(MapEntry('rules', rules));
+    _data.fields.add(MapEntry('category_id', categoryId));
+    if (avatarImg != null) {
+      _data.files.add(MapEntry('avatar_img', avatarImg));
+    }
+    final _options = _setStreamType<NookModel>(
+      Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
+          .compose(
+            _dio.options,
+            '/nooks',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late NookModel _value;
+    try {
+      _value = NookModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<void> deleteNookAvatar({required String nookId}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<void>(
+      Options(method: 'DELETE', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/nooks/${nookId}/avatar',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
   Future<NookModel> getNook({required String nookId}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

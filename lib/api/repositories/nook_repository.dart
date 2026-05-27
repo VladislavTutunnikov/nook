@@ -200,4 +200,81 @@ class NookRepository {
       throw Exception('Categories upload error: ${e.message}');
     }
   }
+
+  Future<void> deleteNookAvatar({required String nookId}) async {
+    try {
+      await apiClient.deleteNookAvatar(nookId: nookId);
+    } on DioException catch (e) {
+      throw Exception('Delete nook avatar error: ${e.message}');
+    }
+  }
+
+  Future<NookModel> updateNook({
+    required String nookId,
+    required String name,
+    required String description,
+    required String rules,
+    required String categoryId,
+    String? avatarPath,
+  }) async {
+    try {
+      final MultipartFile? avatarImg;
+      if (avatarPath != null && avatarPath.isNotEmpty) {
+        avatarImg = await MultipartFile.fromFile(avatarPath);
+      } else {
+        avatarImg = null;
+      }
+
+      final response = await apiClient.updateNook(
+        nookId: nookId,
+        name: name,
+        description: description,
+        rules: rules,
+        categoryId: categoryId,
+        avatarImg: avatarImg,
+      );
+      return response;
+    }on DioException catch (e) {
+      if (e.response?.statusCode == 409) {
+        throw NameTakenException('Name already taken');
+      }
+      throw Exception('Profile update error: ${e.message}');
+    }
+  }
+
+  Future<NookModel> createNook({
+    required String name,
+    required String description,
+    required String rules,
+    required String categoryId,
+    String? avatarPath,
+  }) async {
+    try {
+      final MultipartFile? avatarImg;
+      if (avatarPath != null && avatarPath.isNotEmpty) {
+        avatarImg = await MultipartFile.fromFile(avatarPath);
+      } else {
+        avatarImg = null;
+      }
+
+      final response = await apiClient.createNook(
+        name: name,
+        description: description,
+        rules: rules,
+        categoryId: categoryId,
+        avatarImg: avatarImg,
+      );
+      return response;
+    }on DioException catch (e) {
+      if (e.response?.statusCode == 409) {
+        throw NameTakenException('Name already taken');
+      }
+      throw Exception('Create nook error: ${e.message}');
+    }
+  }
+}
+
+class NameTakenException implements Exception {
+  final String message;
+  NameTakenException(this.message);
 }
