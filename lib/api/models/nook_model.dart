@@ -13,6 +13,7 @@ class NookModel {
     required this.followersCount,
     required this.postCount,
     required this.categoryId,
+    required this.categoryName,
     required this.ownerId,
     required this.createdAt,
     required this.isFollowed,
@@ -39,6 +40,9 @@ class NookModel {
 
   @JsonKey(name: 'category_id')
   final String? categoryId;
+
+  @JsonKey(name: 'category_name')
+  final String? categoryName;
 
   @JsonKey(name: 'owner_id')
   final String? ownerId;

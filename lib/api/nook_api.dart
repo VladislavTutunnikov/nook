@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:nook/api/models/category_model.dart';
 import 'package:nook/api/models/comment_model.dart';
 import 'package:nook/api/models/login_request_model.dart';
 import 'package:nook/api/models/nook_member_model.dart';
@@ -173,6 +174,9 @@ abstract class NookApiClient {
     @Query('limit') int? limit,
     @Query('offset') int? offset,
   });
+
+  @GET('/nooks/categories')
+  Future<List<CategoryModel>> getNookCategories();
 
   @GET('/nooks/{nook_id}')
   Future<NookModel> getNook({@Path('nook_id') required String nookId});

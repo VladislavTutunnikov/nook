@@ -1,13 +1,14 @@
 import 'dart:io';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:nook/api/models/category_model.dart';
 import 'package:nook/api/models/nook_model.dart';
 import 'package:nook/features/nook_edit_screen/widgets/choose_category_button.dart';
 import 'package:nook/features/nook_edit_screen/widgets/rules_form.dart';
 import 'package:nook/generated/l10n.dart';
+import 'package:nook/router/router.dart';
 import 'package:nook/shared/widgets/avatar.dart';
 import 'package:nook/shared/widgets/capsule_button.dart';
 import 'package:nook/shared/widgets/edit_profile_form.dart';
@@ -33,6 +34,9 @@ class _NookEditScreenState extends State<NookEditScreen> {
   final ImagePicker _picker = ImagePicker();
   XFile? _selectedImage;
 
+  String? _nookCategoryName;
+  CategoryModel? _selectedCategory;
+
   @override
   void initState() {
     super.initState();
@@ -41,6 +45,7 @@ class _NookEditScreenState extends State<NookEditScreen> {
     _rulesController.text = widget.nook?.rules ?? '';
     _avatarUrl = widget.nook?.avatarUrl ?? '';
     _showDeleteButton = _avatarUrl.isNotEmpty;
+    _nookCategoryName = widget.nook?.categoryName;
   }
 
   @override
@@ -190,7 +195,17 @@ class _NookEditScreenState extends State<NookEditScreen> {
                       RulesForm(rulesController: _rulesController),
                       const SizedBox(height: 20),
                       ChooseCategoryButton(
-                        onTap: null,
+                        category: _selectedCategory == null
+                            ? _nookCategoryName
+                            : _selectedCategory!.name,
+                        onTap: () async {
+                          final category = await AutoRouter.of(
+                            context,
+                          ).push<CategoryModel>(const NookCategoriesRoute());
+                          setState(() {
+                            _selectedCategory = category;
+                          });
+                        },
                       ),
                       const SizedBox(height: 60),
                     ],

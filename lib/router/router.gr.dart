@@ -218,6 +218,22 @@ class MainRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NookCategoriesScreen]
+class NookCategoriesRoute extends PageRouteInfo<void> {
+  const NookCategoriesRoute({List<PageRouteInfo>? children})
+    : super(NookCategoriesRoute.name, initialChildren: children);
+
+  static const String name = 'NookCategoriesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const NookCategoriesScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [NookEditScreen]
 class NookEditRoute extends PageRouteInfo<NookEditRouteArgs> {
   NookEditRoute({Key? key, NookModel? nook, List<PageRouteInfo>? children})

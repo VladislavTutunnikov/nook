@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:nook/api/models/category_model.dart';
 import 'package:nook/api/models/nook_member_model.dart';
 import 'package:nook/api/models/nook_model.dart';
 import 'package:nook/api/models/nook_team_model.dart';
@@ -188,6 +189,15 @@ class NookRepository {
       return response;
     } on DioException catch (e) {
       throw Exception('Search nooks error: ${e.message}');
+    }
+  }
+
+  Future<List<CategoryModel>> getNookCategories() async {
+    try {
+      final List<CategoryModel> response = await apiClient.getNookCategories();
+      return response;
+    } on DioException catch (e) {
+      throw Exception('Categories upload error: ${e.message}');
     }
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nook/generated/l10n.dart';
 import 'package:nook/theme/colors.dart';
 
 class EditProfileForm extends StatelessWidget {
