@@ -678,6 +678,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Здесь пока пусто. Попробуйте найти то, что вам интересно`
+  String get emptyFeedMessage {
+    return Intl.message(
+      'Здесь пока пусто. Попробуйте найти то, что вам интересно',
+      name: 'emptyFeedMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

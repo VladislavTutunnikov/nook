@@ -41,7 +41,8 @@ final whiteTheme = ThemeData(
     showSelectedLabels: false,
     type: BottomNavigationBarType.fixed,
     backgroundColor: AppColors.white,
-    elevation: 15,
+    elevation: 0,
+    
   ),
   inputDecorationTheme: InputDecorationTheme(
     enabledBorder: OutlineInputBorder(

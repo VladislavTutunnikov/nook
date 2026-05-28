@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nook/features/main_screen/pages/account_page/view/account_page.dart';
+import 'package:nook/features/main_screen/pages/feed_page/view/feed_page.dart';
 import 'package:nook/features/main_screen/pages/search_page/view/search_page.dart';
 import 'package:nook/router/router.dart';
 import 'package:nook/theme/colors.dart';
@@ -38,11 +39,11 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   static final List<Widget> _pages = [
-    const AccountPage(),
+    const FeedPage(),
     const SearchPage(),
     const SizedBox(),
     const AccountPage(),
-    const AccountPage(),
+    // const AccountPage(),
   ];
 
   @override
@@ -63,71 +64,81 @@ class _MainScreenState extends State<MainScreen> {
         await SystemNavigator.pop();
       },
       child: Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedTab,
-          onTap: _onSelectTab,
-          items: [
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                AppIcons.house,
-                width: 24,
-                height: 24,
-                colorFilter: ColorFilter.mode(
-                  _currentColor(0),
-                  BlendMode.srcIn,
-                ),
-              ),
-              label: '',
+        bottomNavigationBar: Container(
+          color: AppColors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
             ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                AppIcons.search,
-                width: 24,
-                height: 24,
-                colorFilter: ColorFilter.mode(
-                  _currentColor(1),
-                  BlendMode.srcIn,
+            child: BottomNavigationBar(
+              currentIndex: _selectedTab,
+              onTap: _onSelectTab,
+              items: [
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    AppIcons.house,
+                    width: 24,
+                    height: 24,
+                    colorFilter: ColorFilter.mode(
+                      _currentColor(0),
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  label: '',
                 ),
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                AppIcons.plusSquare,
-                width: 24,
-                height: 24,
-                colorFilter: ColorFilter.mode(
-                  _currentColor(2),
-                  BlendMode.srcIn,
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    AppIcons.search,
+                    width: 24,
+                    height: 24,
+                    colorFilter: ColorFilter.mode(
+                      _currentColor(1),
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  label: '',
                 ),
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                AppIcons.bell,
-                width: 24,
-                height: 24,
-                colorFilter: ColorFilter.mode(
-                  _currentColor(3),
-                  BlendMode.srcIn,
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    AppIcons.plusSquare,
+                    width: 24,
+                    height: 24,
+                    colorFilter: ColorFilter.mode(
+                      _currentColor(2),
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  label: '',
                 ),
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                AppIcons.user,
-                width: 24,
-                height: 24,
-                colorFilter: ColorFilter.mode(
-                  _currentColor(4),
-                  BlendMode.srcIn,
+                // BottomNavigationBarItem(
+                //   icon: SvgPicture.asset(
+                //     AppIcons.bell,
+                //     width: 24,
+                //     height: 24,
+                //     colorFilter: ColorFilter.mode(
+                //       _currentColor(3),
+                //       BlendMode.srcIn,
+                //     ),
+                //   ),
+                //   label: '',
+                // ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    AppIcons.user,
+                    width: 24,
+                    height: 24,
+                    colorFilter: ColorFilter.mode(
+                      _currentColor(3),
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  label: '',
                 ),
-              ),
-              label: '',
+              ],
             ),
-          ],
+          ),
         ),
         body: _pages[_selectedTab],
       ),

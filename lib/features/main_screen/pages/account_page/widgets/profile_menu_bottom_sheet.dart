@@ -71,7 +71,7 @@ class ProfileMenuBottomSheet extends StatelessWidget {
           TextIconButton(
             padding: const EdgeInsets.only(bottom: 20),
             onTap: onAboutTap,
-            iconPath: AppIcons.logoIcon,
+            iconPath: AppIcons.logo,
             text: S.of(context).aboutUs,
           ),
           TextIconButton(

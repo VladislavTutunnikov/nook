@@ -11,12 +11,14 @@ class PostList extends StatelessWidget {
     required this.showNook,
     this.showLoading = false,
     this.padding = const EdgeInsets.all(15),
+    this.placeholderText,
   });
 
   final List<PostModel> posts;
   final bool showNook;
   final bool showLoading;
   final EdgeInsetsGeometry padding;
+  final String? placeholderText;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,9 @@ class PostList extends StatelessWidget {
         ? Padding(
             padding: padding,
             child: Text(
-              S.of(context).theresNothingHere,
+              placeholderText != null
+                  ? placeholderText!
+                  : S.of(context).theresNothingHere,
               style: Theme.of(context).textTheme.titleMedium,
             ),
           )

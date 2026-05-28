@@ -113,4 +113,13 @@ class PostRepository {
       throw Exception('Post unpin error: ${e.message}');
     }
   }
+
+  Future<List<PostModel>> getFeed({int limit = 20, int offset = 0}) async {
+    try {
+      final response = await apiClient.getFeed(limit: limit, offset: offset);
+      return response;
+    } on DioException catch (e) {
+      throw Exception('Feed upload error: ${e.message}');
+    }
+  }
 }

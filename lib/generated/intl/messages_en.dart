@@ -71,6 +71,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "emptyCategoryError": MessageLookupByLibrary.simpleMessage(
       "Вы не выбрали категорию",
     ),
+    "emptyFeedMessage": MessageLookupByLibrary.simpleMessage(
+      "Здесь пока пусто. Попробуйте найти то, что вам интересно",
+    ),
     "emptyNameError": MessageLookupByLibrary.simpleMessage(
       "Название уголка не может быть пустым",
     ),

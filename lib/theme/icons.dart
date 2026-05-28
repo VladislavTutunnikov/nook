@@ -33,7 +33,8 @@ class AppIcons {
   static const String unpin = 'assets/icons/unpin.svg';
   static const String exit = 'assets/icons/exit.svg';
   static const String settings = 'assets/icons/settings.svg';
-  static const String logoIcon = 'assets/icons/logo_icon.svg';
+  static const String logo = 'assets/icons/logo.svg';
+  static const String logoFilled = 'assets/icons/logo_filled.svg';
   static const String bug = 'assets/icons/bug.svg';
   static const String question = 'assets/icons/question.svg';
   static const String statistics = 'assets/icons/statistics.svg';

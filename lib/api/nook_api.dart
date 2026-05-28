@@ -271,4 +271,11 @@ abstract class NookApiClient {
     @Path('nook_id') required String nookId,
     @Path('follower_id') required String followerId,
   });
+  
+  //FEED
+  @GET("/feed")
+  Future<List<PostModel>> getFeed({
+    @Query('limit') int? limit,
+    @Query('offset') int? offset,
+  });
 }
