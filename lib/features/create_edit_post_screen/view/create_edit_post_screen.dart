@@ -4,12 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nook/api/di/injection.dart';
 import 'package:nook/api/models/nook_model.dart';
+import 'package:nook/api/models/post_model.dart';
 import 'package:nook/api/repositories/post_repository.dart';
-import 'package:nook/features/create_post_screen/bloc/create_post_bloc.dart';
-import 'package:nook/features/create_post_screen/widgets/choose_nook_button.dart';
-import 'package:nook/features/create_post_screen/widgets/create_post_error_dialog.dart';
-import 'package:nook/features/create_post_screen/widgets/selected_images_list.dart';
-import 'package:nook/features/create_post_screen/widgets/text_input_section.dart';
+import 'package:nook/features/create_edit_post_screen/bloc/post_form_bloc.dart';
+import 'package:nook/features/create_edit_post_screen/widgets/choose_nook_button.dart';
+import 'package:nook/features/create_edit_post_screen/widgets/post_loading_error_dialog.dart';
+import 'package:nook/features/create_edit_post_screen/widgets/selected_images_list.dart';
+import 'package:nook/features/create_edit_post_screen/widgets/text_input_section.dart';
 import 'package:nook/generated/l10n.dart';
 import 'package:nook/router/router.dart';
 import 'package:nook/shared/widgets/custom_back_button.dart';
@@ -19,61 +20,68 @@ import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
 
 @RoutePage()
-class CreatePostScreen extends StatefulWidget {
-  const CreatePostScreen({super.key, this.nook});
+class CreateEditPostScreen extends StatefulWidget {
+  const CreateEditPostScreen({super.key, this.nook, this.post});
   final NookModel? nook;
+  final PostModel? post;
   @override
-  State<CreatePostScreen> createState() => _CreatePostScreenState();
+  State<CreateEditPostScreen> createState() => _CreateEditPostScreenState();
 }
 
-class _CreatePostScreenState extends State<CreatePostScreen> {
+class _CreateEditPostScreenState extends State<CreateEditPostScreen> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _textController = TextEditingController();
 
   final ImagePicker _picker = ImagePicker();
-  List<XFile> _selectedImages = [];
   NookModel? _selectedNook;
   String? _errorMessage;
+  bool _isEdit = false;
+  final String _baseUrl = getIt<String>();
+  List<String> _images = [];
+  final List<String> _imagesToRemove = [];
 
-  final CreatePostBloc _createPostBloc = CreatePostBloc(
-    postRepository: getIt<PostRepository>(),
-  );
+  late final PostFormBloc _postFormBloc;
 
   Future<void> _pickImages() async {
-    final List<XFile>? images = await _picker.pickMultiImage();
+    final List<XFile>? selectedImages = await _picker.pickMultiImage();
     const maxImagesCount = 10;
 
-    if (images == null) return;
+    if (selectedImages == null) return;
 
-    final validImages = images.where((file) {
+    final validImages = selectedImages.where((file) {
       final ext = file.path.split('.').last.toLowerCase();
       return ['jpg', 'jpeg', 'png', 'gif', 'webp'].contains(ext);
     }).toList();
 
-    if (validImages.length < images.length) {
+    if (validImages.length < selectedImages.length) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(S.of(context).youCanNotAddVideoFiles)),
       );
     }
 
-    final currentImages = List<XFile>.from(_selectedImages);
-    currentImages.addAll(validImages);
+    final availableSlots = maxImagesCount - _images.length;
 
-    if (currentImages.length > maxImagesCount) {
+    if (validImages.length > availableSlots) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(S.of(context).youCanSelectUpTo10Images)),
       );
     }
 
-    final limitedImages = currentImages.take(maxImagesCount).toList();
+    final limitedImages = validImages.take(availableSlots).toList();
     setState(() {
-      _selectedImages = limitedImages;
+      _images.addAll(limitedImages.map((e) => e.path).toList());
     });
   }
 
   void _removeImage(int index) {
+    final image = _images[index];
+
+    if (_isEdit && image.startsWith('http')) {
+      _imagesToRemove.add(_images[index]);
+    }
+
     setState(() {
-      _selectedImages.removeAt(index);
+      _images.removeAt(index);
     });
   }
 
@@ -92,7 +100,21 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
   @override
   void initState() {
     super.initState();
+    _postFormBloc = PostFormBloc(
+      postRepository: getIt<PostRepository>(),
+      postId: widget.post?.id,
+      baseUrl: _baseUrl,
+    );
+
     _selectedNook = widget.nook;
+
+    _isEdit = widget.post != null;
+
+    if (_isEdit) {
+      _titleController.text = widget.post!.title;
+      _textController.text = widget.post!.content ?? '';
+      _images = widget.post!.photos.map((url) => '$_baseUrl$url').toList();
+    }
   }
 
   @override
@@ -106,32 +128,32 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: BlocListener<CreatePostBloc, CreatePostState>(
-        bloc: _createPostBloc,
+      body: BlocListener<PostFormBloc, PostFormState>(
+        bloc: _postFormBloc,
         listener: (context, state) {
-          if (state is CreatePostTitleError) {
+          if (state is PostTitleError) {
             setState(() {
               _errorMessage = S.of(context).createPostTitleErrorMessage;
             });
-          } else if (state is CreatePostNookIdError) {
+          } else if (state is PostNookIdError) {
             setState(() {
               _errorMessage = S.of(context).createPostNookErrorMessage;
             });
-          } else if (state is CreatePostFailure) {
+          } else if (state is PostLoadingFailure) {
             showDialog(
               context: context,
               builder: (BuildContext context) {
-                return const CreatePostErrorDialog();
+                return const PostLoadingErrorDialog();
               },
             );
-          } else if (state is PostCreated) {
+          } else if (state is PostLoaded) {
             AutoRouter.of(context).pop();
           }
         },
-        child: BlocBuilder<CreatePostBloc, CreatePostState>(
-          bloc: _createPostBloc,
+        child: BlocBuilder<PostFormBloc, PostFormState>(
+          bloc: _postFormBloc,
           builder: (context, state) {
-            if (state is CreatePostLoading) {
+            if (state is PostLoading) {
               return const Center(child: LoadingDots());
             } else {
               return CustomScrollView(
@@ -159,14 +181,23 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                         CustomIconButton(
                           iconPath: AppIcons.send,
                           color: AppColors.black,
-                          onTap: () => _createPostBloc.add(
-                            SendPost(
-                              nookId: _selectedNook?.id,
-                              title: _titleController.text,
-                              content: _textController.text,
-                              images: _selectedImages,
-                            ),
-                          ),
+                          onTap: () => _isEdit
+                              ? _postFormBloc.add(
+                                  UpdatePost(
+                                    title: _titleController.text,
+                                    content: _textController.text,
+                                    images: _images,
+                                    imagesToRemove: _imagesToRemove,
+                                  ),
+                                )
+                              : _postFormBloc.add(
+                                  SendPost(
+                                    nookId: _selectedNook?.id,
+                                    title: _titleController.text,
+                                    content: _textController.text,
+                                    images: _images,
+                                  ),
+                                ),
                         ),
                       ],
                     ),
@@ -174,24 +205,27 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                   SliverToBoxAdapter(
                     child: Column(
                       children: [
-                        _selectedImages.isNotEmpty
+                        _images.isNotEmpty
                             ? SelectedImagesList(
-                                images: _selectedImages,
+                                images: _images,
                                 onCloseTap: _removeImage,
                               )
                             : const SizedBox(),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 15,
-                          ),
-                          child: ChooseNookButton(
-                            key: ValueKey(_selectedNook?.id),
-                            avatarUrl: _selectedNook?.avatarUrl,
-                            nookName: _selectedNook?.name,
-                            onTap: _selectNook,
-                          ),
-                        ),
+                        _isEdit
+                            ? const SizedBox()
+                            : Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 15,
+                                ),
+                                child: ChooseNookButton(
+                                  key: ValueKey(_selectedNook?.id),
+                                  avatarUrl: _selectedNook?.avatarUrl,
+                                  nookName: _selectedNook?.name,
+                                  onTap: _selectNook,
+                                ),
+                              ),
+
                         _errorMessage != null
                             ? Text(
                                 _errorMessage!,

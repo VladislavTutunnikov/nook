@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nook/generated/l10n.dart';
 import 'package:nook/theme/colors.dart';
 
-class CreatePostErrorDialog extends StatelessWidget {
-  const CreatePostErrorDialog({super.key});
+class PostLoadingErrorDialog extends StatelessWidget {
+  const PostLoadingErrorDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

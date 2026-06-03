@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:nook/api/models/nook_model.dart';
+import 'package:nook/api/models/post_model.dart';
 import 'package:nook/api/models/user_model.dart';
 import 'package:nook/features/account_screen/view/account_screen.dart';
 import 'package:nook/features/auth_wrapper/view/auth_wrapper_screen.dart';
-import 'package:nook/features/create_post_screen/view/create_post_screen.dart';
+import 'package:nook/features/create_edit_post_screen/view/create_edit_post_screen.dart';
 import 'package:nook/features/followed_nooks_screen/view/followed_nooks_screen.dart';
 import 'package:nook/features/login_screen/view/login_screen.dart';
 import 'package:nook/features/main_screen/view/main_screen.dart';
@@ -34,7 +35,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: SavedPostsRoute.page),
     AutoRoute(page: FollowedNooksRoute.page),
     AutoRoute(page: UserNooksRoute.page),
-    AutoRoute(page: CreatePostRoute.page),
+    AutoRoute(page: CreateEditPostRoute.page),
     AutoRoute(page: UserProfileEditRoute.page),
     AutoRoute(page: NookEditRoute.page),
     AutoRoute(page: NookCategoriesRoute.page),

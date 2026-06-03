@@ -17,12 +17,27 @@ class SelectedImage extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadiusGeometry.circular(20),
-          child: Image.file(
-            File(path),
-            width: 100,
-            height: 100,
-            fit: BoxFit.cover,
-          ),
+          child: path.startsWith('http')
+              ? Image.network(
+                  path,
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.asset(
+                      'assets/images/photo_placeholder.png',
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    );
+                  },
+                )
+              : Image.file(
+                  File(path),
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
         ),
 
         Positioned(

@@ -78,7 +78,9 @@ class _PostCardState extends State<PostCard> {
                                   : widget.post.user.username,
                               onAvatarTap: () {
                                 if (widget.showNook) {
-                                  AutoRouter.of(context).push(NookRoute(nookId: widget.post.nook.id));
+                                  AutoRouter.of(context).push(
+                                    NookRoute(nookId: widget.post.nook.id),
+                                  );
                                 } else {
                                   AutoRouter.of(context).push(
                                     AccountRoute(userId: widget.post.user.id),
@@ -163,8 +165,13 @@ class _PostCardState extends State<PostCard> {
                                     );
                                   },
 
+                                  onEditTap: () {
+                                    Navigator.pop(context);
+                                    AutoRouter.of(context).push(
+                                      CreateEditPostRoute(post: widget.post),
+                                    );
+                                  },
                                   //TODO: add functionality
-                                  onEditTap: null,
                                   onReportTap: null,
                                 ),
                               );

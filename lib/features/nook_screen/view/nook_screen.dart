@@ -177,7 +177,7 @@ class _NookScreenState extends State<NookScreen> {
                             }),
                             onCreatePostTap: () => AutoRouter.of(
                               context,
-                            ).push(CreatePostRoute(nook: state.nook)),
+                            ).push(CreateEditPostRoute(nook: state.nook)),
                             onRulesTap: () => AutoRouter.of(
                               context,
                             ).push(NookRulesRoute(rules: state.nook.rules)),

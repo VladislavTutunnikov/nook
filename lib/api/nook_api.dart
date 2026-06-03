@@ -140,6 +140,16 @@ abstract class NookApiClient {
     @Part(name: 'images') List<MultipartFile>? images,
   });
 
+  @PATCH('/posts/{post_id}')
+  @MultiPart()
+  Future<void> updatePost({
+    @Path('post_id') required String postId,
+    @Part(name: 'title') required String title,
+    @Part(name: 'content') String? content,
+    @Part(name: 'images_to_add') List<MultipartFile>? imagesToAdd,
+    @Part(name: 'images_to_remove') List<String>? imagesToRemove,
+  });
+
   @DELETE('/posts/{post_id}')
   Future<void> deletePost({@Path('post_id') required String postId});
 

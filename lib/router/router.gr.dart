@@ -74,49 +74,59 @@ class AuthWrapperRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [CreatePostScreen]
-class CreatePostRoute extends PageRouteInfo<CreatePostRouteArgs> {
-  CreatePostRoute({Key? key, NookModel? nook, List<PageRouteInfo>? children})
-    : super(
-        CreatePostRoute.name,
-        args: CreatePostRouteArgs(key: key, nook: nook),
-        initialChildren: children,
-      );
+/// [CreateEditPostScreen]
+class CreateEditPostRoute extends PageRouteInfo<CreateEditPostRouteArgs> {
+  CreateEditPostRoute({
+    Key? key,
+    NookModel? nook,
+    PostModel? post,
+    List<PageRouteInfo>? children,
+  }) : super(
+         CreateEditPostRoute.name,
+         args: CreateEditPostRouteArgs(key: key, nook: nook, post: post),
+         initialChildren: children,
+       );
 
-  static const String name = 'CreatePostRoute';
+  static const String name = 'CreateEditPostRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<CreatePostRouteArgs>(
-        orElse: () => const CreatePostRouteArgs(),
+      final args = data.argsAs<CreateEditPostRouteArgs>(
+        orElse: () => const CreateEditPostRouteArgs(),
       );
-      return CreatePostScreen(key: args.key, nook: args.nook);
+      return CreateEditPostScreen(
+        key: args.key,
+        nook: args.nook,
+        post: args.post,
+      );
     },
   );
 }
 
-class CreatePostRouteArgs {
-  const CreatePostRouteArgs({this.key, this.nook});
+class CreateEditPostRouteArgs {
+  const CreateEditPostRouteArgs({this.key, this.nook, this.post});
 
   final Key? key;
 
   final NookModel? nook;
 
+  final PostModel? post;
+
   @override
   String toString() {
-    return 'CreatePostRouteArgs{key: $key, nook: $nook}';
+    return 'CreateEditPostRouteArgs{key: $key, nook: $nook, post: $post}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (other is! CreatePostRouteArgs) return false;
-    return key == other.key && nook == other.nook;
+    if (other is! CreateEditPostRouteArgs) return false;
+    return key == other.key && nook == other.nook && post == other.post;
   }
 
   @override
-  int get hashCode => key.hashCode ^ nook.hashCode;
+  int get hashCode => key.hashCode ^ nook.hashCode ^ post.hashCode;
 }
 
 /// generated route for

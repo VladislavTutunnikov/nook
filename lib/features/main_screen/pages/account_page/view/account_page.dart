@@ -196,7 +196,7 @@ class _AccountPageState extends State<AccountPage> {
                             builder: (context) => CreateMenuBottomSheet(
                               onPostTap: () {
                                 Navigator.pop(context);
-                                AutoRouter.of(context).push(CreatePostRoute());
+                                AutoRouter.of(context).push(CreateEditPostRoute());
                               },
                               onNookTap: () {
                                 Navigator.pop(context);

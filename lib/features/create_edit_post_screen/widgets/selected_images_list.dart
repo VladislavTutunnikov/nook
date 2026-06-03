@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:nook/features/create_post_screen/widgets/selected_image.dart';
+import 'package:nook/features/create_edit_post_screen/widgets/selected_image.dart';
 
 class SelectedImagesList extends StatelessWidget {
   const SelectedImagesList({super.key, required this.images, this.onCloseTap});
 
-  final List<XFile> images;
+  final List<String> images;
   final void Function(int)? onCloseTap;
 
   @override
@@ -18,7 +17,7 @@ class SelectedImagesList extends StatelessWidget {
         itemCount: images.length,
         separatorBuilder: (_, __) => const SizedBox(width: 10),
         itemBuilder: (context, index) => SelectedImage(
-          path: images[index].path,
+          path: images[index],
           onCloseTap: () => onCloseTap?.call(index),
         ),
       ),

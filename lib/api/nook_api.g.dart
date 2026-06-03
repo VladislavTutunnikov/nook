@@ -720,6 +720,47 @@ class _NookApiClient implements NookApiClient {
   }
 
   @override
+  Future<void> updatePost({
+    required String postId,
+    required String title,
+    String? content,
+    List<MultipartFile>? imagesToAdd,
+    List<String>? imagesToRemove,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.fields.add(MapEntry('title', title));
+    if (content != null) {
+      _data.fields.add(MapEntry('content', content));
+    }
+    if (imagesToAdd != null) {
+      _data.files.addAll(imagesToAdd.map((i) => MapEntry('images_to_add', i)));
+    }
+    imagesToRemove?.forEach((i) {
+      _data.fields.add(MapEntry('images_to_remove', i));
+    });
+    final _options = _setStreamType<void>(
+      Options(
+            method: 'PATCH',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
+          .compose(
+            _dio.options,
+            '/posts/${postId}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
   Future<void> deletePost({required String postId}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

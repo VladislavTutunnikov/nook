@@ -26,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
   void _onSelectTab(int index) {
     if (_selectedTab == index) return;
     if (index == 2) {
-      AutoRouter.of(context).push(CreatePostRoute());
+      AutoRouter.of(context).push(CreateEditPostRoute());
       return;
     }
     setState(() {

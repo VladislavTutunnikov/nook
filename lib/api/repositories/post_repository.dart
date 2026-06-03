@@ -42,6 +42,33 @@ class PostRepository {
     }
   }
 
+  Future<void> updatePost({
+    required String postId,
+    required String title,
+    String? content,
+    List<String>? imagesToAddPaths,
+    List<String>? imagesToRemoveUrls,
+  }) async {
+    try {
+      List<MultipartFile>? imagesToAdd;
+      if (imagesToAddPaths != null && imagesToAddPaths.isNotEmpty) {
+        imagesToAdd = await Future.wait(
+          imagesToAddPaths.map((path) => MultipartFile.fromFile(path)),
+        );
+      }
+
+      await apiClient.updatePost(
+        postId: postId,
+        title: title,
+        content: content,
+        imagesToAdd: imagesToAdd,
+        imagesToRemove: imagesToRemoveUrls,
+      );
+    } on DioException catch (e) {
+      throw Exception('Post update error: ${e.message}');
+    }
+  }
+
   Future<void> deletePost({required String postId}) async {
     try {
       await apiClient.deletePost(postId: postId);
