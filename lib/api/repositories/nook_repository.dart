@@ -283,6 +283,6 @@ class NookRepository {
 }
 
 class NameTakenException implements Exception {
-  final String message;
   NameTakenException(this.message);
+  final String message;
 }

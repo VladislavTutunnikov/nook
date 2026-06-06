@@ -20,6 +20,11 @@ class AuthRepository {
         response.refreshToken,
       );
     } on DioException catch (e) {
+      if (e.response?.statusCode == 401) {
+        throw InvalidLoginOrPasswordException('Invalid login or password');
+      } else if (e.response?.statusCode == 403) {
+        throw AccountBannedException('Account has been banned');
+      }
       throw Exception(e);
     }
   }
@@ -80,4 +85,14 @@ class AuthRepository {
   Future<bool> isAuthenticated() async {
     return await secureStorage.hasTokens();
   }
+}
+
+class InvalidLoginOrPasswordException implements Exception {
+  InvalidLoginOrPasswordException(this.message);
+  final String message;
+}
+
+class AccountBannedException implements Exception {
+  AccountBannedException(this.message);
+  final String message;
 }

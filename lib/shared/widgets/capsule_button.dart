@@ -19,6 +19,7 @@ class CapsuleButton extends StatelessWidget {
       color: AppColors.white,
     ),
     this.onTap,
+    this.centerText = false,
   });
   final EdgeInsetsGeometry? padding;
   final Color backgroundColor;
@@ -29,6 +30,7 @@ class CapsuleButton extends StatelessWidget {
   final String text;
   final TextStyle? textStyle;
   final void Function()? onTap;
+  final bool centerText;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,9 @@ class CapsuleButton extends StatelessWidget {
           border: border,
         ),
         child: Row(
+          mainAxisAlignment: centerText
+              ? MainAxisAlignment.center
+              : MainAxisAlignment.start,
           children: [
             iconPath != null
                 ? SvgPicture.asset(

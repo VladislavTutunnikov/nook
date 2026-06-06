@@ -42,12 +42,11 @@ final whiteTheme = ThemeData(
     type: BottomNavigationBarType.fixed,
     backgroundColor: AppColors.white,
     elevation: 0,
-    
   ),
   inputDecorationTheme: InputDecorationTheme(
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: const BorderSide(color: AppColors.black, width: 1),
+      borderRadius: BorderRadius.circular(14),
+      borderSide: const BorderSide(color: AppColors.darkGrey, width: 1),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),

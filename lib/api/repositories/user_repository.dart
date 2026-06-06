@@ -228,6 +228,6 @@ class UserRepository {
 }
 
 class UsernameTakenException implements Exception {
-  final String message;
   UsernameTakenException(this.message);
+  final String message;
 }

@@ -47,6 +47,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "contactSupport": MessageLookupByLibrary.simpleMessage(
       "Обратиться в поддержку",
     ),
+    "contactSupportIfMistake": MessageLookupByLibrary.simpleMessage(
+      "Если вы считаете, что это ошибка, свяжитесь с поддержкой по адресу:",
+    ),
     "copyText": MessageLookupByLibrary.simpleMessage("Копировать текст"),
     "createNook": MessageLookupByLibrary.simpleMessage("Создать уголок"),
     "createPost": MessageLookupByLibrary.simpleMessage("Создать пост"),
@@ -82,13 +85,20 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "follow": MessageLookupByLibrary.simpleMessage("Подписаться"),
     "fresh": MessageLookupByLibrary.simpleMessage("Новое"),
+    "gladToSeeYouAgain": MessageLookupByLibrary.simpleMessage(
+      "Рады снова видеть вас!",
+    ),
     "header": MessageLookupByLibrary.simpleMessage("Заголовок"),
     "hours": MessageLookupByLibrary.simpleMessage("ч."),
     "inBan": MessageLookupByLibrary.simpleMessage("В бане"),
+    "invalidLoginOrPassword": MessageLookupByLibrary.simpleMessage(
+      "Неверный логин или пароль",
+    ),
     "inviteFriends": MessageLookupByLibrary.simpleMessage("Пригласить друзей"),
     "justNow": MessageLookupByLibrary.simpleMessage("только что"),
     "likeCounter": MessageLookupByLibrary.simpleMessage("Лайков"),
     "likes": MessageLookupByLibrary.simpleMessage("Лайки"),
+    "logIn": MessageLookupByLibrary.simpleMessage("Войти"),
     "logout": MessageLookupByLibrary.simpleMessage("Выйти из аккаунта"),
     "minutes": MessageLookupByLibrary.simpleMessage("м."),
     "months": MessageLookupByLibrary.simpleMessage("мес."),
@@ -96,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "nameAlreadyTakenError": MessageLookupByLibrary.simpleMessage(
       "Это название уже занято",
     ),
+    "noAccountYet": MessageLookupByLibrary.simpleMessage("Еще нет аккаунта?"),
     "nookCategory": MessageLookupByLibrary.simpleMessage("Категория уголка:"),
     "nookModerators": MessageLookupByLibrary.simpleMessage("Модераторы уголка"),
     "nookName": MessageLookupByLibrary.simpleMessage("Название уголка"),
@@ -106,6 +117,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "onlyImagesCanBeUsedForAvatar": MessageLookupByLibrary.simpleMessage(
       "Для аватара можно использовать только изображения",
+    ),
+    "password": MessageLookupByLibrary.simpleMessage("Пароль"),
+    "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+      "Пароль должен содержать минимум 8 символов",
     ),
     "pin": MessageLookupByLibrary.simpleMessage("Закрепить"),
     "pinned": MessageLookupByLibrary.simpleMessage("Закреплено"),
@@ -153,6 +168,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "usernameAlreadyTakenError": MessageLookupByLibrary.simpleMessage(
       "Это имя пользователя занято",
     ),
+    "usernameOrEmail": MessageLookupByLibrary.simpleMessage(
+      "Имя пользователя, эл. адрес",
+    ),
+    "welcomeBack": MessageLookupByLibrary.simpleMessage("С возвращением!"),
     "withNook": MessageLookupByLibrary.simpleMessage("C Nook"),
     "years": MessageLookupByLibrary.simpleMessage("г."),
     "youCanNotAddVideoFiles": MessageLookupByLibrary.simpleMessage(
@@ -160,6 +179,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "youCanSelectUpTo10Images": MessageLookupByLibrary.simpleMessage(
       "Можно выбрать не более 10 изображений",
+    ),
+    "yourAccountHasBeenBanned": MessageLookupByLibrary.simpleMessage(
+      "Ваш аккаунт был заблокирован",
     ),
   };
 }

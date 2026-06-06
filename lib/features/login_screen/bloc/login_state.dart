@@ -13,3 +13,9 @@ class LoginFailure extends LoginState {
 
   final String message;
 }
+
+class ShortPasswordError extends LoginState {}
+
+class InvalidLoginOrPasswordError extends LoginState {}
+
+class AccountBannedError extends LoginState {}

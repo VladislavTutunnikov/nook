@@ -275,6 +275,7 @@ class _NookEditScreenState extends State<NookEditScreen> {
                                       ?.copyWith(color: AppColors.darkGrey),
                                 ),
                               ),
+                              const SizedBox(height: 5),
                               ChooseCategoryButton(
                                 category: _selectedCategory,
                                 onTap: () async {

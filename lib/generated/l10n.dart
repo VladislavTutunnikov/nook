@@ -688,6 +688,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Имя пользователя, эл. адрес`
+  String get usernameOrEmail {
+    return Intl.message(
+      'Имя пользователя, эл. адрес',
+      name: 'usernameOrEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пароль`
+  String get password {
+    return Intl.message('Пароль', name: 'password', desc: '', args: []);
+  }
+
+  /// `С возвращением!`
+  String get welcomeBack {
+    return Intl.message(
+      'С возвращением!',
+      name: 'welcomeBack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Рады снова видеть вас!`
+  String get gladToSeeYouAgain {
+    return Intl.message(
+      'Рады снова видеть вас!',
+      name: 'gladToSeeYouAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Войти`
+  String get logIn {
+    return Intl.message('Войти', name: 'logIn', desc: '', args: []);
+  }
+
+  /// `Еще нет аккаунта?`
+  String get noAccountYet {
+    return Intl.message(
+      'Еще нет аккаунта?',
+      name: 'noAccountYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваш аккаунт был заблокирован`
+  String get yourAccountHasBeenBanned {
+    return Intl.message(
+      'Ваш аккаунт был заблокирован',
+      name: 'yourAccountHasBeenBanned',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Если вы считаете, что это ошибка, свяжитесь с поддержкой по адресу:`
+  String get contactSupportIfMistake {
+    return Intl.message(
+      'Если вы считаете, что это ошибка, свяжитесь с поддержкой по адресу:',
+      name: 'contactSupportIfMistake',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пароль должен содержать минимум 8 символов`
+  String get passwordTooShort {
+    return Intl.message(
+      'Пароль должен содержать минимум 8 символов',
+      name: 'passwordTooShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Неверный логин или пароль`
+  String get invalidLoginOrPassword {
+    return Intl.message(
+      'Неверный логин или пароль',
+      name: 'invalidLoginOrPassword',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

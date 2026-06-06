@@ -6,17 +6,25 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc(this.authRepository) : super(LoginInitial()) {
-
     on<LoginSubmitted>((event, emit) async {
+      if (event.password.length < 8) {
+        emit(ShortPasswordError());
+        return;
+      }
+
       emit(LoginLoading());
+
       try {
         await authRepository.login(event.login, event.password);
         emit(LoginSuccess());
+      } on InvalidLoginOrPasswordException catch (_) {
+        emit(InvalidLoginOrPasswordError());
+      } on AccountBannedException catch (_) {
+        emit(AccountBannedError());
       } catch (e) {
         emit(LoginFailure(e.toString()));
       }
     });
-
   }
 
   final AuthRepository authRepository;
