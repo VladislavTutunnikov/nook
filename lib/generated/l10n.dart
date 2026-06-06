@@ -778,6 +778,61 @@ class S {
       args: [],
     );
   }
+
+  /// `Как мы можем вас называть?`
+  String get whatCanWeCallYou {
+    return Intl.message(
+      'Как мы можем вас называть?',
+      name: 'whatCanWeCallYou',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваш адрес электронной почты`
+  String get yourEmail {
+    return Intl.message(
+      'Ваш адрес электронной почты',
+      name: 'yourEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Электронная почта`
+  String get email {
+    return Intl.message('Электронная почта', name: 'email', desc: '', args: []);
+  }
+
+  /// `Придумайте пароль`
+  String get thinkPassword {
+    return Intl.message(
+      'Придумайте пароль',
+      name: 'thinkPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Зарегистрируйтесь в Nook`
+  String get registerWithNook {
+    return Intl.message(
+      'Зарегистрируйтесь в Nook',
+      name: 'registerWithNook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Создать аккаунт`
+  String get createAccount {
+    return Intl.message(
+      'Создать аккаунт',
+      name: 'createAccount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

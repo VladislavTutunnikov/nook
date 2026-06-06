@@ -93,5 +93,11 @@
   "yourAccountHasBeenBanned": "Ваш аккаунт был заблокирован",
   "contactSupportIfMistake": "Если вы считаете, что это ошибка, свяжитесь с поддержкой по адресу:",
   "passwordTooShort": "Пароль должен содержать минимум 8 символов",
-  "invalidLoginOrPassword": "Неверный логин или пароль"
+  "invalidLoginOrPassword": "Неверный логин или пароль",
+  "whatCanWeCallYou": "Как мы можем вас называть?",
+  "yourEmail": "Ваш адрес электронной почты",
+  "email": "Электронная почта",
+  "thinkPassword": "Придумайте пароль",
+  "registerWithNook": "Зарегистрируйтесь в Nook",
+  "createAccount": "Создать аккаунт"
 }

@@ -163,6 +163,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         const SizedBox(height: 10),
                         CapsuleButton(
+                          onTap: () =>
+                              AutoRouter.of(context).push(const SignUpRoute()),
                           text: S.of(context).noAccountYet,
                           padding: const EdgeInsets.all(13),
                           centerText: true,

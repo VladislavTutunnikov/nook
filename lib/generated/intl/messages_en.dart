@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Если вы считаете, что это ошибка, свяжитесь с поддержкой по адресу:",
     ),
     "copyText": MessageLookupByLibrary.simpleMessage("Копировать текст"),
+    "createAccount": MessageLookupByLibrary.simpleMessage("Создать аккаунт"),
     "createNook": MessageLookupByLibrary.simpleMessage("Создать уголок"),
     "createPost": MessageLookupByLibrary.simpleMessage("Создать пост"),
     "createPostFailureMessage": MessageLookupByLibrary.simpleMessage(
@@ -71,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "done": MessageLookupByLibrary.simpleMessage("Готово"),
     "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
     "edited": MessageLookupByLibrary.simpleMessage("изменено"),
+    "email": MessageLookupByLibrary.simpleMessage("Электронная почта"),
     "emptyCategoryError": MessageLookupByLibrary.simpleMessage(
       "Вы не выбрали категорию",
     ),
@@ -133,6 +135,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "postSaved": MessageLookupByLibrary.simpleMessage("Пост сохранен"),
     "postUnpinned": MessageLookupByLibrary.simpleMessage("Пост откреплен"),
     "posts": MessageLookupByLibrary.simpleMessage("Посты"),
+    "registerWithNook": MessageLookupByLibrary.simpleMessage(
+      "Зарегистрируйтесь в Nook",
+    ),
     "removeFromSaved": MessageLookupByLibrary.simpleMessage(
       "Удалить из сохраненного",
     ),
@@ -158,6 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "theresNothingHere": MessageLookupByLibrary.simpleMessage(
       "Тут ничего нет :(",
     ),
+    "thinkPassword": MessageLookupByLibrary.simpleMessage("Придумайте пароль"),
     "tryToFindSomething": MessageLookupByLibrary.simpleMessage(
       "Попробуйте найти что-нибудь",
     ),
@@ -172,6 +178,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Имя пользователя, эл. адрес",
     ),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("С возвращением!"),
+    "whatCanWeCallYou": MessageLookupByLibrary.simpleMessage(
+      "Как мы можем вас называть?",
+    ),
     "withNook": MessageLookupByLibrary.simpleMessage("C Nook"),
     "years": MessageLookupByLibrary.simpleMessage("г."),
     "youCanNotAddVideoFiles": MessageLookupByLibrary.simpleMessage(
@@ -182,6 +191,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "yourAccountHasBeenBanned": MessageLookupByLibrary.simpleMessage(
       "Ваш аккаунт был заблокирован",
+    ),
+    "yourEmail": MessageLookupByLibrary.simpleMessage(
+      "Ваш адрес электронной почты",
     ),
   };
 }
