@@ -3,6 +3,7 @@ import 'package:nook/api/models/login_request_model.dart';
 import 'package:nook/api/models/refresh_request_model.dart';
 import 'package:nook/api/models/register_request_model.dart';
 import 'package:nook/api/nook_api.dart';
+import 'package:nook/api/repositories/user_repository.dart';
 import 'package:nook/core/storage/secure_storage.dart';
 
 class AuthRepository {
@@ -45,7 +46,11 @@ class AuthRepository {
     }
   }
 
-  Future<void> register(String email, String username, String password) async {
+  Future<void> register({
+    required String email,
+    required String username,
+    required String password,
+  }) async {
     try {
       final request = RegisterRequestModel(
         email: email,
@@ -58,6 +63,15 @@ class AuthRepository {
         response.refreshToken,
       );
     } on DioException catch (e) {
+      if (e.response?.statusCode == 409) {
+        final detail = e.response?.data?['detail'] ?? '';
+
+        if (detail.contains('Email')) {
+          throw EmailTakenException(detail);
+        } else if (detail.contains('Username')) {
+          throw UsernameTakenException(detail);
+        }
+      }
       throw Exception(e);
     }
   }
@@ -95,4 +109,9 @@ class InvalidLoginOrPasswordException implements Exception {
 class AccountBannedException implements Exception {
   AccountBannedException(this.message);
   final String message;
+}
+
+class EmailTakenException implements Exception {
+  final String message;
+  EmailTakenException(this.message);
 }

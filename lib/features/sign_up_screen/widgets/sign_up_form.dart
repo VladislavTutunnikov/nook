@@ -13,6 +13,9 @@ class SignUpForm extends StatelessWidget {
     required this.passwordFocusNode,
     required this.emailController,
     required this.emailFocusNode,
+    this.usernameErrorText,
+    this.emailErrorText,
+    this.passwordErrorText,
   });
   final TextEditingController usernameController;
   final TextEditingController emailController;
@@ -20,6 +23,9 @@ class SignUpForm extends StatelessWidget {
   final FocusNode usernameFocusNode;
   final FocusNode emailFocusNode;
   final FocusNode passwordFocusNode;
+  final String? usernameErrorText;
+  final String? emailErrorText;
+  final String? passwordErrorText;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +56,17 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
         ),
+        usernameErrorText != null
+            ? Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Text(
+                  usernameErrorText!,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(color: AppColors.darkRed),
+                ),
+              )
+            : const SizedBox(),
         const SizedBox(height: 10),
         Text(
           S.of(context).yourEmail,
@@ -72,6 +89,17 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
         ),
+        emailErrorText != null
+            ? Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Text(
+                  emailErrorText!,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(color: AppColors.darkRed),
+                ),
+              )
+            : const SizedBox(),
         const SizedBox(height: 10),
         Text(
           S.of(context).thinkPassword,
@@ -84,6 +112,17 @@ class SignUpForm extends StatelessWidget {
           controller: passwordController,
           focusNode: passwordFocusNode,
         ),
+        passwordErrorText != null
+            ? Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Text(
+                  passwordErrorText!,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(color: AppColors.darkRed),
+                ),
+              )
+            : const SizedBox(),
       ],
     );
   }

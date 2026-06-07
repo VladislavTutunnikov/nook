@@ -833,6 +833,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Этот адрес электронной почты уже зарегистрирован`
+  String get emailAlreadyTakenError {
+    return Intl.message(
+      'Этот адрес электронной почты уже зарегистрирован',
+      name: 'emailAlreadyTakenError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Неправильный адрес электронной почты`
+  String get uncorrectEmail {
+    return Intl.message(
+      'Неправильный адрес электронной почты',
+      name: 'uncorrectEmail',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

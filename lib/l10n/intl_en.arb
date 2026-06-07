@@ -99,5 +99,7 @@
   "email": "Электронная почта",
   "thinkPassword": "Придумайте пароль",
   "registerWithNook": "Зарегистрируйтесь в Nook",
-  "createAccount": "Создать аккаунт"
+  "createAccount": "Создать аккаунт",
+  "emailAlreadyTakenError": "Этот адрес электронной почты уже зарегистрирован",
+  "uncorrectEmail": "Неправильный адрес электронной почты"
 }

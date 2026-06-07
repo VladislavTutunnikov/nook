@@ -73,6 +73,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
     "edited": MessageLookupByLibrary.simpleMessage("изменено"),
     "email": MessageLookupByLibrary.simpleMessage("Электронная почта"),
+    "emailAlreadyTakenError": MessageLookupByLibrary.simpleMessage(
+      "Этот адрес электронной почты уже зарегистрирован",
+    ),
     "emptyCategoryError": MessageLookupByLibrary.simpleMessage(
       "Вы не выбрали категорию",
     ),
@@ -168,6 +171,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Попробуйте найти что-нибудь",
     ),
     "unban": MessageLookupByLibrary.simpleMessage("Разблокировать"),
+    "uncorrectEmail": MessageLookupByLibrary.simpleMessage(
+      "Неправильный адрес электронной почты",
+    ),
     "unfollow": MessageLookupByLibrary.simpleMessage("Отписаться"),
     "unpin": MessageLookupByLibrary.simpleMessage("Открепить"),
     "username": MessageLookupByLibrary.simpleMessage("Имя пользователя"),
