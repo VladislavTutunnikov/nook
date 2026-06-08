@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nook/api/di/injection.dart';
@@ -23,6 +24,8 @@ import 'package:nook/shared/widgets/loading_dots.dart';
 import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key, this.userId});
@@ -165,6 +168,22 @@ class _AccountPageState extends State<AccountPage> {
     }
   }
 
+  //TODO: replace with real email
+  Future<void> _onSupportTap() async {
+    const email = 'nook-support@gmail.com';
+    const url =
+        'mailto:$email?subject=Вопрос о Nook&body=Здравствуйте, у меня есть вопрос...';
+
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      await Clipboard.setData(const ClipboardData(text: email));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Email скопирован')));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AccountBloc, AccountState>(
@@ -248,8 +267,9 @@ class _AccountPageState extends State<AccountPage> {
                               onAboutTap: () => AutoRouter.of(
                                 context,
                               ).push(const AboutRoute()),
-                              onBugReportTap: null,
-                              onSupportTap: null,
+                              //TODO: change functionality
+                              onBugReportTap: _onSupportTap,
+                              onSupportTap: _onSupportTap,
                               onLogoutTap: () {
                                 //TODO: add logout dialog
                                 Navigator.pop(context);

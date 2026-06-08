@@ -11,6 +11,17 @@
     <key>NSPhotoLibraryUsageDescription</key>
     <string>Nook нужен доступ к галерее</string>
 
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+    	<string>mailto</string>
+	</array>
+
+	<key>NSAppTransportSecurity</key>
+	<dict>
+    	<key>NSAllowsArbitraryLoads</key>
+    	<true/>
+	</dict>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
