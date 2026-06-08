@@ -22,6 +22,7 @@ import 'package:nook/shared/widgets/error_message.dart';
 import 'package:nook/shared/widgets/loading_dots.dart';
 import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
+import 'package:share_plus/share_plus.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key, this.userId});
@@ -196,7 +197,9 @@ class _AccountPageState extends State<AccountPage> {
                             builder: (context) => CreateMenuBottomSheet(
                               onPostTap: () {
                                 Navigator.pop(context);
-                                AutoRouter.of(context).push(CreateEditPostRoute());
+                                AutoRouter.of(
+                                  context,
+                                ).push(CreateEditPostRoute());
                               },
                               onNookTap: () {
                                 Navigator.pop(context);
@@ -233,9 +236,18 @@ class _AccountPageState extends State<AccountPage> {
                               },
                               //TODO: add functionality
                               onStatisticsTap: null,
-                              onFriendsTap: null,
+                              //TODO: replace with real installation link
+                              onFriendsTap: () => SharePlus.instance.share(
+                                ShareParams(
+                                  text:
+                                      'https://github.com/VladislavTutunnikov/nook.git',
+                                ),
+                              ),
+                              //TODO: add functionality
                               onSettingsTap: null,
-                              onAboutTap: null,
+                              onAboutTap: () => AutoRouter.of(
+                                context,
+                              ).push(const AboutRoute()),
                               onBugReportTap: null,
                               onSupportTap: null,
                               onLogoutTap: () {

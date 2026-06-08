@@ -46,25 +46,27 @@ class ProfileMenuBottomSheet extends StatelessWidget {
             iconPath: AppIcons.save,
             text: S.of(context).saved,
           ),
-          TextIconButton(
-            padding: const EdgeInsets.only(bottom: 20),
-            onTap: onStatisticsTap,
-            iconPath: AppIcons.statistics,
-            text: S.of(context).statistics,
-          ),
+          //TODO: add statistics
+          // TextIconButton(
+          //   padding: const EdgeInsets.only(bottom: 20),
+          //   onTap: onStatisticsTap,
+          //   iconPath: AppIcons.statistics,
+          //   text: S.of(context).statistics,
+          // ),
           TextIconButton(
             padding: const EdgeInsets.only(bottom: 20),
             onTap: onFriendsTap,
             iconPath: AppIcons.userPlus,
             text: S.of(context).inviteFriends,
           ),
-          TextIconButton(
-            padding: const EdgeInsets.only(bottom: 20),
-            onTap: onSettingsTap,
-            iconPath: AppIcons.settings,
-            text: S.of(context).settings,
-          ),
 
+          //TODO: add settings
+          // TextIconButton(
+          //   padding: const EdgeInsets.only(bottom: 20),
+          //   onTap: onSettingsTap,
+          //   iconPath: AppIcons.settings,
+          //   text: S.of(context).settings,
+          // ),
           const Divider(thickness: 1, height: 0, color: AppColors.lightGrey),
           const SizedBox(height: 20),
 
