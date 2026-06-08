@@ -507,6 +507,22 @@ class SavedPostsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [SetupProfileScreen]
+class SetupProfileRoute extends PageRouteInfo<void> {
+  const SetupProfileRoute({List<PageRouteInfo>? children})
+    : super(SetupProfileRoute.name, initialChildren: children);
+
+  static const String name = 'SetupProfileRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SetupProfileScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [SignUpScreen]
 class SignUpRoute extends PageRouteInfo<void> {
   const SignUpRoute({List<PageRouteInfo>? children})

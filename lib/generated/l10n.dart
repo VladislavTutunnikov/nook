@@ -853,6 +853,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Давайте настроим ваш профиль`
+  String get letsSetupYourProfile {
+    return Intl.message(
+      'Давайте настроим ваш профиль',
+      name: 'letsSetupYourProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Далее`
+  String get proceed {
+    return Intl.message('Далее', name: 'proceed', desc: '', args: []);
+  }
+
+  /// `Пропустить`
+  String get skip {
+    return Intl.message('Пропустить', name: 'skip', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

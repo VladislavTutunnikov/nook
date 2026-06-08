@@ -101,5 +101,8 @@
   "registerWithNook": "Зарегистрируйтесь в Nook",
   "createAccount": "Создать аккаунт",
   "emailAlreadyTakenError": "Этот адрес электронной почты уже зарегистрирован",
-  "uncorrectEmail": "Неправильный адрес электронной почты"
+  "uncorrectEmail": "Неправильный адрес электронной почты",
+  "letsSetupYourProfile": "Давайте настроим ваш профиль",
+  "proceed": "Далее",
+  "skip": "Пропустить"
 }

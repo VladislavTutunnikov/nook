@@ -53,5 +53,5 @@ class AppIcons {
   static const String chevronsUpDown = 'assets/icons/chevrons_up_down.svg';
   static const String eye = 'assets/icons/eye.svg';
   static const String eyeClosed = 'assets/icons/eye_closed.svg';
-
+  static const String face = 'assets/icons/face.svg';
 }

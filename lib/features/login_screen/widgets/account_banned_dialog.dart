@@ -30,7 +30,7 @@ class _AccountBannedDialogState extends State<AccountBannedDialog> {
             SvgPicture.asset(
               AppIcons.ban,
               width: 50,
-              colorFilter: ColorFilter.mode(AppColors.darkRed, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(AppColors.darkRed, BlendMode.srcIn),
             ),
             const SizedBox(height: 10),
             Text(

@@ -101,6 +101,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "inviteFriends": MessageLookupByLibrary.simpleMessage("Пригласить друзей"),
     "justNow": MessageLookupByLibrary.simpleMessage("только что"),
+    "letsSetupYourProfile": MessageLookupByLibrary.simpleMessage(
+      "Давайте настроим ваш профиль",
+    ),
     "likeCounter": MessageLookupByLibrary.simpleMessage("Лайков"),
     "likes": MessageLookupByLibrary.simpleMessage("Лайки"),
     "logIn": MessageLookupByLibrary.simpleMessage("Войти"),
@@ -138,6 +141,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "postSaved": MessageLookupByLibrary.simpleMessage("Пост сохранен"),
     "postUnpinned": MessageLookupByLibrary.simpleMessage("Пост откреплен"),
     "posts": MessageLookupByLibrary.simpleMessage("Посты"),
+    "proceed": MessageLookupByLibrary.simpleMessage("Далее"),
     "registerWithNook": MessageLookupByLibrary.simpleMessage(
       "Зарегистрируйтесь в Nook",
     ),
@@ -154,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "saved": MessageLookupByLibrary.simpleMessage("Сохранено"),
     "search": MessageLookupByLibrary.simpleMessage("Поиск..."),
     "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
+    "skip": MessageLookupByLibrary.simpleMessage("Пропустить"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Что-то пошло не так :(",
     ),

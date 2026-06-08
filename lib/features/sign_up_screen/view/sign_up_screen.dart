@@ -65,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           } else if (state is EmailTakenError) {
             _emailErrorText = S.of(context).emailAlreadyTakenError;
           } else if (state is SignUpSuccess) {
-            AutoRouter.of(context).push(const MainRoute());
+            AutoRouter.of(context).replaceAll([const SetupProfileRoute()]);
           }
         },
         child: BlocBuilder<SignUpBloc, SignUpState>(

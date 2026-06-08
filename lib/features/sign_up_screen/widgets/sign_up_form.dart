@@ -77,7 +77,10 @@ class SignUpForm extends StatelessWidget {
         const SizedBox(height: 5),
         TextField(
           controller: emailController,
-          inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r'\s'))],
+          inputFormatters: [
+            FilteringTextInputFormatter.deny(RegExp(r'\s')),
+            FilteringTextInputFormatter.deny(RegExp(r'[а-яА-ЯёЁ]')),
+          ],
           focusNode: emailFocusNode,
           style: Theme.of(context).textTheme.bodyLarge,
           decoration: InputDecoration(

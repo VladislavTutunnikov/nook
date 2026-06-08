@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
               );
             } else if (state is LoginSuccess) {
-              AutoRouter.of(context).replace(const MainRoute());
+              AutoRouter.of(context).replaceAll([const MainRoute()]);
             }
           },
           child: BlocBuilder<LoginBloc, LoginState>(
