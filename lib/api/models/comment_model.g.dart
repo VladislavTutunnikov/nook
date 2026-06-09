@@ -18,6 +18,8 @@ CommentModel _$CommentModelFromJson(Map<String, dynamic> json) => CommentModel(
   user: UserPreviewModel.fromJson(json['user'] as Map<String, dynamic>),
   isLiked: json['is_liked'] as bool,
   isSaved: json['is_saved'] as bool,
+  path: (json['path'] as List<dynamic>).map((e) => e as String).toList(),
+  depth: (json['depth'] as num).toInt(),
 );
 
 Map<String, dynamic> _$CommentModelToJson(CommentModel instance) =>
@@ -29,8 +31,10 @@ Map<String, dynamic> _$CommentModelToJson(CommentModel instance) =>
       'is_edited': instance.isEdited,
       'like_count': instance.likeCount,
       'comment_count': instance.commentCount,
+      'path': instance.path,
       'created_at': instance.createdAt.toIso8601String(),
       'user': instance.user,
       'is_liked': instance.isLiked,
       'is_saved': instance.isSaved,
+      'depth': instance.depth,
     };

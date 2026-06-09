@@ -193,6 +193,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Как мы можем вас называть?",
     ),
     "withNook": MessageLookupByLibrary.simpleMessage("C Nook"),
+    "writeComment": MessageLookupByLibrary.simpleMessage(
+      "Написать комментарий...",
+    ),
     "years": MessageLookupByLibrary.simpleMessage("г."),
     "youCanNotAddVideoFiles": MessageLookupByLibrary.simpleMessage(
       "Нельзя добавлять видеофайлы",

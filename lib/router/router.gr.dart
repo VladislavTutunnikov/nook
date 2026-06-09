@@ -507,6 +507,53 @@ class NookTeamRouteArgs {
 }
 
 /// generated route for
+/// [PostCommentsScreen]
+class PostCommentsRoute extends PageRouteInfo<PostCommentsRouteArgs> {
+  PostCommentsRoute({
+    Key? key,
+    required PostModel post,
+    List<PageRouteInfo>? children,
+  }) : super(
+         PostCommentsRoute.name,
+         args: PostCommentsRouteArgs(key: key, post: post),
+         initialChildren: children,
+       );
+
+  static const String name = 'PostCommentsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<PostCommentsRouteArgs>();
+      return PostCommentsScreen(key: args.key, post: args.post);
+    },
+  );
+}
+
+class PostCommentsRouteArgs {
+  const PostCommentsRouteArgs({this.key, required this.post});
+
+  final Key? key;
+
+  final PostModel post;
+
+  @override
+  String toString() {
+    return 'PostCommentsRouteArgs{key: $key, post: $post}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! PostCommentsRouteArgs) return false;
+    return key == other.key && post == other.post;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ post.hashCode;
+}
+
+/// generated route for
 /// [SavedPostsScreen]
 class SavedPostsRoute extends PageRouteInfo<void> {
   const SavedPostsRoute({List<PageRouteInfo>? children})

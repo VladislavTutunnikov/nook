@@ -20,10 +20,20 @@ import 'package:nook/theme/icons.dart';
 import 'package:share_plus/share_plus.dart';
 
 class PostCard extends StatefulWidget {
-  const PostCard({super.key, required this.post, this.showNook = false});
+  const PostCard({
+    super.key,
+    required this.post,
+    this.showNook = false,
+    this.borderRadius = 25,
+    this.padding = const EdgeInsets.all(15),
+    this.border,
+  });
 
   final PostModel post;
   final bool showNook;
+  final double borderRadius;
+  final EdgeInsetsGeometry padding;
+  final BoxBorder? border;
 
   @override
   State<PostCard> createState() => _PostCardState();
@@ -53,13 +63,15 @@ class _PostCardState extends State<PostCard> {
             width: double.infinity,
             decoration: BoxDecoration(
               color: AppColors.white,
-              border: Border.all(color: AppColors.lightGrey, width: 1),
-              borderRadius: BorderRadius.circular(25),
+              border: widget.border == null
+                  ? Border.all(color: AppColors.lightGrey, width: 1)
+                  : widget.border!,
+              borderRadius: BorderRadius.circular(widget.borderRadius),
             ),
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(15),
+                  padding: widget.padding,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -183,8 +195,9 @@ class _PostCardState extends State<PostCard> {
                       PostTextSection(
                         title: widget.post.title,
                         content: widget.post.content,
-                        //TODO: add navigation to post screen
-                        onTap: null,
+                        onTap: () => AutoRouter.of(
+                          context,
+                        ).push(PostCommentsRoute(post: widget.post)),
                       ),
                     ],
                   ),
@@ -207,8 +220,9 @@ class _PostCardState extends State<PostCard> {
                   repostCount: state.repostCount,
 
                   onLikeTap: () => _postBloc.add(LikePost()),
-                  //TODO: add navigation to post screen
-                  onCommentTap: null,
+                  onCommentTap: () => AutoRouter.of(
+                    context,
+                  ).push(PostCommentsRoute(post: widget.post)),
                   onRepostTap: () => _postBloc.add(RepostPost()),
                   //TODO: add on share tap
                   onShareTap: () => SharePlus.instance.share(

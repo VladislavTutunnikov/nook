@@ -16,6 +16,7 @@ import 'package:nook/features/nook_followers_screen/view/nook_followers_screen.d
 import 'package:nook/features/nook_rules_screen/view/nook_rules_screen.dart';
 import 'package:nook/features/nook_screen/view/nook_screen.dart';
 import 'package:nook/features/nook_team_screen/view/nook_team_screen.dart';
+import 'package:nook/features/post_comments_screen/view/post_comments_screen.dart';
 import 'package:nook/features/saved_posts_screen/view/saved_posts_screen.dart';
 import 'package:nook/features/setup_profile_screen/view/setup_profile_screen.dart';
 import 'package:nook/features/sign_up_screen/view/sign_up_screen.dart';
@@ -45,5 +46,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: SignUpRoute.page),
     AutoRoute(page: SetupProfileRoute.page),
     AutoRoute(page: AboutRoute.page),
+    AutoRoute(page: PostCommentsRoute.page)
   ];
 }

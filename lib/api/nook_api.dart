@@ -177,6 +177,20 @@ abstract class NookApiClient {
   @DELETE('/posts/{post_id}/pin')
   Future<void> unpinPost({@Path('post_id') required String postId});
 
+  @GET('/posts/{post_id}/comments')
+  Future<List<CommentModel>> getPostComments({
+    @Path('post_id') required String postId,
+    @Query('limit') int? limit,
+    @Query('offset') int? offset,
+  });
+
+  @POST('/posts/{post_id}/comments')
+  @MultiPart()
+  Future<void> createComment({
+    @Path('post_id') required String postId,
+    @Part(name: 'content') required String content,
+  });
+
   //NOOKS
   @GET('/nooks')
   Future<List<NookModel>> searchNooks({
@@ -281,7 +295,7 @@ abstract class NookApiClient {
     @Path('nook_id') required String nookId,
     @Path('follower_id') required String followerId,
   });
-  
+
   //FEED
   @GET("/feed")
   Future<List<PostModel>> getFeed({

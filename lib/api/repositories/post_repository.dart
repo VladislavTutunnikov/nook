@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:nook/api/models/comment_model.dart';
 import 'package:nook/api/models/post_model.dart';
 import 'package:nook/api/nook_api.dart';
 
@@ -147,6 +148,34 @@ class PostRepository {
       return response;
     } on DioException catch (e) {
       throw Exception('Feed upload error: ${e.message}');
+    }
+  }
+
+  Future<List<CommentModel>> getPostComments({
+    required String postId,
+    int limit = 20,
+    int offset = 0,
+  }) async {
+    try {
+      final response = await apiClient.getPostComments(
+        postId: postId,
+        limit: limit,
+        offset: offset,
+      );
+      return response;
+    } on DioException catch (e) {
+      throw Exception('Post comments upload error: ${e.message}');
+    }
+  }
+
+  Future<void> createComment({
+    required String postId,
+    required String content,
+  }) async {
+    try {
+      await apiClient.createComment(postId: postId, content: content);
+    } on DioException catch (e) {
+      throw Exception('Create comment error: ${e.message}');
     }
   }
 }

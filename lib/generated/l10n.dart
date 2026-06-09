@@ -873,6 +873,16 @@ class S {
   String get skip {
     return Intl.message('Пропустить', name: 'skip', desc: '', args: []);
   }
+
+  /// `Написать комментарий...`
+  String get writeComment {
+    return Intl.message(
+      'Написать комментарий...',
+      name: 'writeComment',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -17,9 +17,13 @@ class CommentCard extends StatefulWidget {
     this.onCommentTap,
     this.onShareTap,
     this.onMenuTap,
+    this.borderRadius = 25,
+    this.border,
   });
 
   final CommentModel comment;
+  final double borderRadius;
+  final BoxBorder? border;
 
   final VoidCallback? onLikeTap;
   final VoidCallback? onCommentTap;
@@ -55,8 +59,10 @@ class _CommentCardState extends State<CommentCard> {
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.white,
-        border: Border.all(color: AppColors.lightGrey, width: 1),
-        borderRadius: BorderRadius.circular(25),
+        border: widget.border == null
+            ? Border.all(color: AppColors.lightGrey, width: 1)
+            : widget.border!,
+        borderRadius: BorderRadius.circular(widget.borderRadius),
       ),
       child: Column(
         children: [

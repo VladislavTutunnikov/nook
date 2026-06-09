@@ -17,6 +17,8 @@ class CommentModel extends Equatable {
     required this.user,
     required this.isLiked,
     required this.isSaved,
+    required this.path,
+    required this.depth,
   });
 
   final String id;
@@ -37,6 +39,8 @@ class CommentModel extends Equatable {
   @JsonKey(name: 'comment_count')
   final int commentCount;
 
+  final List<String> path;
+
   @JsonKey(name: 'created_at')
   final DateTime createdAt;
 
@@ -47,6 +51,8 @@ class CommentModel extends Equatable {
 
   @JsonKey(name: 'is_saved')
   final bool isSaved;
+
+  final int depth;
 
   factory CommentModel.fromJson(Map<String, dynamic> json) =>
       _$CommentModelFromJson(json);
@@ -61,9 +67,11 @@ class CommentModel extends Equatable {
     isEdited,
     likeCount,
     commentCount,
+    path,
     createdAt,
     user,
     isLiked,
     isSaved,
+    depth,
   ];
 }

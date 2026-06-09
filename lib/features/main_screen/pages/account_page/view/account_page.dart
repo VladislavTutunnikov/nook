@@ -24,7 +24,6 @@ import 'package:nook/shared/widgets/loading_dots.dart';
 import 'package:nook/theme/colors.dart';
 import 'package:nook/theme/icons.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class AccountPage extends StatefulWidget {
@@ -168,7 +167,7 @@ class _AccountPageState extends State<AccountPage> {
     }
   }
 
-  //TODO: replace with real email
+  //TODO: replace with real email and add strings to ARB
   Future<void> _onSupportTap() async {
     const email = 'nook-support@gmail.com';
     const url =
